@@ -1,17 +1,18 @@
 import { Flex, Text } from "@chakra-ui/layout";
+import { useMediaQuery } from "@chakra-ui/react";
+import Menu from "../../features/Menu";
+import styles from './Header.module.css';
 
 function Header() {
+  const [isSmallerThan768] = useMediaQuery("(max-width: 768px)");
+
   return (
     <Flex
       p="spacer-03"
       px="spacer-04"
-      w="100%"
-      position="absolute"
-      top="0"
-      left="0"
-      ml="100px"
-      borderBottom="1px solid"
+      pl={isSmallerThan768 ? 'spacer-03' : '148px'}
       borderColor="border.100"
+      className={styles.header}
     >
       <Text>PRODUCTLAB</Text>
     </Flex>

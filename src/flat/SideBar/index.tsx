@@ -8,6 +8,8 @@ function SideBar() {
       h="100vh"
       borderRight="1px solid #C4C4C4"
       justifyContent="center"
+      bg="white"
+      zIndex="10"
     >
       <Image src="/productlab_logo.png" h="30px" w="30px" mt="spacer-03" />
     </Flex>

@@ -22,6 +22,7 @@ const spaces = {
   "spacer-03": "24px",
   "spacer-04": "36px",
   "spacer-05": "48px",
+  "spacer-06": "72px"
 };
 
 // 2. Add your color mode config

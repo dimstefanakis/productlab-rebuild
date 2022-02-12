@@ -7,7 +7,7 @@ function Layout({ children }: LayoutProps) {
   return (
     <Flex flexFlow="row" w="100%" h="100%" position="relative">
       <Header />
-      <Flex flex="1">{children}</Flex>
+      <Flex w="100%">{children}</Flex>
     </Flex>
   );
 }

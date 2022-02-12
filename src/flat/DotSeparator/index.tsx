@@ -4,8 +4,8 @@ import { DotSeparatorProps } from "./interface";
 
 function DotSeparator({ title }: DotSeparatorProps) {
   return (
-    <Box position="relative" h="400px" w="100%">
-      <Image w="100%" h="100%" src="/thing.svg" />
+    <Box position="relative" w="100%">
+      <Image w="100%" src="/thing.svg" />
     </Box>
   );
 }

@@ -2,13 +2,17 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import { Flex, Box } from "@chakra-ui/layout";
+import { useMediaQuery } from "@chakra-ui/media-query";
 import SideBar from "../src/flat/SideBar";
 import Hero from "../src/flat/Hero";
 import DotSeparator from "../src/flat/DotSeparator";
+import Trends from "../src/flat/Trends";
 import Header from "../src/flat/Header";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
+  const [isSmallerThan768] = useMediaQuery("(max-width: 768px)");
+
   return (
     <>
       <Head>
@@ -17,10 +21,11 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Flex w="100%" h="100%">
-        <SideBar/>
-        <Flex flexFlow="column" h="100%">
+        {!isSmallerThan768 && <SideBar />}
+        <Flex flexFlow="column" className={styles.homePage}>
           <Hero />
-          <DotSeparator />
+          <DotSeparator title=""/>
+          <Trends />
         </Flex>
       </Flex>
     </>
