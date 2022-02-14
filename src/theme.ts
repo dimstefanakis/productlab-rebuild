@@ -21,6 +21,9 @@ const colors = {
     100: "#12233B",
     200: "#060e19",
   },
+  link: {
+    100: "#137CDE",
+  },
 };
 
 const spaces = {
@@ -44,7 +47,7 @@ const styles = {
       borderColor: 'border.100'
     },
     a: {
-      color: "teal.500",
+      color: "#137CDE",
     },
   },
 };

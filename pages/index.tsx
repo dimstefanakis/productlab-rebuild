@@ -8,6 +8,8 @@ import SideBar from "../src/flat/SideBar";
 import Hero from "../src/flat/Hero";
 import Separator from "../src/flat/Separator";
 import Trends from "../src/flat/Trends";
+import Insights from "../src/flat/Insights";
+import Tasks from "../src/flat/Tasks";
 import Header from "../src/flat/Header";
 import styles from "../styles/Home.module.css";
 
@@ -29,6 +31,8 @@ const Home: NextPage = () => {
           <Separator title="Our blog" />
           <Trends />
           <Separator title="Solutions" src="/thing2.svg"/>
+          <Insights />
+          <Tasks />
         </Flex>
       </Flex>
     </>
