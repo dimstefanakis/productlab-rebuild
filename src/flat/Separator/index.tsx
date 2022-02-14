@@ -1,11 +1,19 @@
 import { Box, Flex, Text } from "@chakra-ui/layout";
 import { Image } from "@chakra-ui/image";
+import { useMediaQuery } from "@chakra-ui/media-query";
+import { useTheme } from "@chakra-ui/system";
 import { DotSeparatorProps } from "./interface";
 
-function DotSeparator({ title }: DotSeparatorProps) {
+function Separator({ title, src="/thing.svg" }: DotSeparatorProps) {
+  const { breakpoints } = useTheme();
+  const [isSmallerThan768] = useMediaQuery(`(max-width: ${breakpoints.md})`);
+
   return (
     <Box position="relative" w="100%">
-      <Image w="100%" src="/thing.svg" />
+      <Image
+        w="100%"
+        src={isSmallerThan768 ? `${src.replace(".svg", "")}_mobile.svg` : src}
+      />
       <Flex
         position="absolute"
         left="0"
@@ -13,8 +21,8 @@ function DotSeparator({ title }: DotSeparatorProps) {
         w="100%"
         h="100%"
         alignItems="flex-end"
-        px="spacer-04"
-        py="spacer-05"
+        px={{ base: "spacer-03", md: "spacer-04" }}
+        py={{ base: "spacer-03", md: "spacer-05" }}
       >
         <Text
           textTransform="uppercase"
@@ -29,4 +37,4 @@ function DotSeparator({ title }: DotSeparatorProps) {
   );
 }
 
-export default DotSeparator;
+export default Separator;

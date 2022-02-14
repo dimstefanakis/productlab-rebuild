@@ -14,15 +14,16 @@ function Trends() {
       w="100%"
       borderLeft={isSmallerThan768 ? "0" : "1px solid"}
       borderColor="border.100"
+      flexFlow={{ base: "column", md: "row" }}
     >
       <Flex
-        w="40%"
-        minW="40%"
+        w={{ base: "100%", md: "40%" }}
+        minW={{ base: "100%", md: "40%" }}
         borderRight="1px solid"
         borderColor="border.100"
         py="spacer-06"
         flexFlow="column"
-        px={10}
+        px={{ base: "spacer-03", md: 10 }}
       >
         <Heading fontSize="5xl">Trends</Heading>
         <Box flex="1"></Box>
@@ -33,7 +34,12 @@ function Trends() {
           <PrimaryButton>View all</PrimaryButton>
         </Box>
       </Flex>
-      <Flex w="60%" maxW="60%" p="spacer-06" pr={0}>
+      <Flex
+        w={{ base: "100%", md: "60%" }}
+        maxW={{ base: "100%", md: "60%" }}
+        p={{ base: 3, md: "spacer-06" }}
+        pr={0}
+      >
         <TrendCarousel />
       </Flex>
     </Flex>

@@ -6,7 +6,7 @@ import { useMediaQuery } from "@chakra-ui/media-query";
 import { useTheme } from "@chakra-ui/system";
 import SideBar from "../src/flat/SideBar";
 import Hero from "../src/flat/Hero";
-import DotSeparator from "../src/flat/DotSeparator";
+import Separator from "../src/flat/Separator";
 import Trends from "../src/flat/Trends";
 import Header from "../src/flat/Header";
 import styles from "../styles/Home.module.css";
@@ -26,8 +26,9 @@ const Home: NextPage = () => {
         {!isSmallerThan768 && <SideBar />}
         <Flex flexFlow="column" className={styles.homePage}>
           <Hero />
-          <DotSeparator title="Our blog"/>
+          <Separator title="Our blog" />
           <Trends />
+          <Separator title="Solutions" src="/thing2.svg"/>
         </Flex>
       </Flex>
     </>

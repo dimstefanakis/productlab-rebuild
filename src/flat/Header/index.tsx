@@ -16,6 +16,8 @@ function Header() {
       pl={isSmallerThan768 ? "spacer-03" : "148px"}
       borderColor="border.100"
       alignItems="center"
+      bg={{base: 'white', md: 'transparent'}}
+      zIndex={{base: 1, md: 0}}
       className={styles.header}
     >
       {isSmallerThan768 && <Image src="/productlab_logo.png" h="20px" w="20px"/>}
