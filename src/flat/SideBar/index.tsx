@@ -1,5 +1,6 @@
 import { Image } from "@chakra-ui/image";
-import { Flex } from "@chakra-ui/layout";
+import { Flex, Box } from "@chakra-ui/layout";
+import Menu from "../../features/Menu";
 
 function SideBar() {
   return (
@@ -9,8 +10,18 @@ function SideBar() {
       justifyContent="center"
       bg="white"
       zIndex="10"
+      position="relative"
     >
-      <Image src="/productlab_logo.png" h="30px" w="30px" mt="spacer-03" />
+      <Image
+        src="/productlab_logo.png"
+        h="30px"
+        w="30px"
+        mt="spacer-03"
+        position="absolute"
+      />
+      <Box alignSelf="center">
+        <Menu />
+      </Box>
     </Flex>
   );
 }
