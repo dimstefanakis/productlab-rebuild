@@ -1,4 +1,4 @@
-import { useState, useCallback, useLayoutEffect } from "react";
+import { useState, useCallback, useLayoutEffect, useEffect } from "react";
 
 interface Dimensions {
   width?: number;
@@ -44,7 +44,7 @@ export default function useBoundingRect(limit?: number): [any, Dimensions, HTMLE
     setNode(node);
   }, []);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if ("undefined" !== typeof window && node) {
       const measure = () =>
         window.requestAnimationFrame(() =>

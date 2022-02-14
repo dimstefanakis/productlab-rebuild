@@ -6,7 +6,6 @@ function SideBar() {
     <Flex
       minW="100px"
       h="100vh"
-      borderRight="1px solid #C4C4C4"
       justifyContent="center"
       bg="white"
       zIndex="10"

@@ -1,20 +1,25 @@
 import { Flex, Text } from "@chakra-ui/layout";
+import { Image } from "@chakra-ui/image";
 import { useMediaQuery } from "@chakra-ui/react";
+import { useTheme } from "@chakra-ui/system";
 import Menu from "../../features/Menu";
-import styles from './Header.module.css';
+import styles from "./Header.module.css";
 
 function Header() {
-  const [isSmallerThan768] = useMediaQuery("(max-width: 768px)");
+  const { breakpoints } = useTheme();
+  const [isSmallerThan768] = useMediaQuery(`(max-width: ${breakpoints.md})`);
 
   return (
     <Flex
       p="spacer-03"
       px="spacer-04"
-      pl={isSmallerThan768 ? 'spacer-03' : '148px'}
+      pl={isSmallerThan768 ? "spacer-03" : "148px"}
       borderColor="border.100"
+      alignItems="center"
       className={styles.header}
     >
-      <Text>PRODUCTLAB</Text>
+      {isSmallerThan768 && <Image src="/productlab_logo.png" h="20px" w="20px"/>}
+      <Text fontWeight="bold" ml={{base: 3, md: 0}}>PRODUCTLAB</Text>
     </Flex>
   );
 }

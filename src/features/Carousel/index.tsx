@@ -62,9 +62,9 @@ const Carousel = ({ children, itemWidth, gap }: CarouselProps) => {
   const [isGreaterThanXL] = useMediaQuery(`(min-width: ${breakpoints.xl})`);
 
   useEffect(() => {
-      setItemWidth(sliderWidth - gap);
-      setMultiplier(0.65);
-      setConstraint(1);
+    setItemWidth(sliderWidth - gap);
+    setMultiplier(0.65);
+    setConstraint(1);
     // if (isBetweenBaseAndMd) {
     //   setItemWidth(sliderWidth - gap);
     //   setMultiplier(0.65);
@@ -141,12 +141,8 @@ const Slider = ({
   children,
   gap,
 }: SliderProps) => {
-  const [ref, {width}] = useBoundingRect();
-  console.log("eifth", width);
-  useLayoutEffect(
-    () => initSliderWidth(Math.round(width)),
-    [width, initSliderWidth]
-  );
+  const [ref, { width }] = useBoundingRect();
+  useEffect(() => initSliderWidth(Math.round(width)), [width, initSliderWidth]);
 
   const handleFocus = () => setTrackIsActive(true);
 
@@ -196,7 +192,12 @@ const Slider = ({
         {children}
       </Box>
 
-      <Flex w={`${itemWidth}px`} mt={`${gap / 2}px`} mx="auto">
+      {/* <Flex
+        w={`${itemWidth}px`}
+        mt={`${gap / 2}px`}
+        mx="auto"
+        justifyContent="center"
+      >
         <Button
           onClick={handleDecrementClick}
           onFocus={handleFocus}
@@ -219,7 +220,7 @@ const Slider = ({
         >
           <ChevronRightIcon boxSize={9} />
         </Button>
-      </Flex>
+      </Flex> */}
     </>
   );
 };
