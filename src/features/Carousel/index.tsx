@@ -142,7 +142,11 @@ const Slider = ({
   gap,
 }: SliderProps) => {
   const [ref, { width }] = useBoundingRect();
-  useEffect(() => initSliderWidth(Math.round(width)), [width, initSliderWidth]);
+  useEffect(() => {
+    if (width) {
+      initSliderWidth(Math.round(width));
+    }
+  }, [width, initSliderWidth]);
 
   const handleFocus = () => setTrackIsActive(true);
 
