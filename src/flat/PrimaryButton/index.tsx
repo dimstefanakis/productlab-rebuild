@@ -1,7 +1,7 @@
 import { Button } from "@chakra-ui/button";
 import { PrimaryButtonProps } from "./interface";
 
-function PrimaryButton({ children }: PrimaryButtonProps) {
+function PrimaryButton(props: PrimaryButtonProps) {
   return (
     <Button
       py={2}
@@ -17,8 +17,9 @@ function PrimaryButton({ children }: PrimaryButtonProps) {
         borderColor: "#bec3c9",
       }}
       textTransform="uppercase"
+      {...props}
     >
-      {children}
+      {props.children}
     </Button>
   );
 }

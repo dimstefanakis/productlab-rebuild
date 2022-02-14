@@ -36,7 +36,7 @@ function CommonLandingBox({
         <Box flex="1"></Box>
         <Text maxW="350px">{subheader}</Text>
         <Box mt="spacer-03">
-          <PrimaryButton>{buttonText}</PrimaryButton>
+          <PrimaryButton width={isSmallerThan768 ? '100%' : 'max-content'}>{buttonText}</PrimaryButton>
         </Box>
       </Flex>
       <Flex

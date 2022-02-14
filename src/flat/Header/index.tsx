@@ -29,11 +29,15 @@ function Header() {
       <Text fontWeight="bold" ml={{ base: 3, md: 0 }}>
         PRODUCTLAB
       </Text>
-      <Box flex="1"></Box>
-      <Flex justifyContent="center" alignItems="center">
-        <Contributors />
-        <PrimaryButton>Book demo</PrimaryButton>
-      </Flex>
+      {!isSmallerThan768 && (
+        <>
+          <Box flex="1"></Box>
+          <Flex justifyContent="center" alignItems="center">
+            <Contributors />
+            <PrimaryButton>Book demo</PrimaryButton>
+          </Flex>
+        </>
+      )}
     </Flex>
   );
 }
