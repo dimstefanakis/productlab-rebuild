@@ -1,44 +1,44 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useTheme } from "@chakra-ui/system";
 import { useMediaQuery } from "@chakra-ui/media-query";
 import { IconButton } from "@chakra-ui/button";
-import { Image } from "@chakra-ui/image";
+import { Box, Flex } from "@chakra-ui/layout";
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { motion, AnimatePresence } from "framer-motion";
+import HeaderWrapper from "../../flat/Header/Wrapper";
+import MenuContext from "../../context/MenuContext";
+import SectionButton from "./Buttons/SectionButton";
 
 function Menu() {
   const theme = useTheme();
+  const menuContext = useContext(MenuContext);
   const { breakpoints } = useTheme();
   const [isSmallerThan768] = useMediaQuery(`(max-width: ${breakpoints.md})`);
   const [isVisible, setVisible] = useState(false);
+
   let transitionProps;
+
   if (isSmallerThan768) {
     transitionProps = {
       initial: {
-        opacity: 0,
         y: "-100%",
       },
       animate: {
-        opacity: 1,
         y: "0%",
       },
       exit: {
-        opacity: 0,
         y: "-100%",
       },
     };
-  }else{
+  } else {
     transitionProps = {
       initial: {
-        opacity: 0,
         x: "-100%",
       },
       animate: {
-        opacity: 1,
         x: "0%",
       },
       exit: {
-        opacity: 0,
         x: "-100%",
       },
     };
@@ -48,7 +48,7 @@ function Menu() {
   }
 
   return (
-    <>
+    <MenuContext.Provider value={{ open: isVisible, setOpen: setVisible }}>
       <IconButton
         size="lg"
         aria-label="Menu"
@@ -86,10 +86,28 @@ function Menu() {
               zIndex: -1,
             }}
             {...transitionProps}
-          ></motion.div>
+          >
+            <Box color="white">
+              <HeaderWrapper />
+              <Flex
+                h="calc(100% - 70px)"                
+                w="calc(100% - 100px)"
+                ml="100px"
+                pt="70px"
+                borderLeft="1px solid"
+                borderColor="border.100"
+                flexFlow="column"
+              >
+                <SectionButton title="Trend Reports" />
+                <SectionButton title="Trend Reports" />
+                <SectionButton title="Trend Reports" />
+                <SectionButton title="Trend Reports" />
+              </Flex>
+            </Box>
+          </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </MenuContext.Provider>
   );
 }
 

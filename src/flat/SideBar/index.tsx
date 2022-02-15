@@ -13,7 +13,7 @@ function SideBar() {
       position="relative"
     >
       <Image
-        src="/productlab_logo.png"
+        src="/productlab_logo.svg"
         h="30px"
         w="30px"
         mt="spacer-03"
