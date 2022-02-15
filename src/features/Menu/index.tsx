@@ -99,9 +99,9 @@ function Menu() {
                 flexFlow="column"
               >
                 <SectionButton title="Trend Reports" />
-                <SectionButton title="Trend Reports" />
-                <SectionButton title="Trend Reports" />
-                <SectionButton title="Trend Reports" />
+                <SectionButton title="Solutions" />
+                <SectionButton title="Our Panel" />
+                <SectionButton title="Sign Up" />
               </Flex>
             </Box>
           </motion.div>
