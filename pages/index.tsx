@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Flex, Box } from "@chakra-ui/layout";
 import { useMediaQuery } from "@chakra-ui/media-query";
 import { useTheme } from "@chakra-ui/system";
+import Prismic from "@prismicio/client";
 import SideBar from "../src/flat/SideBar";
 import Hero from "../src/flat/Hero";
 import Separator from "../src/flat/Separator";
@@ -11,11 +12,17 @@ import Trends from "../src/flat/Trends";
 import Insights from "../src/flat/Insights";
 import Tasks from "../src/flat/Tasks";
 import Header from "../src/flat/Header";
+import { Client } from "../prismicHelpers";
 import styles from "../styles/Home.module.css";
 
-const Home: NextPage = () => {
-  const {breakpoints} = useTheme();
+interface HomeProps{
+  docs: any;
+}
+
+const Home = ({ docs }: HomeProps) => {
+  const { breakpoints } = useTheme();
   const [isSmallerThan768] = useMediaQuery(`(max-width: ${breakpoints.md})`);
+  console.log("docs", docs);
 
   return (
     <>
@@ -30,7 +37,7 @@ const Home: NextPage = () => {
           <Hero />
           <Separator title="Our blog" />
           <Trends />
-          <Separator title="Solutions" src="/thing2.svg"/>
+          <Separator title="Solutions" src="/thing2.svg" />
           <Insights />
           <Tasks />
         </Flex>
@@ -38,5 +45,17 @@ const Home: NextPage = () => {
     </>
   );
 };
+
+export async function getStaticProps() {
+  const docs = await Client().query(
+    Prismic.Predicates.at("document.type", "blog")
+  );
+
+  return {
+    props: {
+      docs: docs
+    },
+  };
+}
 
 export default Home;

@@ -23,9 +23,9 @@ export const linkResolver = (doc) => {
 // Manages the url links to internal Prismic documents two levels deep (optionals)
 export const routeResolver = {
   routes: [
-    {
-      type: "page",
-      path: "/:uid",
-    },
+    // {
+    //   type: "page",
+    //   path: "/:uid",
+    // },
   ],
 };

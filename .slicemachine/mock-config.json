@@ -1,0 +1,12 @@
+{
+  "_cts": {
+    "blog": {}
+  },
+  "slices": {
+    "Blog": {
+      "default-slice": {
+        "primary": {}
+      }
+    }
+  }
+}
