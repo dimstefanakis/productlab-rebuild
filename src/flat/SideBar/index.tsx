@@ -10,7 +10,8 @@ function SideBar() {
       justifyContent="center"
       bg="white"
       zIndex="10"
-      position="relative"
+      position="sticky"
+      top="0"
     >
       <Image
         src="/productlab_logo.svg"
