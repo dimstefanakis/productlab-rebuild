@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useTheme } from "@chakra-ui/system";
 import { useMediaQuery } from "@chakra-ui/media-query";
 import { IconButton } from "@chakra-ui/button";
@@ -8,6 +8,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import HeaderWrapper from "../../flat/Header/Wrapper";
 import MenuContext from "../../context/MenuContext";
 import SectionButton from "./Buttons/SectionButton";
+import ReportBox from "./Buttons/ReportBox";
+import MenuFooter from "./Footer";
 
 function Menu() {
   const theme = useTheme();
@@ -87,23 +89,32 @@ function Menu() {
             }}
             {...transitionProps}
           >
-            <Box color="white">
-              <HeaderWrapper />
+            <Flex h="100vh" flexFlow="column" color="white">
+              <HeaderWrapper position="relative" />
               <Flex
-                h="calc(100% - 70px)"                
-                w="calc(100% - 100px)"
+                h="calc(100% - 70px)"
                 ml="100px"
-                pt="70px"
                 borderLeft="1px solid"
                 borderColor="border.100"
                 flexFlow="column"
               >
-                <SectionButton title="Trend Reports" />
-                <SectionButton title="Solutions" />
-                <SectionButton title="Our Panel" />
-                <SectionButton title="Sign Up" />
+                <Flex w="100%" h="40%">
+                  <Flex w="60%" flexFlow="column">
+                    <SectionButton title="Trend Reports" />
+                    <SectionButton title="Solutions" />
+                  </Flex>
+                  <ReportBox backgroundColor="brand.200" />
+                </Flex>
+                <Flex w="100%" h="40%">
+                  <Flex w="60%" flexFlow="column">
+                    <SectionButton title="Our Panel" />
+                    <SectionButton title="Sign Up" />
+                  </Flex>
+                  <ReportBox backgroundColor="brand.300" />
+                </Flex>
+                <MenuFooter />
               </Flex>
-            </Box>
+            </Flex>
           </motion.div>
         )}
       </AnimatePresence>

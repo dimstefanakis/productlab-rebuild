@@ -14,6 +14,7 @@ function HeaderWrapper(props: HeaderWrapperProps) {
       p="spacer-03"
       px="spacer-04"
       pl={isSmallerThan768 ? "spacer-03" : "148px"}
+      h="70px"
       borderColor="border.100"
       alignItems="center"
       bg={{ base: "white", md: "transparent" }}
