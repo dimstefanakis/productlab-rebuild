@@ -1,12 +1,12 @@
-import { useEffect, useState, useRef } from "react";
-import { Box, Flex } from "@chakra-ui/layout";
+import React, { useEffect, useState, useRef } from "react";
+import { Box, Flex, Text, Heading } from "@chakra-ui/layout";
 import { useTheme } from "@chakra-ui/system";
 import { useMediaQuery } from "@chakra-ui/media-query";
 import Carousel from "../../features/Carousel";
 import { TrendCarouselProps } from "./interface";
+import { TrendProps } from "./interface";
 
 function TrendCarousel({ data }: TrendCarouselProps) {
-  let slides = [0, 1, 2];
   const { breakpoints } = useTheme();
   const [isSmallerThan768] = useMediaQuery(`(max-width: ${breakpoints.md})`);
   const [slideHeight, setSlideHeight] = useState<number>(0);
@@ -29,10 +29,37 @@ function TrendCarousel({ data }: TrendCarouselProps) {
       >
         {data.map((item: any, i: number) => {
           return (
-            <Flex key={i} h={`${slideHeight}px`} w="500px" bg="#A4A4A4"></Flex>
+            <Flex
+              key={i}
+              h={`${slideHeight}px`}
+              w="500px"
+              bg={i == activeSlide ? "#A4A4A4" : "#C4C4C4"}
+              boxShadow={
+                i == activeSlide ? "inset 0em -2em 22px -12px #797979" : ""
+              }
+              transition="all 0.2s"
+              py="spacer-04"
+              px={6}
+              color="white"
+            >
+              <Trend data={item} index={i} />
+            </Flex>
           );
         })}
       </Carousel>
+    </Flex>
+  );
+}
+
+function Trend({ data, index }: TrendProps) {
+  console.log("data", data);
+  let item = data?.items[0];
+
+  return (
+    <Flex h="100%" w="100%" flexFlow="column">
+      <Heading>{index}</Heading>
+      <Box flex="1"></Box>
+      <Heading>{item.title}</Heading>
     </Flex>
   );
 }
