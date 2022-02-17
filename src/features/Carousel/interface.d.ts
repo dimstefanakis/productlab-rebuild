@@ -1,7 +1,10 @@
+import React from "react";
+
 export interface CarouselProps {
   children: JSX.Element[];
   gap: number;
   itemWidth: number;
+  setActiveSlide: Dispatch<SetStateAction<number>>;
 }
 
 export interface SliderProps {

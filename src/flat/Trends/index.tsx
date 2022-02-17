@@ -1,13 +1,14 @@
 import TrendCarousel from "../TrendCarousel";
 import CommonLandingBox from "../CommonLandingBox";
+import { TrendsProps } from "./interface";
 
-function Trends() {
+function Trends({data}: TrendsProps) {
   return (
     <CommonLandingBox
       title="Trends"
       subheader="Check out the latest insights from contributor data."
       buttonText="View all"
-      rightSideComponent={<TrendCarousel />}
+      rightSideComponent={<TrendCarousel data={data}/>}
     />
   );
 }

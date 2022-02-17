@@ -33,7 +33,12 @@ const transitionProps = {
   mass: 3,
 };
 
-const Carousel = ({ children, itemWidth, gap }: CarouselProps) => {
+const Carousel = ({
+  children,
+  itemWidth,
+  gap,
+  setActiveSlide
+}: CarouselProps) => {
   const [trackIsActive, setTrackIsActive] = useState(false);
   const [multiplier, setMultiplier] = useState(0.35);
   const [sliderWidth, setSliderWidth] = useState(0);
@@ -43,7 +48,6 @@ const Carousel = ({ children, itemWidth, gap }: CarouselProps) => {
 
   const initSliderWidth = useCallback((width) => setSliderWidth(width), []);
 
-  console.log("itemWidth", itemWidth);
   const positions = useMemo(
     () => children.map((_, index) => -Math.abs((itemWidth + gap) * index)),
     [children, itemWidth, gap]
@@ -81,6 +85,11 @@ const Carousel = ({ children, itemWidth, gap }: CarouselProps) => {
     //   setConstraint(3);
     // }
   }, [isBetweenBaseAndMd, isBetweenMdAndXl, isGreaterThanXL, sliderWidth, gap]);
+
+  // updates slide count on parent component
+  useEffect(()=>{
+    setActiveSlide(activeItem);
+  },[activeItem])
 
   const sliderProps = {
     setTrackIsActive,
@@ -248,7 +257,6 @@ const Track = ({
   const handleDragStart = () => setDragStartPosition(positions[activeItem]);
 
   const handleDragEnd = (_: any, info: any) => {
-    console.log(info);
     const distance = info.offset.x;
     const velocity = info.velocity.x * multiplier;
     const direction = velocity < 0 || distance < 0 ? 1 : -1;

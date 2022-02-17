@@ -5,9 +5,9 @@ import { Image } from "@chakra-ui/image";
 import { RichText, Link } from "prismic-reactjs";
 import { BlogProps } from "./interface";
 
-const Blog = ({ slice }: BlogProps) => (
+const Blog = ({ slice }: any) => (
   <Flex flexFlow="column">
-    {slice?.items.map((item, i) => {
+    {slice?.items.map((item: any, i: number) => {
       return (
         <Flex key={i} flexFlow="column">
           <Text>{item.title}</Text>

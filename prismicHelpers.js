@@ -41,4 +41,15 @@ const createClientOptions = (
   };
 };
 
+export function extractBlogDataFromPrisma(data){
+  let blogData = data;
+  blogData = blogData.results.map((_blog)=> {
+    let blog = _blog.data;
+    return {
+      slices: blog.body
+    }
+  })
+  return blogData[0].slices;
+}
+
 export default Client;
