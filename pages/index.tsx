@@ -11,6 +11,7 @@ import Separator from "../src/flat/Separator";
 import Trends from "../src/flat/Trends";
 import Insights from "../src/flat/Insights";
 import Tasks from "../src/flat/Tasks";
+import OurPanel from "../src/flat/OurPanel";
 import Header from "../src/flat/Header";
 import { Client } from "../prismicHelpers";
 import { extractBlogDataFromPrisma } from "../prismicHelpers";
@@ -41,6 +42,8 @@ const Home = ({ docs }: HomeProps) => {
           <Separator title="Solutions" src="/thing2.svg" />
           <Insights data={docs} />
           <Tasks data={docs} />
+          <Separator title="Our panel" />
+          <OurPanel />
         </Flex>
       </Flex>
     </>
