@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { Link as ChakraLink } from "@chakra-ui/layout";
 import { Flex, Heading, Text, Box } from "@chakra-ui/layout";
+import { Button } from "@chakra-ui/button";
 import { Image } from "@chakra-ui/image";
-import { FooterLink } from "./interface";
+import { FooterLinkProps } from "./interface";
 
 function Footer() {
   return (
@@ -32,10 +33,10 @@ function Footer() {
             py="spacer-05"
             px={{ base: "spacer-03", md: 10 }}
           >
-            <Heading fontSize={{ base: "4xl", md: "6xl" }} maxW="500px">
-              250K+
+            <Heading fontSize={{ base: "4xl", md: "6xl" }} maxW="600px">
+              Instant clarity for your next decision
             </Heading>
-            <Text>Active Contributors</Text>
+            <BookDemo />
           </Flex>
         </Flex>
         <Flex
@@ -72,6 +73,30 @@ function Footer() {
   );
 }
 
+function BookDemo() {
+  return (
+    <Button
+      textTransform="uppercase"
+      width="max-content"
+      border="1px solid"
+      borderColor="border.100"
+      color="white"
+      backgroundColor="transparent"
+      borderRadius="100px"
+      mt='spacer-04'
+      px={20}
+      _hover={{
+        backgroundColor: "transparent",
+      }}
+      _active={{
+        backgroundColor: "transparent",
+      }}
+    >
+      Book Demo
+    </Button>
+  );
+}
+
 function FooterLinks() {
   return (
     <Flex>
@@ -82,7 +107,7 @@ function FooterLinks() {
   );
 }
 
-function FooterLink({ href, children }: FooterLink) {
+function FooterLink({ href, children }: FooterLinkProps) {
   return (
     <Link href={href}>
       <ChakraLink href={href} ml={8} color="brand.100" fontWeight="bold">
