@@ -12,12 +12,13 @@ import Trends from "../src/flat/Trends";
 import Insights from "../src/flat/Insights";
 import Tasks from "../src/flat/Tasks";
 import OurPanel from "../src/flat/OurPanel";
+import Footer from "../src/flat/Footer";
 import Header from "../src/flat/Header";
 import { Client } from "../prismicHelpers";
 import { extractBlogDataFromPrisma } from "../prismicHelpers";
 import styles from "../styles/Home.module.css";
 
-interface HomeProps{
+interface HomeProps {
   docs: any;
 }
 
@@ -44,6 +45,7 @@ const Home = ({ docs }: HomeProps) => {
           <Tasks data={docs} />
           <Separator title="Our panel" />
           <OurPanel />
+          <Footer />
         </Flex>
       </Flex>
     </>
@@ -54,7 +56,7 @@ export async function getStaticProps() {
   const docs = await Client().query(
     Prismic.Predicates.at("document.type", "blog")
   );
-  
+
   return {
     props: {
       docs: extractBlogDataFromPrisma(docs),

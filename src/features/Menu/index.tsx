@@ -45,8 +45,24 @@ function Menu() {
       },
     };
   }
+
   function onMenuClick() {
     setVisible(!isVisible);
+  }
+
+  function onSectionClick(id?: string) {
+    setVisible(false);
+
+    if (id) {
+      let element = document.getElementById(id);
+      setTimeout(() => {
+        element?.scrollIntoView({
+          behavior: "smooth",
+          block: "end",
+          inline: "nearest",
+        });
+      }, 300);
+    }
   }
 
   return (
@@ -100,15 +116,27 @@ function Menu() {
               >
                 <Flex w="100%" h="40%">
                   <Flex w="60%" flexFlow="column">
-                    <SectionButton title="Trend Reports" />
-                    <SectionButton title="Solutions" />
+                    <SectionButton
+                      title="Trend Reports"
+                      onClick={() => onSectionClick("trends")}
+                    />
+                    <SectionButton
+                      title="Solutions"
+                      onClick={() => onSectionClick("solutions")}
+                    />
                   </Flex>
                   <ReportBox backgroundColor="brand.200" />
                 </Flex>
                 <Flex w="100%" h="40%">
                   <Flex w="60%" flexFlow="column">
-                    <SectionButton title="Our Panel" />
-                    <SectionButton title="Sign Up" />
+                    <SectionButton
+                      title="Our Panel"
+                      onClick={() => onSectionClick("panel")}
+                    />
+                    <SectionButton
+                      title="Sign Up"
+                      onClick={() => onSectionClick()}
+                    />
                   </Flex>
                   <ReportBox backgroundColor="brand.300" />
                 </Flex>

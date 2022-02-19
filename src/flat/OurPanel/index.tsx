@@ -2,7 +2,7 @@ import { Flex, Box, Text, Heading } from "@chakra-ui/layout";
 
 function OurPanel() {
   return (
-    <Flex minH="100vh" w="100%" flexFlow="column">
+    <Flex id="panel" minH="100vh" w="100%" flexFlow="column">
       <Flex
         flexFlow="row"
         h="50%"
@@ -37,7 +37,7 @@ function ActiveContributors() {
       py="spacer-06"
       px={{ base: "spacer-03", md: 10 }}
     >
-      <Heading>250K+</Heading>
+      <Heading fontSize="5xl">250K+</Heading>
       <Text>Active Contributors</Text>
     </Flex>
   );
@@ -52,7 +52,7 @@ function Attributes() {
       px={{ base: "spacer-03", md: 10 }}
       flexFlow="column"
     >
-      <Heading>500+</Heading>
+      <Heading fontSize="5xl">500+</Heading>
       <Text>Attributes</Text>
     </Flex>
   );
@@ -83,7 +83,7 @@ function TasksCompleted() {
       px={{ base: "spacer-03", md: 10 }}
       flexFlow="column"
     >
-      <Heading>1M+</Heading>
+      <Heading fontSize="5xl">1M+</Heading>
       <Text>Tasks Completed</Text>
     </Flex>
   );

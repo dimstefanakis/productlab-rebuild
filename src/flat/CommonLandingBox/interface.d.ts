@@ -4,4 +4,5 @@ export interface CommonLandingBoxProps {
   buttonText: string;
   rightSideComponent: JSX.Element;
   withBorder?: boolean;
+  id?: string;
 }

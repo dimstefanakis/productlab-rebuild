@@ -11,6 +11,10 @@ function SectionButton(props: SectionButtonProps) {
       borderBottom="1px solid"
       borderColor="border.100"
       alignItems="center"
+      cursor="pointer"
+      _hover={{
+        color: "#E4F053",
+      }}
       {...props}
     >
       <AnimatePresence>

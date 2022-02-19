@@ -10,12 +10,14 @@ function CommonLandingBox({
   buttonText,
   rightSideComponent,
   withBorder,
+  id,
 }: CommonLandingBoxProps) {
   const { breakpoints } = useTheme();
   const [isSmallerThan768] = useMediaQuery(`(max-width: ${breakpoints.md})`);
 
   return (
     <Flex
+      id={id}
       minH="100vh"
       w="100%"
       borderLeft={isSmallerThan768 ? "0" : "1px solid"}
@@ -36,7 +38,9 @@ function CommonLandingBox({
         <Box flex="1"></Box>
         <Text maxW="350px">{subheader}</Text>
         <Box mt="spacer-03">
-          <PrimaryButton width={isSmallerThan768 ? '100%' : 'max-content'}>{buttonText}</PrimaryButton>
+          <PrimaryButton width={isSmallerThan768 ? "100%" : "max-content"}>
+            {buttonText}
+          </PrimaryButton>
         </Box>
       </Flex>
       <Flex

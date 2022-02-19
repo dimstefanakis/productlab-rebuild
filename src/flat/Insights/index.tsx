@@ -6,6 +6,7 @@ import { InsightsProps } from "./interface";
 function Insights({ data }: InsightsProps) {
   return (
     <CommonLandingBox
+      id="solutions"
       title="Insights"
       subheader="Whatever the insight."
       buttonText="Book demo"
