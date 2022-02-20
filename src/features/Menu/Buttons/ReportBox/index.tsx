@@ -1,8 +1,9 @@
 import { Flex, Text } from "@chakra-ui/layout";
 import { FlexProps } from "@chakra-ui/layout";
 import { AnimatePresence, motion } from "framer-motion";
+import { ReportBoxProps } from "./interface";
 
-function ReportBox(props: FlexProps) {
+function ReportBox({ title, description, ...props }: ReportBoxProps) {
   return (
     <AnimatePresence>
       <motion.div
@@ -23,8 +24,17 @@ function ReportBox(props: FlexProps) {
           borderColor="border.100"
           h="100%"
           w="100%"
+          pl={10}
+          py="spacer-04"
+          flexFlow="column"
+          justifyContent="space-between"
           {...props}
-        ></Flex>
+        >
+          <Text fontSize="2xl" fontWeight="bold">
+            {title}
+          </Text>
+          <Text>{description}</Text>
+        </Flex>
       </motion.div>
     </AnimatePresence>
   );

@@ -1,5 +1,6 @@
 import TrendCarousel from "../TrendCarousel";
 import CommonLandingBox from "../CommonLandingBox";
+import SolutionBox from "../SolutionBox";
 import { TasksProps } from "./interface";
 
 function Tasks({ data }: TasksProps) {
@@ -10,7 +11,7 @@ function Tasks({ data }: TasksProps) {
       title="Tasks"
       subheader={text}
       buttonText="Book demo"
-      rightSideComponent={<TrendCarousel data={data} />}
+      rightSideComponent={<SolutionBox title="02" />}
     />
   );
 }

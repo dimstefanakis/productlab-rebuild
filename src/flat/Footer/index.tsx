@@ -3,6 +3,7 @@ import { Link as ChakraLink } from "@chakra-ui/layout";
 import { Flex, Heading, Text, Box } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
 import { Image } from "@chakra-ui/image";
+import Logo from "../Logo";
 import { FooterLinkProps } from "./interface";
 
 function Footer() {
@@ -54,7 +55,10 @@ function Footer() {
             alignItems="center"
             px={{ base: "spacer-03", md: 10 }}
           >
-            <Heading fontSize="xl">PRODUCTLAB</Heading>
+            <Flex justifyContent="center" alignItems="center">
+              <Logo color="white" width="20px" height="20px"/>
+              <Heading fontSize="xl" ml={4}>PRODUCTLAB</Heading>
+            </Flex>
             <Box flex="1"></Box>
             <FooterLinks />
           </Flex>

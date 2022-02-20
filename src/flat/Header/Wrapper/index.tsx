@@ -3,7 +3,8 @@ import { Image } from "@chakra-ui/image";
 import { useMediaQuery } from "@chakra-ui/react";
 import { useTheme } from "@chakra-ui/system";
 import { HeaderWrapperProps } from "./interface";
-import styles from '../Header.module.css';
+import Logo from "../../Logo";
+import styles from "../Header.module.css";
 
 function HeaderWrapper(props: HeaderWrapperProps) {
   const { breakpoints } = useTheme();
@@ -23,7 +24,8 @@ function HeaderWrapper(props: HeaderWrapperProps) {
       {...props}
     >
       {isSmallerThan768 && (
-        <Image src="/productlab_logo.svg" h="20px" w="20px" />
+        <Logo color="#137CDE" h="20px" w="20px" />
+        // <Image src="/productlab_logo.svg" h="20px" w="20px" />
       )}
       <Text fontWeight="bold" ml={{ base: 3, md: 0 }}>
         PRODUCTLAB

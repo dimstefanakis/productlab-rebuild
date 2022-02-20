@@ -6,6 +6,7 @@ import { Box, Flex } from "@chakra-ui/layout";
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { motion, AnimatePresence } from "framer-motion";
 import HeaderWrapper from "../../flat/Header/Wrapper";
+import Logo from "../../flat/Logo";
 import MenuContext from "../../context/MenuContext";
 import SectionButton from "./Buttons/SectionButton";
 import ReportBox from "./Buttons/ReportBox";
@@ -16,7 +17,6 @@ function Menu() {
   const menuContext = useContext(MenuContext);
   const { breakpoints } = useTheme();
   const [isSmallerThan768] = useMediaQuery(`(max-width: ${breakpoints.md})`);
-  const [isVisible, setVisible] = useState(false);
 
   let transitionProps;
 
@@ -47,11 +47,11 @@ function Menu() {
   }
 
   function onMenuClick() {
-    setVisible(!isVisible);
+    menuContext.setOpen(!menuContext.open);
   }
 
   function onSectionClick(id?: string) {
-    setVisible(false);
+    menuContext.setOpen(false);
 
     if (id) {
       let element = document.getElementById(id);
@@ -66,31 +66,31 @@ function Menu() {
   }
 
   return (
-    <MenuContext.Provider value={{ open: isVisible, setOpen: setVisible }}>
+    <>
       <IconButton
         size="lg"
         aria-label="Menu"
         colorScheme="whiteAlpha"
         backgroundColor="transparent"
         icon={
-          isVisible ? (
+          menuContext.open ? (
             <CloseIcon
               h="30px"
               w="30px"
-              color={isVisible ? "white" : "black"}
+              color={menuContext.open ? "white" : "black"}
             />
           ) : (
             <HamburgerIcon
               h="30px"
               w="30px"
-              color={isVisible ? "white" : "black"}
+              color={menuContext.open ? "white" : "black"}
             />
           )
         }
         onClick={onMenuClick}
       ></IconButton>
       <AnimatePresence>
-        {isVisible && (
+        {menuContext.open && (
           <motion.div
             key="modal"
             transition={{ duration: 0.3 }}
@@ -125,7 +125,11 @@ function Menu() {
                       onClick={() => onSectionClick("solutions")}
                     />
                   </Flex>
-                  <ReportBox backgroundColor="brand.200" />
+                  <ReportBox
+                    title="01"
+                    description="Trend Report Title"
+                    backgroundColor="brand.200"
+                  />
                 </Flex>
                 <Flex w="100%" h="40%">
                   <Flex w="60%" flexFlow="column">
@@ -138,7 +142,11 @@ function Menu() {
                       onClick={() => onSectionClick()}
                     />
                   </Flex>
-                  <ReportBox backgroundColor="brand.300" />
+                  <ReportBox
+                    title="02"
+                    description="Trend Report Title"
+                    backgroundColor="brand.300"
+                  />
                 </Flex>
                 <MenuFooter />
               </Flex>
@@ -146,7 +154,7 @@ function Menu() {
           </motion.div>
         )}
       </AnimatePresence>
-    </MenuContext.Provider>
+    </>
   );
 }
 

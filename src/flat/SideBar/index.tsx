@@ -1,8 +1,12 @@
-import { Image } from "@chakra-ui/image";
+import { useContext } from "react";
 import { Flex, Box } from "@chakra-ui/layout";
 import Menu from "../../features/Menu";
+import Logo from "../Logo";
+import MenuContext from "../../context/MenuContext";
 
 function SideBar() {
+  const context = useContext(MenuContext);
+
   return (
     <Flex
       minW="100px"
@@ -13,13 +17,14 @@ function SideBar() {
       position="sticky"
       top="0"
     >
-      <Image
-        src="/productlab_logo.svg"
+      <Logo
+        color={context.open ? "white" : "#137CDE"}
         h="30px"
         w="30px"
         mt="spacer-03"
         position="absolute"
       />
+      {/* <Image src="/productlab_logo.svg" /> */}
       <Box alignSelf="center">
         <Menu />
       </Box>

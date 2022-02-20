@@ -28,7 +28,17 @@ function MenuFooter() {
               alignItems: "center",
             }}
           >
-            <Flex w="100%" h="100%" backgroundColor="brand.200"></Flex>
+            <Flex
+              w="100%"
+              h="100%"
+              justifyContent="center"
+              alignItems="center"
+              backgroundColor="brand.200"
+            >
+              <Text fontWeight="bold" textTransform="uppercase">
+                © Productlab ai 2022 All rights reserved
+              </Text>
+            </Flex>
           </motion.div>
         </AnimatePresence>
       </Flex>

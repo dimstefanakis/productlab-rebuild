@@ -176,7 +176,13 @@
           "isDirectory": true,
           "extension": "tsx"
         },
-        "screenshotPaths": {}
+        "screenshotPaths": {
+          "default-slice": {
+            "path": "/Users/dimitrisstefanakis/dev/productlab-rebuild/.slicemachine/assets/slices/Blog/default-slice/preview.png",
+            "width": 800,
+            "height": 1970
+          }
+        }
       }
     }
   }
