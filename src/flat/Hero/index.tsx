@@ -1,6 +1,7 @@
 import { Flex, Box, Text, Heading } from "@chakra-ui/layout";
 import { useMediaQuery } from "@chakra-ui/media-query";
 import { useTheme } from "@chakra-ui/system";
+import PrimaryButton from "../PrimaryButton";
 
 function Hero() {
   const { breakpoints } = useTheme();
@@ -25,16 +26,23 @@ function Hero() {
         pb={"spacer-05"}
         px={{ base: "spacer-03", md: 0 }}
       >
-        <Heading fontSize={{base: '4xl', md: '6xl'}} maxW="500px">
+        <Heading fontSize={{ base: "4xl", md: "6xl" }} maxW="500px">
           Crowdsourced Insights to Guide Any Decision
         </Heading>
       </Flex>
       <Flex
         flex="1"
+        flexFlow="column"
         p={{ base: "spacer-03", md: "spacer-05" }}
-        alignItems={{ base: "center", md: "flex-end" }}
+        justifyContent={{ base: "center", md: "flex-end" }}
       >
         <Text>{text}</Text>
+        {isSmallerThan768 && (
+          <Flex my="spacer-04" justifyContent="space-around">
+            <PrimaryButton mr={2}>Book demo</PrimaryButton>
+            <PrimaryButton variant="outline">Sign up</PrimaryButton>
+          </Flex>
+        )}
       </Flex>
     </Flex>
   );

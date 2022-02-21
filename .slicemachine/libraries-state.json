@@ -18,8 +18,7 @@
               "docURL": "...",
               "version": "sktwi1xtmkfgx8626",
               "description": "Blog",
-              "primary": {},
-              "items": {
+              "primary": {
                 "title": {
                   "config": {
                     "label": "title",
@@ -35,22 +34,13 @@
                   },
                   "type": "Link"
                 },
-                "image": {
+                "previewimage": {
                   "config": {
-                    "label": "image",
+                    "label": "previewimage",
                     "constraint": {},
                     "thumbnails": []
                   },
                   "type": "Image"
-                },
-                "body": {
-                  "config": {
-                    "label": "body",
-                    "placeholder": "",
-                    "allowTargetBlank": true,
-                    "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
-                  },
-                  "type": "StructuredText"
                 },
                 "featured": {
                   "config": {
@@ -60,6 +50,17 @@
                     "default_value": false
                   },
                   "type": "Boolean"
+                }
+              },
+              "items": {
+                "body": {
+                  "config": {
+                    "label": "body",
+                    "placeholder": "",
+                    "allowTargetBlank": true,
+                    "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+                  },
+                  "type": "StructuredText"
                 }
               }
             }
@@ -72,103 +73,59 @@
             "slice_type": "blog",
             "items": [
               {
-                "title": "brand real-time metrics",
-                "link": {
-                  "link_type": "Web",
-                  "url": "https://slicemachine.dev"
-                },
-                "image": {
-                  "dimensions": {
-                    "width": 900,
-                    "height": 500
-                  },
-                  "alt": "Placeholder image",
-                  "copyright": null,
-                  "url": "https://images.unsplash.com/photo-1587653915936-5623ea0b949a?w=900&h=500&fit=crop"
-                },
                 "body": [
                   {
                     "type": "paragraph",
-                    "text": "Velit aliqua velit deserunt do qui occaecat velit tempor deserunt sunt commodo consectetur laboris sint velit. Et eiusmod dolore do Lorem.",
+                    "text": "Ullamco mollit qui anim magna veniam exercitation qui laborum dolore sint tempor est enim id non. In ex quis labore. Occaecat commodo incididunt elit officia enim nisi amet proident.",
                     "spans": []
                   }
-                ],
-                "featured": false
+                ]
               },
               {
-                "title": "integrate efficient infomediaries",
-                "link": {
-                  "link_type": "Web",
-                  "url": "https://slicemachine.dev"
-                },
-                "image": {
-                  "dimensions": {
-                    "width": 900,
-                    "height": 500
-                  },
-                  "alt": "Placeholder image",
-                  "copyright": null,
-                  "url": "https://images.unsplash.com/photo-1589321578146-4c1ba445cc88?w=900&h=500&fit=crop"
-                },
                 "body": [
                   {
                     "type": "paragraph",
-                    "text": "Aliqua incididunt irure ea. Et enim laborum proident in ad dolor incididunt culpa.",
+                    "text": "Mollit exercitation nostrud in veniam nulla elit eiusmod occaecat anim. Tempor aliqua nostrud adipisicing in cillum eiusmod consectetur qui dolore cupidatat ipsum ex tempor qui. Minim excepteur id consectetur dolore incididunt enim dolor laboris.",
                     "spans": []
                   }
-                ],
-                "featured": true
+                ]
               },
               {
-                "title": "whiteboard bleeding-edge action-items",
-                "link": {
-                  "link_type": "Web",
-                  "url": "https://prismic.io"
-                },
-                "image": {
-                  "dimensions": {
-                    "width": 900,
-                    "height": 500
-                  },
-                  "alt": "Placeholder image",
-                  "copyright": null,
-                  "url": "https://images.unsplash.com/photo-1547394765-185e1e68f34e?w=900&h=500&fit=crop"
-                },
                 "body": [
                   {
                     "type": "paragraph",
-                    "text": "Excepteur incididunt nostrud sit non tempor ea deserunt laborum eiusmod. Amet pariatur eu dolor est aute pariatur Lorem dolore eiusmod sunt reprehenderit minim culpa. Mollit reprehenderit do do exercitation labore anim incididunt.",
+                    "text": "Aute consectetur amet cillum nisi laborum aute ad enim excepteur ut fugiat cillum nisi labore ipsum. Consequat elit dolor veniam commodo incididunt commodo aliquip in deserunt proident occaecat est ullamco est. Ad occaecat pariatur mollit proident cupidatat nostrud esse eiusmod.",
                     "spans": []
                   }
-                ],
-                "featured": true
+                ]
               },
               {
-                "title": "deliver sticky bandwidth",
-                "link": {
-                  "link_type": "Web",
-                  "url": "https://prismic.io"
-                },
-                "image": {
-                  "dimensions": {
-                    "width": 900,
-                    "height": 500
-                  },
-                  "alt": "Placeholder image",
-                  "copyright": null,
-                  "url": "https://images.unsplash.com/photo-1579931794097-0ad001e51edb?w=900&h=500&fit=crop"
-                },
                 "body": [
                   {
                     "type": "paragraph",
-                    "text": "Laborum tempor pariatur velit culpa fugiat sint magna. Magna esse dolor ut sunt deserunt duis sint voluptate velit aute.",
+                    "text": "Eiusmod aute ad magna laboris voluptate irure id veniam aliquip.",
                     "spans": []
                   }
-                ],
-                "featured": false
+                ]
               }
             ],
-            "primary": {}
+            "primary": {
+              "title": "extend vertical technologies",
+              "link": {
+                "link_type": "Web",
+                "url": "http://twitter.com"
+              },
+              "previewimage": {
+                "dimensions": {
+                  "width": 900,
+                  "height": 500
+                },
+                "alt": "Placeholder image",
+                "copyright": null,
+                "url": "https://images.unsplash.com/photo-1589652717521-10c0d092dea9?w=900&h=500&fit=crop"
+              },
+              "featured": true
+            }
           }
         },
         "meta": {
@@ -176,13 +133,7 @@
           "isDirectory": true,
           "extension": "tsx"
         },
-        "screenshotPaths": {
-          "default-slice": {
-            "path": "/Users/dimitrisstefanakis/dev/productlab-rebuild/.slicemachine/assets/slices/Blog/default-slice/preview.png",
-            "width": 800,
-            "height": 1970
-          }
-        }
+        "screenshotPaths": {}
       }
     }
   }

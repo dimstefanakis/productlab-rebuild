@@ -5,7 +5,8 @@
   "slices": {
     "Blog": {
       "default-slice": {
-        "primary": {}
+        "primary": {},
+        "items": {}
       }
     }
   }

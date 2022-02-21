@@ -3,7 +3,7 @@ import { SolutionBoxProps } from "./interface";
 
 function SolutionBox({ title }: SolutionBoxProps) {
   return (
-    <Flex flexFlow="column" py="spacer-06" width="100%">
+    <Flex flexFlow="column" py={{ base: 0, md: "spacer-06" }} width="100%">
       <Text fontSize="2xl">{title}</Text>
       <Box
         height="60vh"

@@ -48,6 +48,7 @@ const Carousel = ({
 
   const initSliderWidth = useCallback((width) => setSliderWidth(width), []);
 
+  console.log("itemWidth", itemWidth);
   const positions = useMemo(
     () => children.map((_, index) => -Math.abs((itemWidth + gap) * index)),
     [children, itemWidth, gap]
@@ -254,6 +255,7 @@ const Track = ({
   const x = useMotionValue(0);
   const node = useRef<HTMLDivElement>(null);
 
+  console.log("dragStartPosition", dragStartPosition);
   const handleDragStart = () => setDragStartPosition(positions[activeItem]);
 
   const handleDragEnd = (_: any, info: any) => {

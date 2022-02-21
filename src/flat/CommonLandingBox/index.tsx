@@ -30,26 +30,43 @@ function CommonLandingBox({
         minW={{ base: "100%", md: "40%" }}
         borderRight="1px solid"
         borderColor="border.100"
-        py="spacer-06"
         flexFlow="column"
         px={{ base: "spacer-03", md: 10 }}
+        py={{ base: "spacer-04", md: "spacer-06" }}
       >
         <Heading fontSize="5xl">{title}</Heading>
-        <Box flex="1"></Box>
-        <Text maxW="350px">{subheader}</Text>
-        <Box mt="spacer-03">
-          <PrimaryButton width={isSmallerThan768 ? "100%" : "max-content"}>
-            {buttonText}
-          </PrimaryButton>
-        </Box>
+        {!isSmallerThan768 && (
+          <>
+            <Box flex="1"></Box>
+            <Text maxW="350px">{subheader}</Text>
+            <Box mt="spacer-03">
+              <PrimaryButton width={isSmallerThan768 ? "100%" : "max-content"}>
+                {buttonText}
+              </PrimaryButton>
+            </Box>
+          </>
+        )}
       </Flex>
       <Flex
         w={{ base: "100%", md: "60%" }}
         maxW={{ base: "100%", md: "60%" }}
-        p={{ base: 3, md: "spacer-06" }}
-        pr={0}
+        p={{ base: 'spacer-03', md: "spacer-06" }}
+        flexFlow="column"
       >
         {rightSideComponent}
+        {isSmallerThan768 && (
+          <Flex flexFlow="column">
+            <Box flex="1"></Box>
+            <Text maxW="350px" my="spacer-04">
+              {subheader}
+            </Text>
+            <Box mb="spacer-04">
+              <PrimaryButton width={isSmallerThan768 ? "100%" : "max-content"}>
+                {buttonText}
+              </PrimaryButton>
+            </Box>
+          </Flex>
+        )}
       </Flex>
     </Flex>
   );

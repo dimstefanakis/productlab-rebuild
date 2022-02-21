@@ -6,15 +6,19 @@ function PrimaryButton(props: PrimaryButtonProps) {
     <Button
       py={2}
       px={10}
-      backgroundColor="button.100"
-      color="white"
+      backgroundColor={
+        props.variant == "outline" ? "transparent" : "button.100"
+      }
+      border="2px solid"
+      borderColor="#12233B"
+      color={props.variant == "outline" ? "#12233B" : "white"}
       width="fit-content"
       borderRadius="100px"
-      _hover={{ bg: "button.200" }}
+      _hover={{ bg: props.variant == "outline" ? "transparent" : "button.200" }}
       _active={{
-        bg: "button.200",
+        bg: props.variant == "outline" ? "transparent" : "button.200",
         transform: "scale(0.98)",
-        borderColor: "#bec3c9",
+        borderColor: "#12233B",
       }}
       textTransform="uppercase"
       {...props}
