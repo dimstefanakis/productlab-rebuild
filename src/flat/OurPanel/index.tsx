@@ -1,13 +1,18 @@
+import { useMediaQuery } from "@chakra-ui/media-query";
+import { useTheme } from "@chakra-ui/system";
 import { Flex, Box, Text, Heading } from "@chakra-ui/layout";
 
 function OurPanel() {
+  const { breakpoints } = useTheme();
+  const [isSmallerThan768] = useMediaQuery(`(max-width: ${breakpoints.md})`);
+
   return (
     <Flex id="panel" minH="100vh" w="100%" flexFlow="column">
       <Flex
-        flexFlow="row"
-        h="50%"
+        flexFlow={{ base: "column", md: "row" }}
+        minH={{ base: "auto", md: "50%" }}
         borderBottom="1px solid"
-        borderLeft="1px solid"
+        borderLeft={isSmallerThan768 ? "0" : "1px solid"}
         borderColor="border.100"
       >
         <ActiveContributors />
@@ -15,7 +20,7 @@ function OurPanel() {
       </Flex>
       <Flex
         flexFlow="row"
-        h="50%"
+        minH={{ base: "auto", md: "50%" }}
         borderLeft="1px solid"
         borderColor="border.100"
       >
@@ -27,11 +32,15 @@ function OurPanel() {
 }
 
 function ActiveContributors() {
+    const { breakpoints } = useTheme();
+    const [isSmallerThan768] = useMediaQuery(`(max-width: ${breakpoints.md})`);
+
   return (
     <Flex
-      w="60%"
+      w={{ base: "100%", md: "60%" }}
       h="100%"
-      borderRight="1px solid"
+      borderRight={isSmallerThan768 ? "0" : "1px solid"}
+      borderBottom={isSmallerThan768 ? "1px solid" : "0"}
       borderColor="border.100"
       flexFlow="column"
       py="spacer-06"
