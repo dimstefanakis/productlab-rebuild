@@ -41,8 +41,8 @@ const Home = ({ docs }: HomeProps) => {
           <Separator title="Our blog" />
           <Trends data={docs} />
           <Separator title="Solutions" src="/thing2.svg" />
-          <Insights data={docs} />
-          <Tasks data={docs} />
+          <Insights />
+          <Tasks />
           <Separator title="Our panel" />
           <OurPanel />
           <Footer />

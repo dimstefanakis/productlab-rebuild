@@ -1,3 +1,3 @@
 export interface TasksProps {
-  data: any;
+  data?: any;
 }

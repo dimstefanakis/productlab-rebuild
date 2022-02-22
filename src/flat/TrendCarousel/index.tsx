@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import { Image } from "@chakra-ui/image";
 import { Box, Flex, Text, Heading } from "@chakra-ui/layout";
 import { useTheme } from "@chakra-ui/system";
 import { useMediaQuery } from "@chakra-ui/media-query";
@@ -41,6 +42,7 @@ function TrendCarousel({ data }: TrendCarouselProps) {
               py="spacer-04"
               px={6}
               color="white"
+              position="relative"
             >
               <Trend data={item} index={i} />
             </Flex>
@@ -57,9 +59,26 @@ function Trend({ data, index }: TrendProps) {
 
   return (
     <Flex h="100%" w="100%" flexFlow="column">
-      <Heading>{index}</Heading>
+      <Heading zIndex="100">{index}</Heading>
       <Box flex="1"></Box>
-      <Heading>{item.title}</Heading>
+      <Heading zIndex="100">{data.primary.title}</Heading>
+      <Flex
+        position="absolute"
+        top="0"
+        left="0"
+        width="100%"
+        height="100%"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <Image
+          src={data.primary.previewimage.url}
+          objectFit="cover"
+          width="100%"
+          height="100%"
+          pointerEvents="none"
+        />
+      </Flex>
     </Flex>
   );
 }

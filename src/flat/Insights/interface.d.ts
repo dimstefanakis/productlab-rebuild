@@ -1,3 +1,3 @@
 export interface InsightsProps {
-  data: any;
+  data?: any;
 }
