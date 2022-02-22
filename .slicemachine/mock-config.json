@@ -6,7 +6,14 @@
     "Blog": {
       "default-slice": {
         "primary": {},
-        "items": {}
+        "items": {
+          "body": {
+            "config": {
+              "patternType": "STORY",
+              "blocks": 1
+            }
+          }
+        }
       }
     }
   }

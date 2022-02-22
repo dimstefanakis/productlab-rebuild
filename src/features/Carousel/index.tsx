@@ -3,6 +3,7 @@
 import React, {
   useLayoutEffect,
   useCallback,
+  useContext,
   useEffect,
   useState,
   useMemo,
@@ -23,6 +24,7 @@ import { ChevronRightIcon, ChevronLeftIcon } from "@chakra-ui/icons";
 import { motion, useAnimation, useMotionValue } from "framer-motion";
 import useBoundingRect from "./hooks/useBoundingRect";
 import { CarouselProps, SliderProps, TrackProps, ItemProps } from "./interface";
+import CarouselContext from "./context/CarouselContext";
 
 const MotionFlex = motion(Flex);
 
@@ -152,6 +154,8 @@ const Slider = ({
   gap,
 }: SliderProps) => {
   const [ref, { width }] = useBoundingRect();
+  const carouselContext = useContext(CarouselContext);
+
   useEffect(() => {
     if (width) {
       initSliderWidth(Math.round(width));
@@ -160,17 +164,25 @@ const Slider = ({
 
   const handleFocus = () => setTrackIsActive(true);
 
+  console.log("index", activeItem, positions, constraint)
+  console.log("dddd", positions.length - constraint, positions.length, constraint);
+
   const handleDecrementClick = () => {
     setTrackIsActive(true);
-    !(activeItem === positions.length - positions.length) &&
-      setActiveItem((prev: number) => prev - 1);
+    setActiveItem((prev: number)=> Math.max(0, prev - 1))
+    // !(activeItem === positions.length - positions.length) &&
+    //   setActiveItem((prev: number) => prev - 1);
   };
 
   const handleIncrementClick = () => {
     setTrackIsActive(true);
-    !(activeItem === positions.length - constraint) &&
-      setActiveItem((prev: number) => prev + 1);
+    setActiveItem((prev: number) => Math.min(positions.length - 1, prev + 1));
+    // !(activeItem === positions.length - constraint) &&
+    //   setActiveItem((prev: number) => prev + 1);
   };
+
+  carouselContext.handleDecrementClick = handleDecrementClick;
+  carouselContext.handleIncrementClick = handleIncrementClick;
 
   return (
     <>

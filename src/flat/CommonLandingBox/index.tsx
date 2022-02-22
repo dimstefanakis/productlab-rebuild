@@ -6,6 +6,7 @@ import { CommonLandingBoxProps } from "./interface";
 
 function CommonLandingBox({
   title,
+  titleRightComponent,
   subheader,
   buttonText,
   rightSideComponent,
@@ -34,7 +35,10 @@ function CommonLandingBox({
         px={{ base: "spacer-03", md: 10 }}
         py={{ base: "spacer-04", md: "spacer-06" }}
       >
-        <Heading fontSize="5xl">{title}</Heading>
+        <Flex justifyContent="space-between" alignItems="center">
+          <Heading fontSize="5xl">{title}</Heading>
+          {titleRightComponent}
+        </Flex>
         {!isSmallerThan768 && (
           <>
             <Box flex="1"></Box>
@@ -50,7 +54,7 @@ function CommonLandingBox({
       <Flex
         w={{ base: "100%", md: "60%" }}
         maxW={{ base: "100%", md: "60%" }}
-        p={{ base: 'spacer-03', md: "spacer-06" }}
+        p={{ base: "spacer-03", md: "spacer-06" }}
         flexFlow="column"
       >
         {rightSideComponent}
