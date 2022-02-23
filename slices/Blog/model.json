@@ -11,6 +11,13 @@
       "version": "sktwi1xtmkfgx8626",
       "description": "Blog",
       "primary": {
+        "slug": {
+          "config": {
+            "label": "slug",
+            "placeholder": ""
+          },
+          "type": "Text"
+        },
         "title": {
           "config": {
             "label": "title",

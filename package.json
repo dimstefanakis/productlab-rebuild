@@ -14,6 +14,7 @@
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "@prismicio/client": "^5.1.1",
+    "@prismicio/helpers": "^2.1.1",
     "@prismicio/slice-simulator-react": "^0.2.0",
     "framer-motion": "^6.2.6",
     "next": "12.0.10",

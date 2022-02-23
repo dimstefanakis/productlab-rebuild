@@ -42,6 +42,7 @@ const createClientOptions = (
 };
 
 export function extractBlogDataFromPrisma(data){
+  console.log("data", data);
   let blogData = data;
   blogData = blogData.results.map((_blog)=> {
     let blog = _blog.data;

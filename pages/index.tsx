@@ -20,12 +20,12 @@ import styles from "../styles/Home.module.css";
 
 interface HomeProps {
   docs: any;
+  blog_posts: any;
 }
 
-const Home = ({ docs }: HomeProps) => {
+const Home = ({ docs, blog_posts }: HomeProps) => {
   const { breakpoints } = useTheme();
   const [isSmallerThan768] = useMediaQuery(`(max-width: ${breakpoints.md})`);
-  console.log("docs", docs);
 
   return (
     <>
@@ -39,7 +39,7 @@ const Home = ({ docs }: HomeProps) => {
         <Flex flexFlow="column" className={styles.homePage}>
           <Hero />
           <Separator title="Our blog" />
-          <Trends data={docs} />
+          <Trends data={blog_posts} />
           <Separator title="Solutions" src="/thing2.svg" />
           <Insights />
           <Tasks />
@@ -57,9 +57,14 @@ export async function getStaticProps() {
     Prismic.Predicates.at("document.type", "blog")
   );
 
+  const blog_posts = await Client().query(
+    Prismic.Predicates.at("document.type", "bl")
+  );
+
   return {
     props: {
       docs: extractBlogDataFromPrisma(docs),
+      blog_posts: blog_posts.results,
     },
   };
 }

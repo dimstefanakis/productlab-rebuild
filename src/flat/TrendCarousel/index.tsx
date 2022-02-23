@@ -54,14 +54,12 @@ function TrendCarousel({ data }: TrendCarouselProps) {
 }
 
 function Trend({ data, index }: TrendProps) {
-  console.log("data", data);
-  let item = data?.items[0];
+  let blog_data = data.data;
 
   return (
     <Flex h="100%" w="100%" flexFlow="column">
-      <Heading zIndex="100">{index}</Heading>
       <Box flex="1"></Box>
-      <Heading zIndex="100">{data.primary.title}</Heading>
+      <Heading zIndex="1">{blog_data.title[0].text}</Heading>
       <Flex
         position="absolute"
         top="0"
@@ -72,7 +70,7 @@ function Trend({ data, index }: TrendProps) {
         alignItems="center"
       >
         <Image
-          src={data.primary.previewimage.url}
+          src={blog_data.previewimage.url}
           objectFit="cover"
           width="100%"
           height="100%"
