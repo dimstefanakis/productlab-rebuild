@@ -59,7 +59,7 @@ function Trend({ data, index }: TrendProps) {
   return (
     <Flex h="100%" w="100%" flexFlow="column">
       <Box flex="1"></Box>
-      <Heading zIndex="1">{blog_data.title[0].text}</Heading>
+      <Heading zIndex="1">{blog_data.title}</Heading>
       <Flex
         position="absolute"
         top="0"
