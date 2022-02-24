@@ -1,0 +1,17 @@
+[
+  {
+    "variation": "default-slice",
+    "name": "Default slice",
+    "slice_type": "blog_text",
+    "items": [],
+    "primary": {
+      "body": [
+        {
+          "type": "paragraph",
+          "text": "Dolore do eiusmod adipisicing reprehenderit elit sit cillum sunt voluptate culpa. Excepteur velit mollit sit deserunt aute et.",
+          "spans": []
+        }
+      ]
+    }
+  }
+]

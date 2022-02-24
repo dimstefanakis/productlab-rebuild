@@ -1,6 +1,7 @@
 {
   "_cts": {
-    "blog": {}
+    "blog": {},
+    "blog-post": {}
   },
   "slices": {
     "Blog": {
@@ -15,6 +16,44 @@
           }
         }
       }
-    }
+    },
+    "BlogText": [
+      {
+        "variation": "default-slice",
+        "name": "Default slice",
+        "slice_type": "blog_text",
+        "items": [],
+        "primary": {
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Fugiat commodo amet occaecat ex. In qui eiusmod duis deserunt irure ea amet incididunt aliqua. Minim laborum deserunt eiusmod reprehenderit commodo Lorem commodo ea.",
+              "spans": []
+            }
+          ]
+        }
+      }
+    ],
+    "BlogImage": [
+      {
+        "variation": "default-slice",
+        "name": "Default slice",
+        "slice_type": "blog_image",
+        "items": [],
+        "primary": {
+          "imageTitle": "extend sexy eyeballs",
+          "image": {
+            "dimensions": {
+              "width": 900,
+              "height": 500
+            },
+            "alt": "Placeholder image",
+            "copyright": null,
+            "url": "https://images.unsplash.com/photo-1551739440-5dd934d3a94a?w=900&h=500&fit=crop"
+          },
+          "imageDescription": "innovate proactive metrics"
+        }
+      }
+    ]
   }
 }
