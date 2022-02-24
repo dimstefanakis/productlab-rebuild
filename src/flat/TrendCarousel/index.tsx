@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import { useRouter } from "next/router";
 import { Image } from "@chakra-ui/image";
 import { Box, Flex, Text, Heading } from "@chakra-ui/layout";
 import { useTheme } from "@chakra-ui/system";
@@ -54,10 +55,15 @@ function TrendCarousel({ data }: TrendCarouselProps) {
 }
 
 function Trend({ data, index }: TrendProps) {
+  const router = useRouter();
   let blog_data = data.data;
 
+  function onTrendClick(){
+    router.push(`/trends/${data.uid}/`);
+  }
+
   return (
-    <Flex h="100%" w="100%" flexFlow="column">
+    <Flex h="100%" w="100%" flexFlow="column" onClick={onTrendClick}>
       <Box flex="1"></Box>
       <Heading zIndex="1">{blog_data.title}</Heading>
       <Flex
@@ -75,6 +81,7 @@ function Trend({ data, index }: TrendProps) {
           width="100%"
           height="100%"
           pointerEvents="none"
+          filter="brightness(0.7)"
         />
       </Flex>
     </Flex>

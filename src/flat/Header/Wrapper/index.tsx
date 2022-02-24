@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { Link as ChakraLink } from "@chakra-ui/layout";
 import { Flex, Text } from "@chakra-ui/layout";
 import { Image } from "@chakra-ui/image";
 import { useMediaQuery } from "@chakra-ui/react";
@@ -27,9 +29,11 @@ function HeaderWrapper(props: HeaderWrapperProps) {
         <Logo color="#137CDE" h="20px" w="20px" />
         // <Image src="/productlab_logo.svg" h="20px" w="20px" />
       )}
-      <Text fontWeight="bold" ml={{ base: 3, md: 0 }}>
-        PRODUCTLAB
-      </Text>
+      <Link href="/">
+        <ChakraLink href="/" fontWeight="bold" ml={{ base: 3, md: 0 }}>
+          PRODUCTLAB
+        </ChakraLink>
+      </Link>
       {props.children}
     </Flex>
   );
