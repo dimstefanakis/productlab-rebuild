@@ -5,8 +5,8 @@ import { Image } from "@chakra-ui/image";
 import { useMediaQuery } from "@chakra-ui/react";
 import { useTheme } from "@chakra-ui/system";
 import PrimaryButton from "../PrimaryButton";
-import Menu from "../../features/Menu";
 import HeaderWrapper from "./Wrapper";
+import Menu from "../../features/Menu";
 import styles from "./Header.module.css";
 
 function Header() {
@@ -24,6 +24,11 @@ function Header() {
           </Flex>
         </>
       )}
+      {isSmallerThan768 ? (
+        <Flex flex="1" justifyContent="flex-end">
+          <Menu />
+        </Flex>
+      ) : null}
     </HeaderWrapper>
   );
 }

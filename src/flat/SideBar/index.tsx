@@ -1,11 +1,12 @@
 import { useContext } from "react";
 import { Flex, Box } from "@chakra-ui/layout";
+import { useSelector, useDispatch } from "react-redux";
 import Menu from "../../features/Menu";
 import Logo from "../Logo";
-import MenuContext from "../../context/MenuContext";
+import { RootState } from "../../store";
 
 function SideBar() {
-  const context = useContext(MenuContext);
+  const { open } = useSelector((state: RootState) => state.menu);
 
   return (
     <Flex
@@ -18,7 +19,7 @@ function SideBar() {
       top="0"
     >
       <Logo
-        color={context.open ? "white" : "#137CDE"}
+        color={open ? "white" : "#137CDE"}
         h="30px"
         w="30px"
         mt="spacer-03"

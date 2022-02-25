@@ -76,7 +76,8 @@ function Trend({ data, index }: TrendProps) {
         alignItems="center"
       >
         <Image
-          src={blog_data.previewimage.url}
+          // src={blog_data.previewimage.url}
+          src="/trend_background.png"
           objectFit="cover"
           width="100%"
           height="100%"

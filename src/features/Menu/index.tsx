@@ -4,20 +4,24 @@ import { useMediaQuery } from "@chakra-ui/media-query";
 import { IconButton } from "@chakra-ui/button";
 import { Box, Flex } from "@chakra-ui/layout";
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
+import { useSelector, useDispatch } from "react-redux";
 import { motion, AnimatePresence } from "framer-motion";
 import HeaderWrapper from "../../flat/Header/Wrapper";
 import Logo from "../../flat/Logo";
-import MenuContext from "../../context/MenuContext";
+import { RootState } from "../../store";
 import SectionButton from "./Buttons/SectionButton";
 import ReportBox from "./Buttons/ReportBox";
 import MenuFooter from "./Footer";
+import { openMenu, closeMenu, toggleMenu } from "./slices/menuSlice";
 
 function Menu() {
   const theme = useTheme();
-  const menuContext = useContext(MenuContext);
+  const dispatch = useDispatch();
+  const { open } = useSelector((state: RootState) => state.menu);
   const { breakpoints } = useTheme();
   const [isSmallerThan768] = useMediaQuery(`(max-width: ${breakpoints.md})`);
 
+  console.log("isOpen", open);
   let transitionProps;
 
   if (isSmallerThan768) {
@@ -47,11 +51,13 @@ function Menu() {
   }
 
   function onMenuClick() {
-    menuContext.setOpen(!menuContext.open);
+    dispatch(toggleMenu());
+    // menuContext.setOpen(!menuContext.open);
   }
 
   function onSectionClick(id?: string) {
-    menuContext.setOpen(false);
+    // menuContext.setOpen(false);
+    dispatch(closeMenu());
 
     if (id) {
       let element = document.getElementById(id);
@@ -73,24 +79,16 @@ function Menu() {
         colorScheme="whiteAlpha"
         backgroundColor="transparent"
         icon={
-          menuContext.open ? (
-            <CloseIcon
-              h="30px"
-              w="30px"
-              color={menuContext.open ? "white" : "black"}
-            />
+          open ? (
+            <CloseIcon h="30px" w="30px" color={open ? "white" : "black"} />
           ) : (
-            <HamburgerIcon
-              h="30px"
-              w="30px"
-              color={menuContext.open ? "white" : "black"}
-            />
+            <HamburgerIcon h="30px" w="30px" color={open ? "white" : "black"} />
           )
         }
         onClick={onMenuClick}
       ></IconButton>
       <AnimatePresence>
-        {menuContext.open && (
+        {open && (
           <motion.div
             key="modal"
             transition={{ duration: 0.3 }}

@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { Flex, Box } from "@chakra-ui/layout";
 import { LayoutProps } from "./interface";
 import SideBar from "../SideBar";

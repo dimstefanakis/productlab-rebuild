@@ -13,7 +13,6 @@ import Insights from "../src/flat/Insights";
 import Tasks from "../src/flat/Tasks";
 import OurPanel from "../src/flat/OurPanel";
 import Footer from "../src/flat/Footer";
-import Header from "../src/flat/Header";
 import { Client } from "../prismicHelpers";
 import { extractBlogDataFromPrisma } from "../prismicHelpers";
 import styles from "../styles/Home.module.css";
@@ -40,7 +39,7 @@ const Home = ({ docs, blog_posts }: HomeProps) => {
           <Hero />
           <Separator title="Our blog" />
           <Trends data={blog_posts} />
-          <Separator title="Solutions" src="/thing2.svg" />
+          <Separator title="Solutions" />
           <Insights />
           <Tasks />
           <Separator title="Our panel" />
