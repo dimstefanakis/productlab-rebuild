@@ -1,9 +1,13 @@
-import { Flex, Text } from "@chakra-ui/layout";
-import { FlexProps } from "@chakra-ui/layout";
+import { Flex, FlexProps, Text } from "@chakra-ui/layout";
+import { useTheme } from "@chakra-ui/system";
+import { useMediaQuery } from "@chakra-ui/media-query";
 import { AnimatePresence, motion } from "framer-motion";
 import { ReportBoxProps } from "./interface";
 
 function ReportBox({ title, description, ...props }: ReportBoxProps) {
+  const { breakpoints } = useTheme();
+  const [isSmallerThan768] = useMediaQuery(`(max-width: ${breakpoints.md})`);
+
   return (
     <AnimatePresence>
       <motion.div
@@ -13,14 +17,14 @@ function ReportBox({ title, description, ...props }: ReportBoxProps) {
         transition={{ delay: 0.3 }}
         style={{
           height: "100%",
-          width: "40%",
+          width: isSmallerThan768 ? "100%" : "40%",
           display: "flex",
           alignItems: "center",
         }}
       >
         <Flex
           borderBottom="1px solid"
-          borderLeft="1px solid"
+          borderLeft={{ base: 0, md: "1px solid" }}
           borderColor="border.100"
           h="100%"
           w="100%"

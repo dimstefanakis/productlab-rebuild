@@ -105,54 +105,107 @@ function Menu() {
           >
             <Flex h="100vh" flexFlow="column" color="white">
               <HeaderWrapper position="relative" />
-              <Flex
-                h="calc(100% - 70px)"
-                ml="100px"
-                borderLeft="1px solid"
-                borderColor="border.100"
-                flexFlow="column"
-              >
-                <Flex w="100%" h="40%">
-                  <Flex w="60%" flexFlow="column">
-                    <SectionButton
-                      title="Trend Reports"
-                      onClick={() => onSectionClick("trends")}
-                    />
-                    <SectionButton
-                      title="Solutions"
-                      onClick={() => onSectionClick("solutions")}
-                    />
-                  </Flex>
-                  <ReportBox
-                    title="01"
-                    description="Trend Report Title"
-                    backgroundColor="brand.200"
-                  />
-                </Flex>
-                <Flex w="100%" h="40%">
-                  <Flex w="60%" flexFlow="column">
-                    <SectionButton
-                      title="Our Panel"
-                      onClick={() => onSectionClick("panel")}
-                    />
-                    <SectionButton
-                      title="Sign Up"
-                      onClick={() => onSectionClick()}
+              {isSmallerThan768 ? (
+                <MobileMenu />
+              ) : (
+                <Flex
+                  h="calc(100% - 70px)"
+                  ml="100px"
+                  borderLeft="1px solid"
+                  borderColor="border.100"
+                  flexFlow="column"
+                  overflow="auto"
+                >
+                  <Flex w="100%" h="40%">
+                    <Flex w="60%" flexFlow="column">
+                      <SectionButton
+                        title="Trend Reports"
+                        onClick={() => onSectionClick("trends")}
+                      />
+                      <SectionButton
+                        title="Solutions"
+                        onClick={() => onSectionClick("solutions")}
+                      />
+                    </Flex>
+                    <ReportBox
+                      title="01"
+                      description="Trend Report Title"
+                      backgroundColor="brand.200"
                     />
                   </Flex>
-                  <ReportBox
-                    title="02"
-                    description="Trend Report Title"
-                    backgroundColor="brand.300"
-                  />
+                  <Flex w="100%" h="40%">
+                    <Flex w="60%" flexFlow="column">
+                      <SectionButton
+                        title="Our Panel"
+                        onClick={() => onSectionClick("panel")}
+                      />
+                      <SectionButton
+                        title="Sign Up"
+                        onClick={() => onSectionClick()}
+                      />
+                    </Flex>
+                    <ReportBox
+                      title="02"
+                      description="Trend Report Title"
+                      backgroundColor="brand.300"
+                    />
+                  </Flex>
+                  <MenuFooter />
                 </Flex>
-                <MenuFooter />
-              </Flex>
+              )}
             </Flex>
           </motion.div>
         )}
       </AnimatePresence>
     </>
+  );
+}
+
+function MobileMenu() {
+  const dispatch = useDispatch();
+
+  function onSectionClick(id?: string) {
+    // menuContext.setOpen(false);
+    dispatch(closeMenu());
+
+    if (id) {
+      let element = document.getElementById(id);
+      setTimeout(() => {
+        element?.scrollIntoView({
+          behavior: "smooth",
+          block: "end",
+          inline: "nearest",
+        });
+      }, 300);
+    }
+  }
+  return (
+    <Flex flexFlow="column" overflow="auto">
+      <SectionButton
+        title="Trend Reports"
+        onClick={() => onSectionClick("trends")}
+      />
+      <SectionButton
+        title="Solutions"
+        onClick={() => onSectionClick("solutions")}
+      />
+      <SectionButton
+        title="Our Panel"
+        onClick={() => onSectionClick("panel")}
+      />
+      <SectionButton title="Sign Up" onClick={() => onSectionClick()} />
+      <MenuFooter />
+      <ReportBox
+        title="01"
+        description="Trend Report Title"
+        backgroundColor="brand.200"
+      />
+      <ReportBox
+        title="02"
+        description="Trend Report Title"
+        backgroundColor="brand.300"
+      />
+    </Flex>
   );
 }
 
