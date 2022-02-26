@@ -4,7 +4,7 @@ import PrimaryButton from "../../flat/PrimaryButton";
 
 function BookDemo(props: ButtonProps) {
   return (
-    <ChakraLink href="mailto:admin@productlab.ai?subject=ProductLab Demo Request">
+    <ChakraLink href="mailto:admin@productlab.ai?subject=ProductLab Demo Request" width={props.width}>
       <PrimaryButton {...props}>Book Demo</PrimaryButton>
     </ChakraLink>
   );

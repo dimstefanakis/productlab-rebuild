@@ -103,7 +103,7 @@ function TasksCompleted() {
       px={{ base: "spacer-03", md: 10 }}
       flexFlow="column"
     >
-      <Heading fontSize="5xl">1M+</Heading>
+      <Heading fontSize="5xl">2M+</Heading>
       <Text>Surveys Completed</Text>
     </Flex>
   );
