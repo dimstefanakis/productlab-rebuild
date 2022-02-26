@@ -4,7 +4,7 @@ import { useMediaQuery } from "@chakra-ui/media-query";
 import { AnimatePresence, motion } from "framer-motion";
 import { ReportBoxProps } from "./interface";
 
-function ReportBox({ title, description, ...props }: ReportBoxProps) {
+function ReportBox({ title, description, src, ...props }: ReportBoxProps) {
   const { breakpoints } = useTheme();
   const [isSmallerThan768] = useMediaQuery(`(max-width: ${breakpoints.md})`);
 
@@ -27,6 +27,8 @@ function ReportBox({ title, description, ...props }: ReportBoxProps) {
           borderLeft={{ base: 0, md: "1px solid" }}
           borderColor="border.100"
           minH={{base: 200, md: 0}}
+          backgroundImage={src}
+          backgroundSize="contain"
           h="100%"
           w="100%"
           pl={10}

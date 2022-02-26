@@ -7,6 +7,7 @@ import { useTheme } from "@chakra-ui/system";
 import PrimaryButton from "../PrimaryButton";
 import HeaderWrapper from "./Wrapper";
 import Menu from "../../features/Menu";
+import BookDemo from "../../features/BookDemo";
 import styles from "./Header.module.css";
 
 function Header() {
@@ -20,7 +21,7 @@ function Header() {
           <Box flex="1"></Box>
           <Flex justifyContent="center" alignItems="center">
             <Contributors />
-            <PrimaryButton>Book demo</PrimaryButton>
+            <BookDemo></BookDemo>
           </Flex>
         </>
       )}

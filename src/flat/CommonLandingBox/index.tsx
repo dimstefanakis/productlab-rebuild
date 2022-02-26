@@ -2,6 +2,7 @@ import { Flex, Box, Heading, Text } from "@chakra-ui/layout";
 import { useMediaQuery } from "@chakra-ui/media-query";
 import { useTheme } from "@chakra-ui/system";
 import PrimaryButton from "../PrimaryButton";
+import BookDemo from "../../features/BookDemo";
 import { CommonLandingBoxProps } from "./interface";
 
 function CommonLandingBox({
@@ -44,9 +45,12 @@ function CommonLandingBox({
             <Box flex="1"></Box>
             <Text maxW="350px">{subheader}</Text>
             <Box mt="spacer-03">
-              <PrimaryButton width={isSmallerThan768 ? "100%" : "max-content"}>
+              {/* <PrimaryButton width={isSmallerThan768 ? "100%" : "max-content"}>
                 {buttonText}
-              </PrimaryButton>
+              </PrimaryButton> */}
+              <BookDemo
+                width={isSmallerThan768 ? "100%" : "max-content"}
+              ></BookDemo>
             </Box>
           </>
         )}
@@ -65,9 +69,12 @@ function CommonLandingBox({
               {subheader}
             </Text>
             <Box mb="spacer-04">
-              <PrimaryButton width={isSmallerThan768 ? "100%" : "max-content"}>
+              {/* <PrimaryButton width={isSmallerThan768 ? "100%" : "max-content"}>
                 {buttonText}
-              </PrimaryButton>
+              </PrimaryButton> */}
+              <BookDemo
+                width={isSmallerThan768 ? "100%" : "max-content"}
+              ></BookDemo>
             </Box>
           </Flex>
         )}

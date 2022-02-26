@@ -4,6 +4,7 @@ import { Flex, Heading, Text, Box } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
 import { Image } from "@chakra-ui/image";
 import Logo from "../Logo";
+import BookDemo from "../../features/BookDemo";
 import { FooterLinkProps } from "./interface";
 
 function Footer() {
@@ -37,7 +38,7 @@ function Footer() {
             <Heading fontSize={{ base: "4xl", md: "6xl" }} maxW="600px">
               Instant clarity for your next decision
             </Heading>
-            <BookDemo />
+            <BookDemoWrapper />
           </Flex>
         </Flex>
         <Flex
@@ -56,8 +57,10 @@ function Footer() {
             px={{ base: "spacer-03", md: 10 }}
           >
             <Flex justifyContent="center" alignItems="center">
-              <Logo color="white" width="20px" height="20px"/>
-              <Heading fontSize="xl" ml={4}>PRODUCTLAB</Heading>
+              <Logo color="white" width="20px" height="20px" />
+              <Heading fontSize="xl" ml={4}>
+                PRODUCTLAB
+              </Heading>
             </Flex>
             <Box flex="1"></Box>
             <FooterLinks />
@@ -77,9 +80,9 @@ function Footer() {
   );
 }
 
-function BookDemo() {
+function BookDemoWrapper() {
   return (
-    <Button
+    <BookDemo
       textTransform="uppercase"
       width="max-content"
       border="1px solid"
@@ -87,7 +90,7 @@ function BookDemo() {
       color="white"
       backgroundColor="transparent"
       borderRadius="100px"
-      mt='spacer-04'
+      mt="spacer-04"
       px={20}
       _hover={{
         backgroundColor: "transparent",
@@ -95,9 +98,7 @@ function BookDemo() {
       _active={{
         backgroundColor: "transparent",
       }}
-    >
-      Book Demo
-    </Button>
+    ></BookDemo>
   );
 }
 

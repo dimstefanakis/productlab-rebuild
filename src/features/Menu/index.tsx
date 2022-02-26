@@ -143,8 +143,9 @@ function Menu() {
                     </Flex>
                     <ReportBox
                       title="01"
-                      description="Trend Report Title"
+                      description="A Very Long Yet Practical Blog Title Goes Here"
                       backgroundColor="brand.200"
+                      src="/menu_background1.png"
                     />
                   </Flex>
                   <Flex w="100%" h="40%">
@@ -160,8 +161,9 @@ function Menu() {
                     </Flex>
                     <ReportBox
                       title="02"
-                      description="Trend Report Title"
+                      description="A Very Long Yet Practical Blog Title Goes Here"
                       backgroundColor="brand.300"
+                      src="/menu_background2.png"
                     />
                   </Flex>
                   <MenuFooter />
@@ -211,13 +213,15 @@ function MobileMenu() {
       <MenuFooter />
       <ReportBox
         title="01"
-        description="Trend Report Title"
+        description="A Very Long Yet Practical Blog Title Goes Here"
         backgroundColor="brand.200"
+        src="/menu_background1.png"
       />
       <ReportBox
         title="02"
-        description="Trend Report Title"
+        description="A Very Long Yet Practical Blog Title Goes Here"
         backgroundColor="brand.300"
+        src="/menu_background2.png"
       />
     </Flex>
   );

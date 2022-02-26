@@ -2,6 +2,7 @@ import { Flex, Text } from "@chakra-ui/layout";
 import { useMediaQuery } from "@chakra-ui/media-query";
 import { useTheme } from "@chakra-ui/system";
 import PrimaryButton from "../../../flat/PrimaryButton";
+import BookDemo from "../../BookDemo";
 import { AnimatePresence, motion } from "framer-motion";
 
 function MenuFooter() {
@@ -17,9 +18,7 @@ function MenuFooter() {
         py={{ base: "spacer-03", md: 0 }}
         alignItems="center"
       >
-        <PrimaryButton w={{ base: "100%", md: "max-content" }}>
-          Book demo
-        </PrimaryButton>
+        <BookDemo w={{ base: "100%", md: "max-content" }}></BookDemo>
       </Flex>
       {!isSmallerThan768 && (
         <Flex

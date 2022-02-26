@@ -2,6 +2,7 @@ import { Flex, Box, Text, Heading } from "@chakra-ui/layout";
 import { useMediaQuery } from "@chakra-ui/media-query";
 import { useTheme } from "@chakra-ui/system";
 import PrimaryButton from "../PrimaryButton";
+import BookDemo from "../../features/BookDemo";
 
 function Hero() {
   const { breakpoints } = useTheme();
@@ -39,7 +40,7 @@ function Hero() {
         <Text>{text}</Text>
         {isSmallerThan768 && (
           <Flex my="spacer-04" justifyContent="space-around">
-            <PrimaryButton mr={2}>Book demo</PrimaryButton>
+            <BookDemo mr={2}></BookDemo>
             <PrimaryButton variant="outline">Sign up</PrimaryButton>
           </Flex>
         )}
