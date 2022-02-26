@@ -30,7 +30,12 @@ function SectionButton(props: SectionButtonProps) {
             alignItems: "center",
           }}
         >
-          <Text fontWeight="bold" fontSize="6xl" py="spacer-05" pl={10}>
+          <Text
+            fontWeight="bold"
+            fontSize={{ base: "4xl", md: "6xl" }}
+            py={{base: 'spacer-03', md: 'spacer-05'}}
+            pl={10}
+          >
             {props.title}
           </Text>
         </motion.div>

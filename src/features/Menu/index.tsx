@@ -21,7 +21,21 @@ function Menu() {
   const { breakpoints } = useTheme();
   const [isSmallerThan768] = useMediaQuery(`(max-width: ${breakpoints.md})`);
 
-  console.log("isOpen", open);
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      if (open) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "auto";
+      }
+    };
+  }, [open]);
+
   let transitionProps;
 
   if (isSmallerThan768) {

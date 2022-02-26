@@ -26,10 +26,11 @@ function ReportBox({ title, description, ...props }: ReportBoxProps) {
           borderBottom="1px solid"
           borderLeft={{ base: 0, md: "1px solid" }}
           borderColor="border.100"
+          minH={{base: 200, md: 0}}
           h="100%"
           w="100%"
           pl={10}
-          py="spacer-04"
+          py={{base: 'spacer-03', md: 'spacer-04'}}
           flexFlow="column"
           justifyContent="space-between"
           {...props}
