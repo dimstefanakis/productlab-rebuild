@@ -16,24 +16,24 @@ function OurPanel() {
         borderColor="border.100"
       >
         <ActiveContributors />
-        <Attributes />
+        {isSmallerThan768 ? <TasksCompleted /> : <Attributes />}
       </Flex>
       <Flex
-        flexFlow="row"
+        flexFlow={{ base: "column", md: "row" }}
         minH={{ base: "auto", md: "50%" }}
-        borderLeft="1px solid"
+        borderLeft={isSmallerThan768 ? "0" : "1px solid"}
         borderColor="border.100"
       >
         <ContributorDescription />
-        <TasksCompleted />
+        {isSmallerThan768 ? <Attributes /> : <TasksCompleted />}
       </Flex>
     </Flex>
   );
 }
 
 function ActiveContributors() {
-    const { breakpoints } = useTheme();
-    const [isSmallerThan768] = useMediaQuery(`(max-width: ${breakpoints.md})`);
+  const { breakpoints } = useTheme();
+  const [isSmallerThan768] = useMediaQuery(`(max-width: ${breakpoints.md})`);
 
   return (
     <Flex
@@ -68,17 +68,27 @@ function Attributes() {
 }
 
 function ContributorDescription() {
+  const { breakpoints } = useTheme();
+  const [isSmallerThan768] = useMediaQuery(`(max-width: ${breakpoints.md})`);
+
   return (
     <Flex
-      w="60%"
+      w={{ base: "100%", md: "60%" }}
       h="100%"
-      borderRight="1px solid"
+      borderRight={isSmallerThan768 ? "0" : "1px solid"}
+      borderBottom={isSmallerThan768 ? "1px solid" : "0"}
       borderColor="border.100"
       flexFlow="column"
       py="spacer-06"
       px={{ base: "spacer-03", md: 10 }}
     >
-      <Text>Active Contributors</Text>
+      <Text>
+        The Productlab brand brings clarity in the consumer insights space
+        through precision and simplicity. We are analytical and focus on
+        function to bring you the answer you’re looking for. Through the
+        distillation of the abstract, we find clarity and balance in an
+        assymetrical world.
+      </Text>
     </Flex>
   );
 }
@@ -86,14 +96,15 @@ function ContributorDescription() {
 function TasksCompleted() {
   return (
     <Flex
-      w="40%"
+      w={{ base: "100%", md: "40%" }}
+      alignItems={{ base: "flex-end", md: "flex-start" }}
       h="100%"
       py="spacer-06"
       px={{ base: "spacer-03", md: 10 }}
       flexFlow="column"
     >
       <Heading fontSize="5xl">1M+</Heading>
-      <Text>Tasks Completed</Text>
+      <Text>Surveys Completed</Text>
     </Flex>
   );
 }
