@@ -5,13 +5,13 @@ import { TasksProps } from "./interface";
 
 function Tasks({ data }: TasksProps) {
   let text =
-    "Measure the impossible with our task marketplace. We have thousands of users on standby 24/7 to perform real world data collection needs at scale. From images to price checks, we have you covered.";
+    "Uncover the entire story behind the data by understanding demographics, sentiment, and intent of audiences behind it. Our direct relationship allows you to go behind";
   return (
     <CommonLandingBox
-      title="Tasks"
+      title="Consumer Insights"
       subheader={text}
       buttonText="Book demo"
-      rightSideComponent={<SolutionBox title="02" />}
+      rightSideComponent={<SolutionBox title="02" image="/thing6.png" />}
     />
   );
 }

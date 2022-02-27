@@ -24,8 +24,8 @@ function OurPanel() {
         borderLeft={isSmallerThan768 ? "0" : "1px solid"}
         borderColor="border.100"
       >
-        <ContributorDescription />
-        {isSmallerThan768 ? <Attributes /> : <TasksCompleted />}
+        {isSmallerThan768 ? <Attributes /> : <ContributorDescription />}
+        {isSmallerThan768 ? <ContributorDescription /> : <TasksCompleted />}
       </Flex>
     </Flex>
   );
@@ -53,13 +53,18 @@ function ActiveContributors() {
 }
 
 function Attributes() {
+  const { breakpoints } = useTheme();
+  const [isSmallerThan768] = useMediaQuery(`(max-width: ${breakpoints.md})`);
+
   return (
     <Flex
-      w="40%"
+      w={{ base: "100%", md: "40%" }}
       h="100%"
       py="spacer-06"
       px={{ base: "spacer-03", md: 10 }}
       flexFlow="column"
+      borderBottom={isSmallerThan768 ? "1px solid" : "0"}
+      borderColor="border.100"
     >
       <Heading fontSize="5xl">500+</Heading>
       <Text>Attributes</Text>
@@ -83,11 +88,11 @@ function ContributorDescription() {
       px={{ base: "spacer-03", md: 10 }}
     >
       <Text>
-        The Productlab brand brings clarity in the consumer insights space
-        through precision and simplicity. We are analytical and focus on
-        function to bring you the answer you’re looking for. Through the
-        distillation of the abstract, we find clarity and balance in an
-        assymetrical world.
+        What makes us different? Our dynamic marketplace platform connect you
+        directly to a fully permissioned and engaged community of consumer
+        contributers. Our progressive profiling algorithm makes sure you reach
+        the right individual right away, without dealing with endless
+        uncertainty and knock out questions. Get it right the first time.
       </Text>
     </Flex>
   );

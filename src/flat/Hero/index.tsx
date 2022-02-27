@@ -28,7 +28,7 @@ function Hero() {
         px={{ base: "spacer-03", md: 0 }}
       >
         <Heading fontSize={{ base: "4xl", md: "6xl" }} maxW="500px">
-          Crowdsourced Insights to Guide Any Decision
+          Rapid Crowdsourced Insights to Guide Any Decision
         </Heading>
       </Flex>
       <Flex

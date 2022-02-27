@@ -14,7 +14,6 @@ import Tasks from "../src/flat/Tasks";
 import OurPanel from "../src/flat/OurPanel";
 import Footer from "../src/flat/Footer";
 import { Client } from "../prismicHelpers";
-import { extractBlogDataFromPrisma } from "../prismicHelpers";
 import styles from "../styles/Home.module.css";
 
 interface HomeProps {
@@ -26,6 +25,7 @@ const Home = ({ docs, blog_posts }: HomeProps) => {
   const { breakpoints } = useTheme();
   const [isSmallerThan768] = useMediaQuery(`(max-width: ${breakpoints.md})`);
 
+  console.log("sliced_blog_posts", docs);
   return (
     <>
       <Head>
@@ -38,7 +38,7 @@ const Home = ({ docs, blog_posts }: HomeProps) => {
         <Flex flexFlow="column" className={styles.homePage}>
           <Hero />
           <Separator title="Our blog" />
-          <Trends data={blog_posts} />
+          <Trends data={docs} />
           <Separator title="Solutions" />
           <Insights />
           <Tasks />
@@ -52,8 +52,8 @@ const Home = ({ docs, blog_posts }: HomeProps) => {
 };
 
 export async function getStaticProps() {
-  const docs = await Client().query(
-    Prismic.Predicates.at("document.type", "blog")
+  const sliced_blog_posts = await Client().query(
+    Prismic.Predicates.at("document.type", "blog-post")
   );
 
   const blog_posts = await Client().query(
@@ -62,7 +62,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      docs: extractBlogDataFromPrisma(docs),
+      docs: sliced_blog_posts.results,
       blog_posts: blog_posts.results,
     },
   };

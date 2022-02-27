@@ -9,7 +9,7 @@ function Trends({ data }: TrendsProps) {
       id="trends"
       title="Trends"
       titleRightComponent={<SwitchButtons />}
-      subheader="Check out the latest insights from contributor data."
+      subheader="Understand what is happening in the market with the latest insights generated from our contributor data."
       buttonText="View all"
       rightSideComponent={<TrendCarousel data={data} />}
     />

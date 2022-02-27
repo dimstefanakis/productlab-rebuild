@@ -1,13 +1,22 @@
+import { Fragment } from "react";
 import { Image } from "@chakra-ui/image";
-import { Flex, Box, Heading } from "@chakra-ui/layout";
+import { Flex, Box, Heading, Text } from "@chakra-ui/layout";
 import Prismic from "@prismicio/client";
 import { RichText } from "prismic-reactjs";
 import Client from "../../prismicHelpers";
-import styles from './Blog.module.css';
+import styles from "./Blog.module.css";
 
 function BlogPostPage({ post }: any) {
   console.log("post", post);
   let data = post.data;
+  let publicationDate = new Date(post.last_publication_date)
+    .toLocaleString("en-us", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    })
+    .replace(/(\d+)\/(\d+)\/(\d+)/, "$3-$1-$2");
+  console.log("pub", publicationDate);
   return (
     <Flex
       w="100%"
@@ -15,6 +24,7 @@ function BlogPostPage({ post }: any) {
       justifyContent="center"
       alignItems="center"
       flexFlow="column"
+      p={4}
     >
       <Flex
         w="100%"
@@ -22,25 +32,45 @@ function BlogPostPage({ post }: any) {
         borderBottom="1px solid"
         borderColor="border.100"
       >
-        <Flex flexFlow="column" w="600px">
+        <Flex flexFlow="column" maxW="600px">
           <Heading>{data.title}</Heading>
+          <Text mt={3} color="gray">{publicationDate}</Text>
           <Image w="100%" src={data.previewimage.url} my="spacer-04" />
         </Flex>
       </Flex>
       <Flex
         flexFlow="column"
         mt="spacer-04"
-        w="600px"
+        maxW="600px"
         className={styles.blogContainer}
       >
-        <RichText render={data.blog_body} />
+        {data.slices.map((slice: any, i: number) => {
+          if (slice.slice_type == "blog_text") {
+            return (
+              <Fragment key={i}>
+                <RichText render={slice.primary.body} />
+              </Fragment>
+            );
+          }
+          if (slice.slice_type == "blog_image") {
+            return (
+              <Flex w="100%" flexFlow="column" alignItems="center" my={4}>
+                <Text as="q" fontStyle="italic" mb={3}>{slice.primary.imageTitle}</Text>
+                <Image src={slice.primary.image.url} />
+                <Text fontSize="sm" color="gray" mt={3}>
+                  {slice.primary.imageDescription}
+                </Text>
+              </Flex>
+            );
+          }
+        })}
       </Flex>
     </Flex>
   );
 }
 
 export async function getStaticProps({ params }: any) {
-  const post = await Client().getByUID("bl", params.uid, {});
+  const post = await Client().getByUID("blog-post", params.uid, {});
 
   return {
     props: {
@@ -51,7 +81,7 @@ export async function getStaticProps({ params }: any) {
 
 export async function getStaticPaths() {
   const docs = await Client().query(
-    Prismic.Predicates.at("document.type", "bl")
+    Prismic.Predicates.at("document.type", "blog-post")
   );
 
   console.log("docs", docs);
