@@ -1,7 +1,5 @@
-import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
-import { Flex, Box } from "@chakra-ui/layout";
+import { Flex, Box, Text } from "@chakra-ui/layout";
 import { useMediaQuery } from "@chakra-ui/media-query";
 import { useTheme } from "@chakra-ui/system";
 import Prismic from "@prismicio/client";
@@ -13,6 +11,8 @@ import Insights from "../src/flat/Insights";
 import Tasks from "../src/flat/Tasks";
 import OurPanel from "../src/flat/OurPanel";
 import Footer from "../src/flat/Footer";
+import BookDemo from "../src/features/BookDemo";
+import PrimaryButton from "../src/flat/PrimaryButton";
 import { Client } from "../prismicHelpers";
 import styles from "../styles/Home.module.css";
 
@@ -24,6 +24,7 @@ interface HomeProps {
 const Home = ({ docs, blog_posts }: HomeProps) => {
   const { breakpoints } = useTheme();
   const [isSmallerThan768] = useMediaQuery(`(max-width: ${breakpoints.md})`);
+  let heroText = `Rapid Crowdsourced Insights to Guide Any Decision`;
 
   console.log("sliced_blog_posts", docs);
   return (
@@ -36,7 +37,10 @@ const Home = ({ docs, blog_posts }: HomeProps) => {
       <Flex w="100%" h="100%">
         {!isSmallerThan768 && <SideBar />}
         <Flex flexFlow="column" className={styles.homePage}>
-          <Hero />
+          <Hero
+            title={heroText}
+            rightSideComponent={<HeroRightSideComponent />}
+          />
           <Separator title="Our blog" />
           <Trends data={docs} />
           <Separator title="Solutions" />
@@ -50,6 +54,30 @@ const Home = ({ docs, blog_posts }: HomeProps) => {
     </>
   );
 };
+
+function HeroRightSideComponent() {
+  const { breakpoints } = useTheme();
+  const [isSmallerThan768] = useMediaQuery(`(max-width: ${breakpoints.md})`);
+
+  let text = `Measure the impossible with our leading zero party panel of consumers ready to collect and share insights to guide your business.`;
+  return (
+    <>
+      <Flex
+        flex="1"
+        justifyContent={{ base: "center", md: "flex-end" }}
+        flexFlow="column"
+      >
+        <Text>{text}</Text>
+        {isSmallerThan768 && (
+          <Flex my="spacer-04" justifyContent="space-around">
+            <BookDemo mr={2}></BookDemo>
+            <PrimaryButton variant="outline">Sign up</PrimaryButton>
+          </Flex>
+        )}
+      </Flex>
+    </>
+  );
+}
 
 export async function getStaticProps() {
   const sliced_blog_posts = await Client().query(

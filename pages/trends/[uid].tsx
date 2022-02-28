@@ -1,12 +1,20 @@
-import { Fragment } from "react";
 import { Image } from "@chakra-ui/image";
 import { Flex, Box, Heading, Text } from "@chakra-ui/layout";
 import Prismic from "@prismicio/client";
+import { useTheme } from "@chakra-ui/system";
+import { useMediaQuery } from "@chakra-ui/media-query";
 import { RichText } from "prismic-reactjs";
 import Client from "../../prismicHelpers";
+import Hero from "../../src/flat/Hero";
+import SideBar from "../../src/flat/SideBar";
+import Footer from "../../src/flat/Footer";
+import { TrendRightSideComponentProps } from "./interface";
 import styles from "./Blog.module.css";
 
 function BlogPostPage({ post }: any) {
+  const { breakpoints } = useTheme();
+  const [isSmallerThan768] = useMediaQuery(`(max-width: ${breakpoints.md})`);
+
   console.log("post", post);
   let data = post.data;
   let publicationDate = new Date(post.last_publication_date)
@@ -16,55 +24,75 @@ function BlogPostPage({ post }: any) {
       day: "2-digit",
     })
     .replace(/(\d+)\/(\d+)\/(\d+)/, "$3-$1-$2");
-  console.log("pub", publicationDate);
+
   return (
-    <Flex
-      w="100%"
-      mt="100px"
-      justifyContent="center"
-      alignItems="center"
-      flexFlow="column"
-      p={4}
-    >
+    <>
+      {!isSmallerThan768 && <SideBar />}
       <Flex
         w="100%"
         justifyContent="center"
-        borderBottom="1px solid"
-        borderColor="border.100"
-      >
-        <Flex flexFlow="column" maxW="600px">
-          <Heading>{data.title}</Heading>
-          <Text mt={3} color="gray">{publicationDate}</Text>
-          <Image w="100%" src={data.previewimage.url} my="spacer-04" />
-        </Flex>
-      </Flex>
-      <Flex
+        alignItems="center"
         flexFlow="column"
-        mt="spacer-04"
-        maxW="600px"
-        className={styles.blogContainer}
       >
-        {data.slices.map((slice: any, i: number) => {
-          if (slice.slice_type == "blog_text") {
-            return (
-              <Fragment key={i}>
-                <RichText render={slice.primary.body} />
-              </Fragment>
-            );
+        <Hero
+          title={data.title}
+          rightSideComponent={
+            <TrendRightSideComponent previewImageUrl={data.previewimage.url} />
           }
-          if (slice.slice_type == "blog_image") {
-            return (
-              <Flex w="100%" flexFlow="column" alignItems="center" my={4}>
-                <Text as="q" fontStyle="italic" mb={3}>{slice.primary.imageTitle}</Text>
-                <Image src={slice.primary.image.url} />
-                <Text fontSize="sm" color="gray" mt={3}>
-                  {slice.primary.imageDescription}
-                </Text>
-              </Flex>
-            );
-          }
-        })}
+        />
+        <Flex flexFlow="column" w="100%" className={styles.blogContainer}>
+          {data.slices.map((slice: any, i: number) => {
+            if (slice.slice_type == "blog_text") {
+              return (
+                <Flex
+                  key={i}
+                  p={{ base: 5, md: 20 }}
+                  borderTop={i == 0 ? "1px solid" : "none"}
+                  borderLeft="1px solid"
+                  borderBottom="1px solid"
+                  borderColor="border.100"
+                >
+                  <RichText render={slice.primary.body} />
+                </Flex>
+              );
+            }
+            if (slice.slice_type == "blog_image") {
+              return (
+                <Flex
+                  key={i}
+                  p={{ base: 5, md: 20 }}
+                  flexFlow="column"
+                  justifyContent="center"
+                  alignItems="center"
+                  borderTop={i == 0 ? "1px solid" : "none"}
+                  borderLeft="1px solid"
+                  borderBottom="1px solid"
+                  borderColor="border.100"
+                >
+                  <Text as="q" fontStyle="italic" mb={3}>
+                    {slice.primary.imageTitle}
+                  </Text>
+                  <Image src={slice.primary.image.url} />
+                  <Text fontSize="sm" color="gray" mt={3}>
+                    {slice.primary.imageDescription}
+                  </Text>
+                </Flex>
+              );
+            }
+          })}
+        </Flex>
+        <Footer/>
       </Flex>
+    </>
+  );
+}
+
+function TrendRightSideComponent({
+  previewImageUrl,
+}: TrendRightSideComponentProps) {
+  return (
+    <Flex flex="1" justifyContent="center" alignItems="center">
+      <Image src={previewImageUrl} h="100%" objectFit="cover"></Image>
     </Flex>
   );
 }

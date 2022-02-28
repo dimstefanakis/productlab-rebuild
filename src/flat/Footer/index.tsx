@@ -17,7 +17,7 @@ function Footer() {
     <MenuFooter />
   ) : (
     <Flex position="relative" width="100%" color="white">
-      <Image src="thing3.svg" width="100%" />
+      <Image src="/thing3.svg" width="100%" />
       <Flex
         position="absolute"
         top="0"

@@ -3,12 +3,12 @@ import { useMediaQuery } from "@chakra-ui/media-query";
 import { useTheme } from "@chakra-ui/system";
 import PrimaryButton from "../PrimaryButton";
 import BookDemo from "../../features/BookDemo";
+import { HeroProps } from "./interface";
 
-function Hero() {
+function Hero({title, rightSideComponent}: HeroProps) {
   const { breakpoints } = useTheme();
   const [isSmallerThan768] = useMediaQuery(`(max-width: ${breakpoints.md})`);
 
-  let text = `Measure the impossible with our leading zero party panel of consumers ready to collect and share insights to guide your business.`;
   return (
     <Flex
       w="100%"
@@ -28,22 +28,15 @@ function Hero() {
         px={{ base: "spacer-03", md: 0 }}
       >
         <Heading fontSize={{ base: "4xl", md: "6xl" }} maxW="500px">
-          Rapid Crowdsourced Insights to Guide Any Decision
+          {title}
         </Heading>
       </Flex>
       <Flex
         flex="1"
         flexFlow="column"
         p={{ base: "spacer-03", md: "spacer-05" }}
-        justifyContent={{ base: "center", md: "flex-end" }}
       >
-        <Text>{text}</Text>
-        {isSmallerThan768 && (
-          <Flex my="spacer-04" justifyContent="space-around">
-            <BookDemo mr={2}></BookDemo>
-            <PrimaryButton variant="outline">Sign up</PrimaryButton>
-          </Flex>
-        )}
+        {rightSideComponent}
       </Flex>
     </Flex>
   );
