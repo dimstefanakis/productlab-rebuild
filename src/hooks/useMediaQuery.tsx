@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useLayoutEffect } from "react";
 
 const useMediaQuery = (query: string) => {
   const [mounted, setMounted] = useState(false);
@@ -12,7 +12,7 @@ const useMediaQuery = (query: string) => {
     }
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const media = window.matchMedia(query);
     media.addEventListener("change", updateTarget);
 
