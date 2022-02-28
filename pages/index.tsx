@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { Flex, Box, Text } from "@chakra-ui/layout";
-import { useMediaQuery } from "@chakra-ui/media-query";
 import { useTheme } from "@chakra-ui/system";
 import Prismic from "@prismicio/client";
 import SideBar from "../src/flat/SideBar";
@@ -13,6 +12,7 @@ import OurPanel from "../src/flat/OurPanel";
 import Footer from "../src/flat/Footer";
 import BookDemo from "../src/features/BookDemo";
 import PrimaryButton from "../src/flat/PrimaryButton";
+import useMediaQuery from "../src/hooks/useMediaQuery";
 import { Client } from "../prismicHelpers";
 import styles from "../styles/Home.module.css";
 
@@ -23,7 +23,7 @@ interface HomeProps {
 
 const Home = ({ docs, blog_posts }: HomeProps) => {
   const { breakpoints } = useTheme();
-  const [isSmallerThan768] = useMediaQuery(`(max-width: ${breakpoints.md})`);
+  const isSmallerThan768 = useMediaQuery(`(max-width: ${breakpoints.md})`);
   let heroText = `Rapid Crowdsourced Insights to Guide Any Decision`;
 
   console.log("sliced_blog_posts", docs);
@@ -57,7 +57,7 @@ const Home = ({ docs, blog_posts }: HomeProps) => {
 
 function HeroRightSideComponent() {
   const { breakpoints } = useTheme();
-  const [isSmallerThan768] = useMediaQuery(`(max-width: ${breakpoints.md})`);
+  const isSmallerThan768 = useMediaQuery(`(max-width: ${breakpoints.md})`);
 
   let text = `Measure the impossible with our leading zero party panel of consumers ready to collect and share insights to guide your business.`;
   return (

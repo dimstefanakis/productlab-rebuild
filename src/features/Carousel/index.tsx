@@ -11,7 +11,6 @@ import React, {
 } from "react";
 
 import {
-  useMediaQuery,
   useTheme,
   Progress,
   VStack,
@@ -25,6 +24,7 @@ import { motion, useAnimation, useMotionValue } from "framer-motion";
 import useBoundingRect from "./hooks/useBoundingRect";
 import { CarouselProps, SliderProps, TrackProps, ItemProps } from "./interface";
 import CarouselContext from "./context/CarouselContext";
+import useMediaQuery from "../../hooks/useMediaQuery";
 
 const MotionFlex = motion(Flex);
 
@@ -39,7 +39,7 @@ const Carousel = ({
   children,
   itemWidth,
   gap,
-  setActiveSlide
+  setActiveSlide,
 }: CarouselProps) => {
   const [trackIsActive, setTrackIsActive] = useState(false);
   const [multiplier, setMultiplier] = useState(0.35);
@@ -50,7 +50,6 @@ const Carousel = ({
 
   const initSliderWidth = useCallback((width) => setSliderWidth(width), []);
 
-  console.log("itemWidth", itemWidth);
   const positions = useMemo(
     () => children.map((_, index) => -Math.abs((itemWidth + gap) * index)),
     [children, itemWidth, gap]
@@ -58,15 +57,15 @@ const Carousel = ({
 
   const { breakpoints } = useTheme();
 
-  const [isBetweenBaseAndMd] = useMediaQuery(
+  const isBetweenBaseAndMd = useMediaQuery(
     `(min-width: ${breakpoints.base}) and (max-width: ${breakpoints.md})`
   );
 
-  const [isBetweenMdAndXl] = useMediaQuery(
+  const isBetweenMdAndXl = useMediaQuery(
     `(min-width: ${breakpoints.md}) and (max-width: ${breakpoints.xl})`
   );
 
-  const [isGreaterThanXL] = useMediaQuery(`(min-width: ${breakpoints.xl})`);
+  const isGreaterThanXL = useMediaQuery(`(min-width: ${breakpoints.xl})`);
 
   useEffect(() => {
     setItemWidth(sliderWidth - gap);
@@ -90,9 +89,9 @@ const Carousel = ({
   }, [isBetweenBaseAndMd, isBetweenMdAndXl, isGreaterThanXL, sliderWidth, gap]);
 
   // updates slide count on parent component
-  useEffect(()=>{
+  useEffect(() => {
     setActiveSlide(activeItem);
-  },[activeItem])
+  }, [activeItem]);
 
   const sliderProps = {
     setTrackIsActive,
@@ -164,12 +163,9 @@ const Slider = ({
 
   const handleFocus = () => setTrackIsActive(true);
 
-  console.log("index", activeItem, positions, constraint)
-  console.log("dddd", positions.length - constraint, positions.length, constraint);
-
   const handleDecrementClick = () => {
     setTrackIsActive(true);
-    setActiveItem((prev: number)=> Math.max(0, prev - 1))
+    setActiveItem((prev: number) => Math.max(0, prev - 1));
     // !(activeItem === positions.length - positions.length) &&
     //   setActiveItem((prev: number) => prev - 1);
   };
@@ -267,7 +263,6 @@ const Track = ({
   const x = useMotionValue(0);
   const node = useRef<HTMLDivElement>(null);
 
-  console.log("dragStartPosition", dragStartPosition);
   const handleDragStart = () => setDragStartPosition(positions[activeItem]);
 
   const handleDragEnd = (_: any, info: any) => {

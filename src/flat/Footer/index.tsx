@@ -4,14 +4,15 @@ import { Flex, Heading, Text, Box } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
 import { Image } from "@chakra-ui/image";
 import { useTheme } from "@chakra-ui/system";
-import { useMediaQuery } from "@chakra-ui/media-query";
+// import { useMediaQuery } from "@chakra-ui/media-query";
 import Logo from "../Logo";
 import BookDemo from "../../features/BookDemo";
+import useMediaQuery from "../../hooks/useMediaQuery";
 import { FooterLinkProps } from "./interface";
 
 function Footer() {
   const { breakpoints } = useTheme();
-  const [isSmallerThan768] = useMediaQuery(`(max-width: ${breakpoints.md})`);
+  const isSmallerThan768 = useMediaQuery(`(max-width: ${breakpoints.md})`);
 
   return isSmallerThan768 ? (
     <MenuFooter />
@@ -101,7 +102,7 @@ function MenuFooter() {
         <Flex w="100%" justifyContent="center" alignItems="center">
           <BookDemoWrapper />
         </Flex>
-        <Image src="thing4.svg" w="100%" mt="spacer-04" />
+        <Image src="/thing4.svg" w="100%" mt="spacer-04" />
       </Flex>
       <Box w="100%" borderBottom="1px solid" borderColor="border.100"></Box>
       <Flex flexFlow="column" px="spacer-03" py="spacer-04">

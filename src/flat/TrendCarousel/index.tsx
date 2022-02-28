@@ -3,14 +3,15 @@ import { useRouter } from "next/router";
 import { Image } from "@chakra-ui/image";
 import { Box, Flex, Text, Heading } from "@chakra-ui/layout";
 import { useTheme } from "@chakra-ui/system";
-import { useMediaQuery } from "@chakra-ui/media-query";
+// import { useMediaQuery } from "@chakra-ui/media-query";
 import Carousel from "../../features/Carousel";
+import useMediaQuery from "../../hooks/useMediaQuery";
 import { TrendCarouselProps } from "./interface";
 import { TrendProps } from "./interface";
 
 function TrendCarousel({ data }: TrendCarouselProps) {
   const { breakpoints } = useTheme();
-  const [isSmallerThan768] = useMediaQuery(`(max-width: ${breakpoints.md})`);
+  const isSmallerThan768 = useMediaQuery(`(max-width: ${breakpoints.md})`);
   const [slideHeight, setSlideHeight] = useState<number>(0);
   const [activeSlide, setActiveSlide] = useState<number>(0);
 
@@ -65,7 +66,7 @@ function Trend({ data, index }: TrendProps) {
   return (
     <Flex h="100%" w="100%" flexFlow="column" onClick={onTrendClick}>
       <Box flex="1"></Box>
-      <Heading zIndex="1">{blog_data.title}</Heading>
+      <Heading zIndex="1" fontSize={{base: '2xl', md: '3xl'}}>{blog_data.title}</Heading>
       <Flex
         position="absolute"
         top="0"

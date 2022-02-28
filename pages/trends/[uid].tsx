@@ -2,7 +2,8 @@ import { Image } from "@chakra-ui/image";
 import { Flex, Box, Heading, Text } from "@chakra-ui/layout";
 import Prismic from "@prismicio/client";
 import { useTheme } from "@chakra-ui/system";
-import { useMediaQuery } from "@chakra-ui/media-query";
+// import { useMediaQuery } from "@chakra-ui/media-query";
+import useMediaQuery from "../../src/hooks/useMediaQuery";
 import { RichText } from "prismic-reactjs";
 import Client from "../../prismicHelpers";
 import Hero from "../../src/flat/Hero";
@@ -13,7 +14,7 @@ import styles from "./Blog.module.css";
 
 function BlogPostPage({ post }: any) {
   const { breakpoints } = useTheme();
-  const [isSmallerThan768] = useMediaQuery(`(max-width: ${breakpoints.md})`);
+  const isSmallerThan768 = useMediaQuery(`(max-width: ${breakpoints.md})`);
 
   console.log("post", post);
   let data = post.data;
@@ -112,7 +113,6 @@ export async function getStaticPaths() {
     Prismic.Predicates.at("document.type", "blog-post")
   );
 
-  console.log("docs", docs);
   return {
     paths: docs.results.map((doc) => {
       return { params: { uid: doc.uid?.toString() } };

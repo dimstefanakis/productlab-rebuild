@@ -1,12 +1,13 @@
 import { Flex, FlexProps, Text } from "@chakra-ui/layout";
 import { useTheme } from "@chakra-ui/system";
-import { useMediaQuery } from "@chakra-ui/media-query";
+// import { useMediaQuery } from "@chakra-ui/media-query";
 import { AnimatePresence, motion } from "framer-motion";
+import useMediaQuery from "../../../../hooks/useMediaQuery";
 import { ReportBoxProps } from "./interface";
 
 function ReportBox({ title, description, src, ...props }: ReportBoxProps) {
   const { breakpoints } = useTheme();
-  const [isSmallerThan768] = useMediaQuery(`(max-width: ${breakpoints.md})`);
+  const isSmallerThan768 = useMediaQuery(`(max-width: ${breakpoints.md})`);
 
   return (
     <AnimatePresence>

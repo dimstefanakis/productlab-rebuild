@@ -2,12 +2,13 @@ import Link from "next/link";
 import { Link as ChakraLink } from "@chakra-ui/layout";
 import { Flex, Text } from "@chakra-ui/layout";
 import { Image } from "@chakra-ui/image";
-import { useMediaQuery } from "@chakra-ui/react";
+// import { useMediaQuery } from "@chakra-ui/react";
 import { useTheme } from "@chakra-ui/system";
 import { useSelector, useDispatch } from "react-redux";
 import { HeaderWrapperProps } from "./interface";
 import Menu from "../../../features/Menu";
 import Logo from "../../Logo";
+import useMediaQuery from "../../../hooks/useMediaQuery";
 import styles from "../Header.module.css";
 import { RootState } from "../../../store";
 
@@ -15,7 +16,7 @@ function HeaderWrapper(props: HeaderWrapperProps) {
   const dispatch = useDispatch();
   const { open } = useSelector((state: RootState) => state.menu);
   const { breakpoints } = useTheme();
-  const [isSmallerThan768] = useMediaQuery(`(max-width: ${breakpoints.md})`);
+  const isSmallerThan768 = useMediaQuery(`(max-width: ${breakpoints.md})`);
 
   return (
     <Flex

@@ -1,13 +1,14 @@
 import { Flex, Box, Text, Heading } from "@chakra-ui/layout";
-import { useMediaQuery } from "@chakra-ui/media-query";
+// import { useMediaQuery } from "@chakra-ui/media-query";
 import { useTheme } from "@chakra-ui/system";
+import useMediaQuery from "../../hooks/useMediaQuery";
 import PrimaryButton from "../PrimaryButton";
 import BookDemo from "../../features/BookDemo";
 import { HeroProps } from "./interface";
 
 function Hero({title, rightSideComponent}: HeroProps) {
   const { breakpoints } = useTheme();
-  const [isSmallerThan768] = useMediaQuery(`(max-width: ${breakpoints.md})`);
+  const isSmallerThan768 = useMediaQuery(`(max-width: ${breakpoints.md})`);
 
   return (
     <Flex

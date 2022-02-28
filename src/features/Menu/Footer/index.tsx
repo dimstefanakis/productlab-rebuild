@@ -1,13 +1,14 @@
 import { Flex, Text } from "@chakra-ui/layout";
-import { useMediaQuery } from "@chakra-ui/media-query";
+// import { useMediaQuery } from "@chakra-ui/media-query";
 import { useTheme } from "@chakra-ui/system";
 import PrimaryButton from "../../../flat/PrimaryButton";
 import BookDemo from "../../BookDemo";
+import useMediaQuery from "../../../hooks/useMediaQuery";
 import { AnimatePresence, motion } from "framer-motion";
 
 function MenuFooter() {
   const { breakpoints } = useTheme();
-  const [isSmallerThan768] = useMediaQuery(`(max-width: ${breakpoints.md})`);
+  const isSmallerThan768 = useMediaQuery(`(max-width: ${breakpoints.md})`);
 
   return (
     <Flex w="100%" flex="1">

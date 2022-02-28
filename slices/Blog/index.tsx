@@ -6,7 +6,6 @@ import { RichText, Link } from "prismic-reactjs";
 import { BlogProps } from "./interface";
 
 const Blog = ({ slice }: any) => {
-  console.log("slice", slice)
   return (
     <Flex flexFlow="column">
       <Text>{slice.primary.title}</Text>

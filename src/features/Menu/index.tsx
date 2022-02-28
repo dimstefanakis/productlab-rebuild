@@ -1,6 +1,7 @@
 import { useState, useContext, useEffect } from "react";
+import { useRouter } from "next/router";
 import { useTheme } from "@chakra-ui/system";
-import { useMediaQuery } from "@chakra-ui/media-query";
+// import { useMediaQuery } from "@chakra-ui/media-query";
 import { IconButton } from "@chakra-ui/button";
 import { Box, Flex } from "@chakra-ui/layout";
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
@@ -13,13 +14,15 @@ import SectionButton from "./Buttons/SectionButton";
 import ReportBox from "./Buttons/ReportBox";
 import MenuFooter from "./Footer";
 import { openMenu, closeMenu, toggleMenu } from "./slices/menuSlice";
+import useMediaQuery from "../../hooks/useMediaQuery";
 
 function Menu() {
+  const router = useRouter();
   const theme = useTheme();
   const dispatch = useDispatch();
   const { open } = useSelector((state: RootState) => state.menu);
   const { breakpoints } = useTheme();
-  const [isSmallerThan768] = useMediaQuery(`(max-width: ${breakpoints.md})`);
+  const isSmallerThan768 = useMediaQuery(`(max-width: ${breakpoints.md})`);
 
   useEffect(() => {
     if (open) {
@@ -75,13 +78,17 @@ function Menu() {
 
     if (id) {
       let element = document.getElementById(id);
-      setTimeout(() => {
-        element?.scrollIntoView({
-          behavior: "smooth",
-          block: "end",
-          inline: "nearest",
-        });
-      }, 300);
+      if (router.pathname !== "/") {
+        router.push(`/#${id}`);
+      } else {
+        setTimeout(() => {
+          element?.scrollIntoView({
+            behavior: "smooth",
+            block: "end",
+            inline: "nearest",
+          });
+        }, 300);
+      }
     }
   }
 

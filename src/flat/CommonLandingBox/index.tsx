@@ -1,8 +1,9 @@
 import { Flex, Box, Heading, Text } from "@chakra-ui/layout";
-import { useMediaQuery } from "@chakra-ui/media-query";
+// import { useMediaQuery } from "@chakra-ui/media-query";
 import { useTheme } from "@chakra-ui/system";
 import PrimaryButton from "../PrimaryButton";
 import BookDemo from "../../features/BookDemo";
+import useMediaQuery from "../../hooks/useMediaQuery";
 import { CommonLandingBoxProps } from "./interface";
 
 function CommonLandingBox({
@@ -15,7 +16,7 @@ function CommonLandingBox({
   id,
 }: CommonLandingBoxProps) {
   const { breakpoints } = useTheme();
-  const [isSmallerThan768] = useMediaQuery(`(max-width: ${breakpoints.md})`);
+  const isSmallerThan768 = useMediaQuery(`(max-width: ${breakpoints.md})`);
 
   return (
     <Flex

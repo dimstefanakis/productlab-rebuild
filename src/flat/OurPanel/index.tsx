@@ -1,10 +1,11 @@
-import { useMediaQuery } from "@chakra-ui/media-query";
+// import { useMediaQuery } from "@chakra-ui/media-query";
 import { useTheme } from "@chakra-ui/system";
 import { Flex, Box, Text, Heading } from "@chakra-ui/layout";
+import useMediaQuery from "../../hooks/useMediaQuery";
 
 function OurPanel() {
   const { breakpoints } = useTheme();
-  const [isSmallerThan768] = useMediaQuery(`(max-width: ${breakpoints.md})`);
+  const isSmallerThan768 = useMediaQuery(`(max-width: ${breakpoints.md})`);
 
   return (
     <Flex id="panel" minH="100vh" w="100%" flexFlow="column">
@@ -33,7 +34,7 @@ function OurPanel() {
 
 function ActiveContributors() {
   const { breakpoints } = useTheme();
-  const [isSmallerThan768] = useMediaQuery(`(max-width: ${breakpoints.md})`);
+  const isSmallerThan768 = useMediaQuery(`(max-width: ${breakpoints.md})`);
 
   return (
     <Flex
@@ -54,7 +55,7 @@ function ActiveContributors() {
 
 function Attributes() {
   const { breakpoints } = useTheme();
-  const [isSmallerThan768] = useMediaQuery(`(max-width: ${breakpoints.md})`);
+  const isSmallerThan768 = useMediaQuery(`(max-width: ${breakpoints.md})`);
 
   return (
     <Flex
@@ -74,7 +75,7 @@ function Attributes() {
 
 function ContributorDescription() {
   const { breakpoints } = useTheme();
-  const [isSmallerThan768] = useMediaQuery(`(max-width: ${breakpoints.md})`);
+  const isSmallerThan768 = useMediaQuery(`(max-width: ${breakpoints.md})`);
 
   return (
     <Flex
