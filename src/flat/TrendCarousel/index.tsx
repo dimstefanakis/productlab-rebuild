@@ -36,10 +36,10 @@ function TrendCarousel({ data }: TrendCarouselProps) {
               key={i}
               h={`${slideHeight}px`}
               w="500px"
-              bg={i == activeSlide ? "#A4A4A4" : "#C4C4C4"}
-              boxShadow={
-                i == activeSlide ? "inset 0em -2em 22px -12px #797979" : ""
-              }
+              // bg={i == activeSlide ? "#A4A4A4" : "#C4C4C4"}
+              // boxShadow={
+              //   i == activeSlide ? "inset 0em -2em 22px -12px #797979" : ""
+              // }
               transition="all 0.2s"
               py="spacer-04"
               px={6}
@@ -66,7 +66,7 @@ function Trend({ data, index }: TrendProps) {
   return (
     <Flex h="100%" w="100%" flexFlow="column" onClick={onTrendClick}>
       <Box flex="1"></Box>
-      <Heading zIndex="1" fontSize={{base: '2xl', md: '3xl'}}>{blog_data.title}</Heading>
+      <Heading fontSize={{base: '2xl', md: '3xl'}}>{blog_data.title}</Heading>
       <Flex
         position="absolute"
         top="0"
@@ -84,6 +84,7 @@ function Trend({ data, index }: TrendProps) {
           height="100%"
           pointerEvents="none"
           filter="brightness(0.7)"
+          zIndex="-1"
         />
       </Flex>
     </Flex>
