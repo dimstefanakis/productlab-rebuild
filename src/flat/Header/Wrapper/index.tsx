@@ -9,14 +9,19 @@ import { HeaderWrapperProps } from "./interface";
 import Menu from "../../../features/Menu";
 import Logo from "../../Logo";
 import useMediaQuery from "../../../hooks/useMediaQuery";
-import styles from "../Header.module.css";
+import { openMenu, closeMenu } from "../../../features/Menu/slices/menuSlice";
 import { RootState } from "../../../store";
+import styles from "../Header.module.css";
 
 function HeaderWrapper(props: HeaderWrapperProps) {
   const dispatch = useDispatch();
   const { open } = useSelector((state: RootState) => state.menu);
   const { breakpoints } = useTheme();
   const isSmallerThan768 = useMediaQuery(`(max-width: ${breakpoints.md})`);
+
+  function onLogoClick(){
+    dispatch(closeMenu());
+  }
 
   return (
     <Flex
@@ -37,6 +42,7 @@ function HeaderWrapper(props: HeaderWrapperProps) {
       )}
       <Link href="/">
         <ChakraLink
+          onClick={onLogoClick}
           color={open ? "white" : "black"}
           href="/"
           fontWeight="bold"

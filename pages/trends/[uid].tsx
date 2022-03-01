@@ -16,7 +16,6 @@ function BlogPostPage({ post }: any) {
   const { breakpoints } = useTheme();
   const isSmallerThan768 = useMediaQuery(`(max-width: ${breakpoints.md})`);
 
-  console.log("post", post);
   let data = post.data;
   let publicationDate = new Date(post.last_publication_date)
     .toLocaleString("en-us", {

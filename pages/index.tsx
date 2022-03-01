@@ -28,7 +28,6 @@ const Home = ({ docs, blog_posts }: HomeProps) => {
   const isSmallerThan768 = useMediaQuery(`(max-width: ${breakpoints.md})`);
   let heroText = `Rapid Crowdsourced Insights to Guide Any Decision`;
 
-  console.log("sliced_blog_posts", docs);
   return (
     <>
       <Head>
