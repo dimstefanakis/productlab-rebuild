@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useEffect, useState } from "react";
 import { Flex, Box, Text } from "@chakra-ui/layout";
 import { useTheme } from "@chakra-ui/system";
 import Prismic from "@prismicio/client";
@@ -22,6 +23,7 @@ interface HomeProps {
 }
 
 const Home = ({ docs, blog_posts }: HomeProps) => {
+  const [mounted, setMounted] = useState(false);
   const { breakpoints } = useTheme();
   const isSmallerThan768 = useMediaQuery(`(max-width: ${breakpoints.md})`);
   let heroText = `Rapid Crowdsourced Insights to Guide Any Decision`;

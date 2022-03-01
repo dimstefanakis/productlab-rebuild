@@ -4,6 +4,7 @@ import SwitchButtons from "./SwitchButtons";
 import { TrendsProps } from "./interface";
 
 function Trends({ data }: TrendsProps) {
+
   return (
     <CommonLandingBox
       id="trends"
@@ -11,7 +12,11 @@ function Trends({ data }: TrendsProps) {
       titleRightComponent={<SwitchButtons />}
       subheader="Understand what is happening in the market with the latest insights generated from our contributor data."
       buttonText="View all"
-      rightSideComponent={<TrendCarousel data={data} />}
+      rightSideComponent={
+        <TrendCarousel
+          data={data.filter((item: any, i: number) => item.data.featured)}
+        />
+      }
     />
   );
 }
