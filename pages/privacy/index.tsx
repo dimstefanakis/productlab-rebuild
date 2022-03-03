@@ -19,7 +19,6 @@ interface PrivacyProps {
 }
 
 function Privacy({ docs }: PrivacyProps) {
-  console.log("docs", docs);
   let privacyPage = docs[0];
   return (
     <Flex
@@ -33,19 +32,19 @@ function Privacy({ docs }: PrivacyProps) {
         {privacyPage.data.body.map((section: any, i: number) => {
           if (section.slice_type == "page_section") {
             return (
-              <Flex flexFlow="column">
+              <Flex flexFlow="column" key={i}>
                 {section.primary.section_name && (
                   <Heading as="h3" fontSize="3xl" my="10px" mt={10}>
                     {section.primary.section_name}
                   </Heading>
                 )}
                 {section.items.map((item: any, sectionIndex: number) => {
-                  return <RichText render={item.section_body} />;
+                  return <RichText render={item.section_body} key={sectionIndex}/>;
                 })}
               </Flex>
             );
           } else if (section.slice_type == "table") {
-            return <PrivacyTable />;
+            return <PrivacyTable key="table"/>;
           }
           return null;
         })}
