@@ -49,9 +49,17 @@ function CommonLandingBox({
               {/* <PrimaryButton width={isSmallerThan768 ? "100%" : "max-content"}>
                 {buttonText}
               </PrimaryButton> */}
-              <BookDemo
-                width={isSmallerThan768 ? "100%" : "max-content"}
-              ></BookDemo>
+              {buttonText ? (
+                <PrimaryButton
+                  width={isSmallerThan768 ? "100%" : "max-content"}
+                >
+                  {buttonText}
+                </PrimaryButton>
+              ) : (
+                <BookDemo
+                  width={isSmallerThan768 ? "100%" : "max-content"}
+                ></BookDemo>
+              )}
             </Box>
           </>
         )}

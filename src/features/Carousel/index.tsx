@@ -365,10 +365,10 @@ const Track = ({
             animate={controls}
             style={{ x }}
             drag="x"
-            _active={{ cursor: "grabbing" }}
+            // _active={{ cursor: "grabbing" }}
             minWidth="min-content"
             flexWrap="nowrap"
-            cursor="grab"
+            cursor="pointer"
           >
             {children}
           </MotionFlex>
