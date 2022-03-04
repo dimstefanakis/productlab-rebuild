@@ -1,4 +1,4 @@
-import { useState, useCallback, useLayoutEffect, useEffect } from "react";
+import { useState, useCallback, useEffect } from "react";
 
 interface Dimensions {
   width?: number;
