@@ -1,7 +1,6 @@
 // Taken from https://codesandbox.io/s/dd8vn?file=/src/index.js:1305-1328
 
 import React, {
-  useLayoutEffect,
   useCallback,
   useContext,
   useEffect,
