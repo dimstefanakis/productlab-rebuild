@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { linkResolver } from "../../prismicConfiguration";
 import Client from "../../prismicHelpers";
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export default async (req: any, res: any) => {
   const { token, documentId } = req.query;
   const redirectUrl = await Client(req)
     .getPreviewResolver(token as string, documentId as string)

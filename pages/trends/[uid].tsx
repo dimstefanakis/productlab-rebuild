@@ -22,6 +22,16 @@ function BlogPostPage({ post, previewRef }: any) {
   const router = useRouter();
   const isSmallerThan768 = useMediaQuery(`(max-width: ${breakpoints.md})`);
 
+  useUpdatePreviewRef(previewRef, post?.id);
+
+  if (router.isFallback) {
+    return <PreviewLoader />;
+  }
+
+  if (!post?.id) {
+    return <Custom404 />;
+  }
+
   let data = post.data;
   let publicationDate = new Date(post.last_publication_date)
     .toLocaleString("en-us", {
@@ -30,17 +40,6 @@ function BlogPostPage({ post, previewRef }: any) {
       day: "2-digit",
     })
     .replace(/(\d+)\/(\d+)\/(\d+)/, "$3-$1-$2");
-
-  if (router.isFallback) {
-    return <PreviewLoader />;
-  }
-
-  console.log("preview", previewRef)
-  if (!post.id) {
-    return <Custom404 />;
-  }
-
-  useUpdatePreviewRef(previewRef, post.id);
 
   return (
     <>
