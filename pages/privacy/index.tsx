@@ -1,4 +1,6 @@
 import Prismic from "@prismicio/client";
+import { useTheme } from "@chakra-ui/system";
+import useMediaQuery from "../../src/hooks/useMediaQuery";
 import {
   Flex,
   Heading,
@@ -28,12 +30,15 @@ interface PrivacyProps {
 
 function Privacy({ docs }: PrivacyProps) {
   let privacyPage = docs[0];
+  const { breakpoints } = useTheme();
+  const isSmallerThan768 = useMediaQuery(`(max-width: ${breakpoints.md})`);
+
   return (
     <Flex>
-      <SideBar/>
+      {!isSmallerThan768 && <SideBar />}
       <Flex flexFlow="column">
         <Flex
-          w="100%"
+          width={{ base: "100vw", md: "100%" }}
           justifyContent="center"
           borderLeft="1px solid"
           borderColor="border.100"
@@ -65,7 +70,11 @@ function Privacy({ docs }: PrivacyProps) {
                   </Flex>
                 );
               } else if (section.slice_type == "table") {
-                return <PrivacyTable key="table" />;
+                return (
+                  <Flex width="100%" overflow="auto">
+                    <PrivacyTable key="table" />
+                  </Flex>
+                );
               }
               return null;
             })}

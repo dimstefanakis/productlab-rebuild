@@ -1,4 +1,6 @@
 import Prismic from "@prismicio/client";
+import { useTheme } from "@chakra-ui/system";
+import useMediaQuery from "../../src/hooks/useMediaQuery";
 import { Flex, Heading, Text } from "@chakra-ui/layout";
 import { RichText, Link } from "prismic-reactjs";
 import SideBar from "../../src/flat/SideBar";
@@ -13,12 +15,15 @@ interface TermsProps {
 function Terms({ docs }: TermsProps) {
   let termsPage = docs[0];
 
+  const { breakpoints } = useTheme();
+  const isSmallerThan768 = useMediaQuery(`(max-width: ${breakpoints.md})`);
+
   return (
     <Flex>
-      <SideBar />
+      {!isSmallerThan768 && <SideBar />}
       <Flex flexFlow="column">
         <Flex
-          w="100%"
+          width={{ base: "100vw", md: "100%" }}
           justifyContent="center"
           borderLeft="1px solid"
           borderColor="border.100"
