@@ -1,19 +1,25 @@
+import { GetStaticProps } from "next";
+import { useRouter } from "next/router";
 import { Image } from "@chakra-ui/image";
 import { Flex, Box, Heading, Text } from "@chakra-ui/layout";
 import Prismic from "@prismicio/client";
 import { useTheme } from "@chakra-ui/system";
 // import { useMediaQuery } from "@chakra-ui/media-query";
 import useMediaQuery from "../../src/hooks/useMediaQuery";
+import useUpdatePreviewRef from "../../src/utils/useUpdatePreviewRef";
 import { RichText } from "prismic-reactjs";
 import Client from "../../prismicHelpers";
 import Hero from "../../src/flat/Hero";
 import SideBar from "../../src/flat/SideBar";
 import Footer from "../../src/flat/Footer";
+import PreviewLoader from "../../src/flat/PreviewLoader";
+import Custom404 from "../404";
 import { TrendRightSideComponentProps } from "./interface";
 import styles from "./Blog.module.css";
 
-function BlogPostPage({ post }: any) {
+function BlogPostPage({ post, previewRef }: any) {
   const { breakpoints } = useTheme();
+  const router = useRouter();
   const isSmallerThan768 = useMediaQuery(`(max-width: ${breakpoints.md})`);
 
   let data = post.data;
@@ -24,6 +30,17 @@ function BlogPostPage({ post }: any) {
       day: "2-digit",
     })
     .replace(/(\d+)\/(\d+)\/(\d+)/, "$3-$1-$2");
+
+  if (router.isFallback) {
+    return <PreviewLoader />;
+  }
+
+  console.log("preview", previewRef)
+  if (!post.id) {
+    return <Custom404 />;
+  }
+
+  useUpdatePreviewRef(previewRef, post.id);
 
   return (
     <>
@@ -81,7 +98,7 @@ function BlogPostPage({ post }: any) {
             }
           })}
         </Flex>
-        <Footer/>
+        <Footer />
       </Flex>
     </>
   );
@@ -97,12 +114,16 @@ function TrendRightSideComponent({
   );
 }
 
-export async function getStaticProps({ params }: any) {
-  const post = await Client().getByUID("blog-post", params.uid, {});
+export async function getStaticProps({ params, previewData }: any) {
+  const previewRef = previewData && previewData.ref ? previewData.ref : null;
+  const refOption = previewRef ? { ref: previewRef } : { ref: null };
+  const post =
+    (await Client().getByUID("blog-post", params.uid, refOption)) || {};
 
   return {
     props: {
       post,
+      previewRef,
     },
   };
 }
@@ -116,7 +137,7 @@ export async function getStaticPaths() {
     paths: docs.results.map((doc) => {
       return { params: { uid: doc.uid?.toString() } };
     }),
-    fallback: false,
+    fallback: true,
   };
 }
 export default BlogPostPage;

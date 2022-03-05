@@ -1,5 +1,11 @@
 import Prismic from "@prismicio/client";
-import { Flex, Heading, Text, UnorderedList, ListItem } from "@chakra-ui/layout";
+import {
+  Flex,
+  Heading,
+  Text,
+  UnorderedList,
+  ListItem,
+} from "@chakra-ui/layout";
 import {
   Table,
   Thead,
@@ -11,6 +17,8 @@ import {
   TableCaption,
 } from "@chakra-ui/react";
 import { RichText, Link } from "prismic-reactjs";
+import Footer from "../../src/flat/Footer";
+import SideBar from "../../src/flat/SideBar";
 import Client from "../../prismicHelpers";
 import styles from "./Privacy.module.css";
 
@@ -21,39 +29,55 @@ interface PrivacyProps {
 function Privacy({ docs }: PrivacyProps) {
   let privacyPage = docs[0];
   return (
-    <Flex
-      w="100%"
-      justifyContent="center"
-      className={styles.privacyPageWrapper}
-    >
-      <Flex flexFlow="column" mt="100px" w="80%">
-        <Heading>{privacyPage.data.page_title[0].text}</Heading>
-        <Text pb={10} color="gray">Effective Date: {privacyPage.data.effective_date}</Text>
-        {privacyPage.data.body.map((section: any, i: number) => {
-          if (section.slice_type == "page_section") {
-            return (
-              <Flex flexFlow="column" key={i}>
-                {section.primary.section_name && (
-                  <Heading as="h3" fontSize="3xl" my="10px" mt={10}>
-                    {section.primary.section_name}
-                  </Heading>
-                )}
-                {section.items.map((item: any, sectionIndex: number) => {
-                  return <RichText render={item.section_body} key={sectionIndex}/>;
-                })}
-              </Flex>
-            );
-          } else if (section.slice_type == "table") {
-            return <PrivacyTable key="table"/>;
-          }
-          return null;
-        })}
+    <Flex>
+      <SideBar/>
+      <Flex flexFlow="column">
+        <Flex
+          w="100%"
+          justifyContent="center"
+          borderLeft="1px solid"
+          borderColor="border.100"
+          pb="spacer-04"
+          className={styles.privacyPageWrapper}
+        >
+          <Flex flexFlow="column" mt="100px" w="80%">
+            <Heading>{privacyPage.data.page_title[0].text}</Heading>
+            <Text pb={10} color="gray">
+              Effective Date: {privacyPage.data.effective_date}
+            </Text>
+            {privacyPage.data.body.map((section: any, i: number) => {
+              if (section.slice_type == "page_section") {
+                return (
+                  <Flex flexFlow="column" key={i}>
+                    {section.primary.section_name && (
+                      <Heading as="h3" fontSize="3xl" my="10px" mt={10}>
+                        {section.primary.section_name}
+                      </Heading>
+                    )}
+                    {section.items.map((item: any, sectionIndex: number) => {
+                      return (
+                        <RichText
+                          render={item.section_body}
+                          key={sectionIndex}
+                        />
+                      );
+                    })}
+                  </Flex>
+                );
+              } else if (section.slice_type == "table") {
+                return <PrivacyTable key="table" />;
+              }
+              return null;
+            })}
+          </Flex>
+        </Flex>
+        <Footer />
       </Flex>
     </Flex>
   );
 }
 
-function PrivacyTable(){
+function PrivacyTable() {
   return (
     <Table variant="striped" my={5}>
       <Thead>
