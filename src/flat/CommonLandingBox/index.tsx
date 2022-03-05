@@ -14,6 +14,7 @@ function CommonLandingBox({
   rightSideComponent,
   withBorder,
   id,
+  onButtonClick = () => {},
 }: CommonLandingBoxProps) {
   const { breakpoints } = useTheme();
   const isSmallerThan768 = useMediaQuery(`(max-width: ${breakpoints.md})`);
@@ -51,6 +52,7 @@ function CommonLandingBox({
               </PrimaryButton> */}
               {buttonText ? (
                 <PrimaryButton
+                  onClick={onButtonClick}
                   width={isSmallerThan768 ? "100%" : "max-content"}
                 >
                   {buttonText}

@@ -2,7 +2,7 @@ export interface TrendCarouselProps {
   data: any;
 }
 
-export interface TrendProps {
+export interface FeaturedTrendProps {
   data: any;
   index: number;
 }

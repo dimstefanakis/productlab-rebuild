@@ -7,7 +7,7 @@ import { useTheme } from "@chakra-ui/system";
 import Carousel from "../../features/Carousel";
 import useMediaQuery from "../../hooks/useMediaQuery";
 import { TrendCarouselProps } from "./interface";
-import { TrendProps } from "./interface";
+import { FeaturedTrendProps } from "./interface";
 
 function TrendCarousel({ data }: TrendCarouselProps) {
   const { breakpoints } = useTheme();
@@ -46,7 +46,7 @@ function TrendCarousel({ data }: TrendCarouselProps) {
               color="white"
               position="relative"
             >
-              <Trend data={item} index={i} />
+              <FeaturedTrend data={item} index={i} />
             </Flex>
           );
         })}
@@ -55,18 +55,18 @@ function TrendCarousel({ data }: TrendCarouselProps) {
   );
 }
 
-function Trend({ data, index }: TrendProps) {
+function FeaturedTrend({ data, index }: FeaturedTrendProps) {
   const router = useRouter();
   let blog_data = data.data;
 
-  function onTrendClick(){
+  function onTrendClick() {
     router.push(`/trends/${data.uid}/`);
   }
 
   return (
     <Flex h="100%" w="100%" flexFlow="column" onClick={onTrendClick}>
       <Box flex="1"></Box>
-      <Heading fontSize={{base: '2xl', md: '3xl'}}>{blog_data.title}</Heading>
+      <Heading fontSize={{ base: "2xl", md: "3xl" }}>{blog_data.title}</Heading>
       <Flex
         position="absolute"
         top="0"
