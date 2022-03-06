@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import { Image } from "@chakra-ui/image";
 import { Box, Flex, Text, Heading } from "@chakra-ui/layout";
 import { useTheme } from "@chakra-ui/system";
-// import { useMediaQuery } from "@chakra-ui/media-query";
 import Carousel from "../../features/Carousel";
 import useMediaQuery from "../../hooks/useMediaQuery";
 import { TrendCarouselProps } from "./interface";
@@ -35,7 +34,7 @@ function TrendCarousel({ data }: TrendCarouselProps) {
             <Flex
               key={i}
               h={`${slideHeight}px`}
-              w="500px"
+              w="600px"
               // bg={i == activeSlide ? "#A4A4A4" : "#C4C4C4"}
               // boxShadow={
               //   i == activeSlide ? "inset 0em -2em 22px -12px #797979" : ""

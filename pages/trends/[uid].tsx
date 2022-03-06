@@ -107,7 +107,12 @@ function TrendRightSideComponent({
   previewImageUrl,
 }: TrendRightSideComponentProps) {
   return (
-    <Flex flex="1" justifyContent="center" alignItems="center">
+    <Flex
+      flex="1"
+      pt={{ base: 0, md: "50px" }}
+      justifyContent="center"
+      alignItems="center"
+    >
       <Image src={previewImageUrl} h="100%" objectFit="cover"></Image>
     </Flex>
   );

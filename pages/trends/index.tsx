@@ -1,9 +1,10 @@
 import { useRouter } from "next/router";
-import { Flex, Text } from "@chakra-ui/layout";
+import { Flex, Text, Box } from "@chakra-ui/layout";
 import Prismic from "@prismicio/client";
 import { Heading } from "@chakra-ui/layout";
 import { Image } from "@chakra-ui/image";
 import { useTheme } from "@chakra-ui/system";
+import Hero from "../../src/flat/Hero";
 import PrimaryButton from "../../src/flat/PrimaryButton";
 import useMediaQuery from "../../src/hooks/useMediaQuery";
 import SideBar from "../../src/flat/SideBar";
@@ -18,8 +19,13 @@ interface TrendProps {
 }
 
 function TrendsPage({ docs }: TrendsPageProps) {
+  const router = useRouter();
   const { breakpoints } = useTheme();
   const isSmallerThan768 = useMediaQuery(`(max-width: ${breakpoints.md})`);
+
+  function onTrendClick(id: number) {
+    router.push(`/trends/${id}`);
+  }
 
   return (
     <Flex w="100%">
@@ -27,35 +33,95 @@ function TrendsPage({ docs }: TrendsPageProps) {
 
       <Flex
         flexFlow="column"
-        pt="100px"
         w="100%"
         justifyContent="center"
         alignItems="center"
-        borderLeft="1px solid"
-        borderColor="border.100"
       >
         {docs.map((trend: any, i: number) => {
-          return (
-            <Flex
-              key={i}
-              w="100%"
-              justifyContent="center"
-              borderBottom={docs.length == i ? "0" : "1px solid"}
-              borderColor="border.100"
-              py="spacer-05"
-            >
-              <Trend trend={trend} />
-            </Flex>
-          );
+          if (i == 0) {
+            return (
+              <Hero
+                title={trend.data.title}
+                leftSideComponent={
+                  !isSmallerThan768 ? (
+                    <BigTrendDescription trend={trend} />
+                  ) : null
+                }
+                rightSideComponent={
+                  <Flex
+                    flexFlow="column"
+                    width="100%"
+                    height="100%"
+                    pt={{ base: 0, md: "50px" }}
+                  >
+                    <Flex width="100%" height="100%">
+                      <Image
+                        src={trend.data.previewimage.url}
+                        objectFit="cover"
+                        width="100%"
+                        height="100%"
+                      />
+                    </Flex>
+                    {isSmallerThan768 && (
+                      <Box mt="spacer-04">
+                        <BigTrendDescription trend={trend} />
+                      </Box>
+                    )}
+                  </Flex>
+                }
+              />
+            );
+          } else {
+            return (
+              <Flex
+                key={i}
+                w="100%"
+                justifyContent="center"
+                borderTop="1px solid"
+                borderLeft="1px solid"
+                borderColor="border.100"
+                py="spacer-05"
+              >
+                <Trend trend={trend} />
+              </Flex>
+            );
+          }
         })}
       </Flex>
     </Flex>
   );
 }
 
+function BigTrendDescription({ trend }: any) {
+  const router = useRouter();
+
+  function onTrendClick(id: number) {
+    router.push(`/trends/${id}`);
+  }
+
+  return (
+    <Flex flexFlow="column" flex="1">
+      <Box flex="1"></Box>
+      <Box overflow="hidden">
+        <Text maxW={{ base: "100%", md: "80%" }} noOfLines={3}>
+          {trend.data.seodescription}
+        </Text>
+      </Box>
+      <PrimaryButton
+        variant="outline"
+        mt="spacer-03"
+        width={{ base: "100%", md: "max-content" }}
+        onClick={() => onTrendClick(trend.uid)}
+      >
+        Read More
+      </PrimaryButton>
+    </Flex>
+  );
+}
+
 function Trend({ trend }: TrendProps) {
   const router = useRouter();
-  console.log("trend", trend);
+
   let publicationDate = new Date(trend.last_publication_date)
     .toLocaleString("en-us", {
       year: "numeric",
@@ -71,32 +137,22 @@ function Trend({ trend }: TrendProps) {
   return (
     <Flex
       w="100%"
-      maxW="600px"
       position="relative"
       flexFlow="column"
-      px={{ base: "spacer-03", md: 0 }}
+      px={{ base: "spacer-03", md: 10 }}
     >
-      <Flex
-        width="100%"
-        height="100%"
-        maxH="400px"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <Image
-          src={trend.data.previewimage.url}
-          objectFit="cover"
-          width="100%"
-          height="100%"
-        />
-      </Flex>
-      <Text mt="spacer-03" color="gray">
-        {publicationDate}
-      </Text>
       <Heading fontSize={{ base: "2xl", md: "3xl" }} mt={2}>
         {trend.data.title}
       </Heading>
-      <PrimaryButton mt={6} onClick={onClick}>
+      <Text mt="spacer-05" noOfLines={3} maxW="700px">
+        {trend.data.seodescription}
+      </Text>
+      <PrimaryButton
+        mt={6}
+        onClick={onClick}
+        variant="outline"
+        width={{ base: "100%", md: "max-content" }}
+      >
         Read more
       </PrimaryButton>
     </Flex>

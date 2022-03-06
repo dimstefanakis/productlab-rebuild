@@ -19,6 +19,13 @@
         },
         "type": "Text"
       },
+      "seodescription": {
+        "config": {
+          "label": "seodescription",
+          "placeholder": ""
+        },
+        "type": "Text"
+      },
       "previewimage": {
         "config": {
           "label": "previewimage",
@@ -26,13 +33,6 @@
           "thumbnails": []
         },
         "type": "Image"
-      },
-      "publishedat": {
-        "config": {
-          "label": "publishedat",
-          "placeholder": ""
-        },
-        "type": "Timestamp"
       },
       "featured": {
         "config": {
