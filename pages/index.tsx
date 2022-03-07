@@ -32,7 +32,7 @@ const Home = ({ docs, blog_posts }: HomeProps) => {
   return (
     <>
       <Head>
-        <title>Productlab - Rapid Crowdsourced Insights</title>
+        <title>Productlab - {heroText}</title>
         <meta
           name="description"
           content="Measure the impossible with our leading zero party panel of consumers ready to collect and share insights to guide your business."
