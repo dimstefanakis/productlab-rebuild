@@ -19,8 +19,11 @@ export const linkResolver = (doc) => {
   if (doc.type === "page") {
     return `/${doc.uid}`;
   }
-  if(doc.type === 'privacy_policy_page'){
-    return '/privacy';
+  if (doc.type === "privacy_policy_page") {
+    return "/privacy";
+  }
+  if (doc.type === "terms_page") {
+    return "/terms";
   }
   return "/";
 };
