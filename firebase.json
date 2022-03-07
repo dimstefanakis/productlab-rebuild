@@ -1,11 +1,53 @@
 {
   "hosting": {
     "public": "out",
-    "site": "product-lab-homepage",
+    "site": "product-lab-production",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "redirects": [
+      {
+        "source": "/register",
+        "destination": "https://app.productlab.ai/register",
+        "type": 302
+      },
+      {
+        "source": "/login",
+        "destination": "https://app.productlab.ai/login",
+        "type": 302
+      },
+      {
+        "source": "/contact",
+        "destination": "https://app.productlab.ai/contact",
+        "type": 302
+      },
+      {
+        "source": "/app",
+        "destination": "https://app.productlab.ai/app",
+        "type": 302
+      },
+      {
+        "source": "/register/**",
+        "destination": "https://app.productlab.ai/register",
+        "type": 302
+      },
+      {
+        "source": "/login/**",
+        "destination": "https://app.productlab.ai/login",
+        "type": 302
+      },
+      {
+        "source": "/contact/**",
+        "destination": "https://app.productlab.ai/contact",
+        "type": 302
+      },
+      {
+        "source": "/app/**",
+        "destination": "https://app.productlab.ai/app",
+        "type": 302
+      }
     ],
     "rewrites": [
       {
