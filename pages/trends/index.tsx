@@ -24,10 +24,6 @@ function TrendsPage({ docs }: TrendsPageProps) {
   const { breakpoints } = useTheme();
   const isSmallerThan768 = useMediaQuery(`(max-width: ${breakpoints.md})`);
 
-  function onTrendClick(id: number) {
-    router.push(`/trends/${id}`);
-  }
-
   return (
     <Flex w="100%">
       {!isSmallerThan768 && <SideBar />}

@@ -18,7 +18,7 @@ interface TermsProps {
 }
 
 function Terms({ docs, previewRef }: TermsProps) {
-  let termsPage = docs[0];
+  let termsPage = docs;
 
   const { breakpoints } = useTheme();
   const router = useRouter();
@@ -83,14 +83,16 @@ function Terms({ docs, previewRef }: TermsProps) {
 
 export async function getStaticProps({ params, previewData }: any) {
   const previewRef = previewData && previewData.ref ? previewData.ref : null;
+  const ref = previewData ? previewData.ref : null;
 
-  const terms = await Client().query(
-    Prismic.Predicates.at("document.type", "terms_page")
-  );
+  // const terms = await Client().query(
+  //   Prismic.Predicates.at("document.type", "terms_page")
+  // );
+  const terms = await Client().getSingle("terms_page", ref ? { ref } : {});
 
   return {
     props: {
-      docs: terms.results,
+      docs: terms,
       previewRef,
     },
   };
