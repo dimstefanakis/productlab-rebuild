@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useRouter } from "next/router";
 import { Flex, Box } from "@chakra-ui/layout";
 import { useSelector, useDispatch } from "react-redux";
 import Menu from "../../features/Menu";
@@ -6,7 +7,12 @@ import Logo from "../Logo";
 import { RootState } from "../../store";
 
 function SideBar() {
+  const router = useRouter();
   const { open } = useSelector((state: RootState) => state.menu);
+
+  function onLogoClick(){
+    router.push('/');
+  }
 
   return (
     <Flex
@@ -24,6 +30,8 @@ function SideBar() {
         w="30px"
         mt="spacer-03"
         position="absolute"
+        cursor="pointer"
+        onClick={onLogoClick}
       />
       {/* <Image src="/productlab_logo.svg" /> */}
       <Box alignSelf="center">

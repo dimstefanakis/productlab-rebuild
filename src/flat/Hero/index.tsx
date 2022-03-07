@@ -6,7 +6,7 @@ import PrimaryButton from "../PrimaryButton";
 import BookDemo from "../../features/BookDemo";
 import { HeroProps } from "./interface";
 
-function Hero({title, rightSideComponent}: HeroProps) {
+function Hero({title, rightSideComponent, leftSideComponent}: HeroProps) {
   const { breakpoints } = useTheme();
   const isSmallerThan768 = useMediaQuery(`(max-width: ${breakpoints.md})`);
 
@@ -28,9 +28,12 @@ function Hero({title, rightSideComponent}: HeroProps) {
         pb={"spacer-05"}
         px={{ base: "spacer-03", md: 0 }}
       >
-        <Heading fontSize={{ base: "4xl", md: "6xl" }} maxW="500px">
-          {title}
-        </Heading>
+        <Flex flexFlow="column">
+          <Heading fontSize={{ base: "4xl", md: "6xl" }} maxW="600px">
+            {title}
+          </Heading>
+          {leftSideComponent}
+        </Flex>
       </Flex>
       <Flex
         flex="1"
