@@ -10,6 +10,7 @@ import Menu from "../../features/Menu";
 import BookDemo from "../../features/BookDemo";
 import useMediaQuery from "../../hooks/useMediaQuery";
 import styles from "./Header.module.css";
+import { useRouter } from "next/router";
 
 function Header() {
   const { breakpoints } = useTheme();
@@ -22,7 +23,7 @@ function Header() {
           <Box flex="1"></Box>
           <Flex justifyContent="center" alignItems="center">
             <Contributors />
-            <BookDemo></BookDemo>
+            <BookDemo/>
           </Flex>
         </>
       )}
@@ -37,9 +38,9 @@ function Header() {
 
 function Contributors() {
   return (
-    <Link href="#">
+    <Link href="https://prodlab.app.link/app">
       <ChakraLink
-        href="#"
+        href="https://prodlab.app.link/app"
         fontWeight="bold"
         textTransform="uppercase"
         color="link.100"

@@ -16,6 +16,7 @@ import PrimaryButton from "../src/flat/PrimaryButton";
 import useMediaQuery from "../src/hooks/useMediaQuery";
 import { Client } from "../prismicHelpers";
 import styles from "../styles/Home.module.css";
+import { useRouter } from "next/router";
 
 interface HomeProps {
   docs: any;
@@ -57,8 +58,13 @@ const Home = ({ docs, blog_posts }: HomeProps) => {
 };
 
 function HeroRightSideComponent() {
+  const router = useRouter();
   const { breakpoints } = useTheme();
   const isSmallerThan768 = useMediaQuery(`(max-width: ${breakpoints.md})`);
+
+  function onSignupClick() {
+    router.push("https://prodlab.app.link/app");
+  }
 
   let text = `Measure the impossible with our leading zero party panel of consumers ready to collect and share insights to guide your business.`;
   return (
@@ -72,7 +78,9 @@ function HeroRightSideComponent() {
         {isSmallerThan768 && (
           <Flex my="spacer-04" justifyContent="space-around">
             <BookDemo mr={2}></BookDemo>
-            <PrimaryButton variant="outline">Sign up</PrimaryButton>
+            <PrimaryButton variant="outline" onClick={onSignupClick}>
+              Sign up
+            </PrimaryButton>
           </Flex>
         )}
       </Flex>

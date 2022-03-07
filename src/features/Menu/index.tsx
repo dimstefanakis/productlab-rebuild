@@ -24,6 +24,10 @@ function Menu() {
   const { breakpoints } = useTheme();
   const isSmallerThan768 = useMediaQuery(`(max-width: ${breakpoints.md})`);
 
+  function onSignupClick() {
+    router.push("https://prodlab.app.link/app");
+  }
+
   useEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden";
@@ -161,10 +165,7 @@ function Menu() {
                         title="Our Panel"
                         onClick={() => onSectionClick("panel")}
                       />
-                      <SectionButton
-                        title="Sign Up"
-                        onClick={() => onSectionClick()}
-                      />
+                      <SectionButton title="Sign Up" onClick={onSignupClick} />
                     </Flex>
                     <ReportBox
                       title="02"
@@ -185,10 +186,14 @@ function Menu() {
 }
 
 function MobileMenu() {
+  const router = useRouter();
   const dispatch = useDispatch();
 
+  function onSignupClick() {
+    router.push("https://prodlab.app.link/app");
+  }
+
   function onSectionClick(id?: string) {
-    // menuContext.setOpen(false);
     dispatch(closeMenu());
 
     if (id) {
@@ -216,7 +221,7 @@ function MobileMenu() {
         title="Our Panel"
         onClick={() => onSectionClick("panel")}
       />
-      <SectionButton title="Sign Up" onClick={() => onSectionClick()} />
+      <SectionButton title="Sign Up" onClick={onSignupClick} />
       <MenuFooter />
       <ReportBox
         title="01"
