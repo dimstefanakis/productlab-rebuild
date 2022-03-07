@@ -5,6 +5,7 @@ import { Heading } from "@chakra-ui/layout";
 import { Image } from "@chakra-ui/image";
 import { useTheme } from "@chakra-ui/system";
 import Hero from "../../src/flat/Hero";
+import Footer from "../../src/flat/Footer";
 import PrimaryButton from "../../src/flat/PrimaryButton";
 import useMediaQuery from "../../src/hooks/useMediaQuery";
 import SideBar from "../../src/flat/SideBar";
@@ -22,10 +23,6 @@ function TrendsPage({ docs }: TrendsPageProps) {
   const router = useRouter();
   const { breakpoints } = useTheme();
   const isSmallerThan768 = useMediaQuery(`(max-width: ${breakpoints.md})`);
-
-  function onTrendClick(id: number) {
-    router.push(`/trends/${id}`);
-  }
 
   return (
     <Flex w="100%">
@@ -87,6 +84,7 @@ function TrendsPage({ docs }: TrendsPageProps) {
             );
           }
         })}
+        <Footer />
       </Flex>
     </Flex>
   );

@@ -29,7 +29,7 @@ interface PrivacyProps {
 }
 
 function Privacy({ docs }: PrivacyProps) {
-  let privacyPage = docs[0];
+  let privacyPage = docs;
   const { breakpoints } = useTheme();
   const isSmallerThan768 = useMediaQuery(`(max-width: ${breakpoints.md})`);
 
@@ -257,14 +257,21 @@ function PrivacyTable() {
     </Table>
   );
 }
-export async function getStaticProps() {
-  const privacy = await Client().query(
-    Prismic.Predicates.at("document.type", "privacy_policy_page")
+export async function getStaticProps({ previewData }: any) {
+  const previewRef = previewData && previewData.ref ? previewData.ref : null;
+  const ref = previewData ? previewData.ref : null;
+
+  // const privacy = await Client().query(
+  //   Prismic.Predicates.at("document.type", "privacy_policy_page")
+  // );
+  const privacy = await Client().getSingle(
+    "privacy_policy_page",
+    ref ? { ref } : {}
   );
 
   return {
     props: {
-      docs: privacy.results,
+      docs: privacy,
     },
   };
 }

@@ -1,4 +1,3 @@
-import { GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import { Image } from "@chakra-ui/image";
 import { Flex, Box, Heading, Text } from "@chakra-ui/layout";

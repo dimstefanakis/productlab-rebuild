@@ -1,8 +1,12 @@
+import { useRouter } from "next/router";
 import Prismic from "@prismicio/client";
 import { useTheme } from "@chakra-ui/system";
 import useMediaQuery from "../../src/hooks/useMediaQuery";
 import { Flex, Heading, Text } from "@chakra-ui/layout";
 import { RichText, Link } from "prismic-reactjs";
+import PreviewLoader from "../../src/flat/PreviewLoader";
+import Custom404 from "../404";
+import useUpdatePreviewRef from "../../src/utils/useUpdatePreviewRef";
 import SideBar from "../../src/flat/SideBar";
 import Footer from "../../src/flat/Footer";
 import Client from "../../prismicHelpers";
@@ -10,13 +14,25 @@ import styles from "./Terms.module.css";
 
 interface TermsProps {
   docs: any;
+  previewRef: any;
 }
 
-function Terms({ docs }: TermsProps) {
-  let termsPage = docs[0];
+function Terms({ docs, previewRef }: TermsProps) {
+  let termsPage = docs;
 
   const { breakpoints } = useTheme();
+  const router = useRouter();
   const isSmallerThan768 = useMediaQuery(`(max-width: ${breakpoints.md})`);
+
+  useUpdatePreviewRef(previewRef, termsPage?.id);
+
+  if (router.isFallback) {
+    return <PreviewLoader />;
+  }
+
+  if (!termsPage?.id) {
+    return <Custom404 />;
+  }
 
   return (
     <Flex>
@@ -65,14 +81,19 @@ function Terms({ docs }: TermsProps) {
   );
 }
 
-export async function getStaticProps() {
-  const terms = await Client().query(
-    Prismic.Predicates.at("document.type", "terms_page")
-  );
+export async function getStaticProps({ params, previewData }: any) {
+  const previewRef = previewData && previewData.ref ? previewData.ref : null;
+  const ref = previewData ? previewData.ref : null;
+
+  // const terms = await Client().query(
+  //   Prismic.Predicates.at("document.type", "terms_page")
+  // );
+  const terms = await Client().getSingle("terms_page", ref ? { ref } : {});
 
   return {
     props: {
-      docs: terms.results,
+      docs: terms,
+      previewRef,
     },
   };
 }
