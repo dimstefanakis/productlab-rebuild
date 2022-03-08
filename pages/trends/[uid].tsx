@@ -87,7 +87,7 @@ function BlogPostPage({ post, previewRef }: any) {
                   <Text as="q" fontStyle="italic" mb={3}>
                     {slice.primary.imageTitle}
                   </Text>
-                  <Image src={slice.primary.image.url} />
+                  <Image src={slice.primary.image.url} width="100%" maxW="600px"/>
                   <Text fontSize="sm" color="gray" mt={3}>
                     {slice.primary.imageDescription}
                   </Text>

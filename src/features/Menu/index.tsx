@@ -7,6 +7,8 @@ import { Box, Flex } from "@chakra-ui/layout";
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { useSelector, useDispatch } from "react-redux";
 import { motion, AnimatePresence } from "framer-motion";
+import Prismic from "@prismicio/client";
+import Client from "../../../prismicHelpers";
 import HeaderWrapper from "../../flat/Header/Wrapper";
 import Logo from "../../flat/Logo";
 import { RootState } from "../../store";
@@ -16,16 +18,35 @@ import MenuFooter from "./Footer";
 import { openMenu, closeMenu, toggleMenu } from "./slices/menuSlice";
 import useMediaQuery from "../../hooks/useMediaQuery";
 
+interface MobileMenuInterface {
+  featuredPosts: any[];
+}
+
 function Menu() {
   const router = useRouter();
   const theme = useTheme();
   const dispatch = useDispatch();
   const { open } = useSelector((state: RootState) => state.menu);
   const { breakpoints } = useTheme();
+  const [featuredPosts, setFeaturedPosts] = useState<any[]>([]);
   const isSmallerThan768 = useMediaQuery(`(max-width: ${breakpoints.md})`);
 
   function onSignupClick() {
     router.push("https://prodlab.app.link/app");
+  }
+
+  async function getBlogPosts() {
+    const blog_posts = await Client().query(
+      Prismic.Predicates.at("document.type", "blog-post")
+    );
+    setFeaturedPosts(
+      blog_posts.results.filter((post: any) => post.data.featured).slice(0, 2)
+    );
+  }
+
+  function onBlogClick(to: string) {
+    router.push(`/trends/${to}`);
+    dispatch(closeMenu());
   }
 
   useEffect(() => {
@@ -42,6 +63,10 @@ function Menu() {
       }
     };
   }, [open]);
+
+  useEffect(() => {
+    getBlogPosts();
+  }, []);
 
   let transitionProps;
 
@@ -131,7 +156,7 @@ function Menu() {
             <Flex h="100vh" flexFlow="column" color="white">
               <HeaderWrapper position="relative" />
               {isSmallerThan768 ? (
-                <MobileMenu />
+                <MobileMenu featuredPosts={featuredPosts} />
               ) : (
                 <Flex
                   h="calc(100% - 70px)"
@@ -154,7 +179,8 @@ function Menu() {
                     </Flex>
                     <ReportBox
                       title="01"
-                      description="A Very Long Yet Practical Blog Title Goes Here"
+                      description={featuredPosts[0]?.data.title}
+                      onClick={() => onBlogClick(featuredPosts[0]?.uid)}
                       backgroundColor="brand.200"
                       src="/menu_background1.png"
                     />
@@ -169,7 +195,8 @@ function Menu() {
                     </Flex>
                     <ReportBox
                       title="02"
-                      description="A Very Long Yet Practical Blog Title Goes Here"
+                      description={featuredPosts[1]?.data.title}
+                      onClick={() => onBlogClick(featuredPosts[1]?.uid)}
                       backgroundColor="brand.300"
                       src="/menu_background2.png"
                     />
@@ -185,9 +212,14 @@ function Menu() {
   );
 }
 
-function MobileMenu() {
+function MobileMenu({ featuredPosts }: MobileMenuInterface) {
   const router = useRouter();
   const dispatch = useDispatch();
+
+  function onBlogClick(to: string) {
+    router.push(`/trends/${to}`);
+    dispatch(closeMenu());
+  }
 
   function onSignupClick() {
     router.push("https://prodlab.app.link/app");
@@ -225,13 +257,15 @@ function MobileMenu() {
       <MenuFooter />
       <ReportBox
         title="01"
-        description="A Very Long Yet Practical Blog Title Goes Here"
+        description={featuredPosts[0]?.data.title}
+        onClick={() => onBlogClick(featuredPosts[0]?.uid)}
         backgroundColor="brand.200"
         src="/menu_background1.png"
       />
       <ReportBox
         title="02"
-        description="A Very Long Yet Practical Blog Title Goes Here"
+        description={featuredPosts[1]?.data.title}
+        onClick={() => onBlogClick(featuredPosts[1]?.uid)}
         backgroundColor="brand.300"
         src="/menu_background2.png"
       />
