@@ -64,7 +64,6 @@ function BlogPostPage({ post, previewRef }: any) {
                   p={{ base: 5, md: 20 }}
                   borderTop={i == 0 ? "1px solid" : "none"}
                   borderLeft="1px solid"
-                  borderBottom="1px solid"
                   borderColor="border.100"
                 >
                   <RichText render={slice.primary.body} />
@@ -75,16 +74,14 @@ function BlogPostPage({ post, previewRef }: any) {
               return (
                 <Flex
                   key={i}
-                  p={{ base: 5, md: 20 }}
+                  px={{ base: 5, md: 20 }}
                   flexFlow="column"
                   justifyContent="center"
                   alignItems="center"
-                  borderTop={i == 0 ? "1px solid" : "none"}
                   borderLeft="1px solid"
-                  borderBottom="1px solid"
                   borderColor="border.100"
                 >
-                  <Text as="q" fontStyle="italic" mb={3}>
+                  <Text fontStyle="italic" mb={3}>
                     {slice.primary.imageTitle}
                   </Text>
                   <Image src={slice.primary.image.url} width="100%" maxW="600px"/>
