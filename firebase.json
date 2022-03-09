@@ -2,6 +2,8 @@
   "hosting": {
     "public": "out",
     "site": "product-lab-production",
+    "cleanUrls": true,
+    "trailingSlashes": false,
     "ignore": [
       "firebase.json",
       "**/.*",
