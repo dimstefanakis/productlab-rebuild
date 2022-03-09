@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { ChakraProvider } from "@chakra-ui/react";
 import { Provider } from "react-redux";
+import { useColorMode } from "@chakra-ui/color-mode";
 import theme from "../src/theme";
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
@@ -27,6 +28,15 @@ function MyApp({ Component, pageProps }: AppProps) {
 
 function AppWrapper({ children }: AppWrapperProps) {
   const [mounted, setMounted] = useState(false);
+
+  const { colorMode, toggleColorMode } = useColorMode();
+
+  // force light mode
+  useEffect(() => {
+    if (colorMode != "light") {
+      toggleColorMode();
+    }
+  }, [colorMode]);
 
   useEffect(() => {
     setMounted(true);
