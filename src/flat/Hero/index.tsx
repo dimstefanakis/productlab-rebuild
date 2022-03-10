@@ -13,7 +13,7 @@ function Hero({title, rightSideComponent, leftSideComponent}: HeroProps) {
   return (
     <Flex
       w="100%"
-      minH="100vh"
+      minH="80vh"
       px={{ base: 0, md: 10 }}
       flexFlow={{ base: "column", md: "row" }}
       borderLeft={isSmallerThan768 ? "0" : "1px solid"}
