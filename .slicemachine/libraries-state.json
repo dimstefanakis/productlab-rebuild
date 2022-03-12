@@ -263,7 +263,7 @@
                     "label": "body",
                     "placeholder": "",
                     "allowTargetBlank": true,
-                    "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+                    "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
                   },
                   "type": "StructuredText"
                 }
@@ -282,7 +282,7 @@
               "body": [
                 {
                   "type": "paragraph",
-                  "text": "Esse ex in Lorem esse commodo anim proident eiusmod ipsum nostrud fugiat amet culpa anim duis.",
+                  "text": "Nulla consectetur et qui irure. Ex duis Lorem ea do.",
                   "spans": []
                 }
               ]

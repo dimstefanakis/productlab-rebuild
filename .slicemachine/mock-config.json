@@ -17,8 +17,8 @@
         }
       }
     },
-    "BlogText": [
-      {
+    "BlogText": {
+      "0": {
         "variation": "default-slice",
         "name": "Default slice",
         "slice_type": "blog_text",
@@ -32,8 +32,18 @@
             }
           ]
         }
+      },
+      "default-slice": {
+        "primary": {
+          "body": {
+            "config": {
+              "patternType": "PARAGRAPH",
+              "blocks": 1
+            }
+          }
+        }
       }
-    ],
+    },
     "BlogImage": [
       {
         "variation": "default-slice",
