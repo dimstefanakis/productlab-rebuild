@@ -62,6 +62,7 @@ function BlogPostPage({ post, previewRef }: any) {
                 <Flex
                   key={i}
                   p={{ base: 5, md: 20 }}
+                  flexFlow="column"
                   borderTop={i == 0 ? "1px solid" : "none"}
                   borderLeft="1px solid"
                   borderColor="border.100"
