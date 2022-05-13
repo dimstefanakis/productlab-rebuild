@@ -8,7 +8,7 @@ function Insights({ data }: InsightsProps) {
   const router = useRouter();
 
   function onClick() {
-    router.push("#hs-chat-open");
+    location.href = "#hs-chat-open";
   }
 
   let description =
