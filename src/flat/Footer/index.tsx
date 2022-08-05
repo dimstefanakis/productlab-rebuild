@@ -144,8 +144,8 @@ function BookDemoWrapper() {
 function FooterLinks() {
   return (
     <Flex justifyContent={{ base: "space-between", md: "center" }}>
-      <FooterLink href="https://app.productlab.ai/contact-us">
-        Contact
+      <FooterLink href="mailto:support@productlab.ai">
+        Do Not Sell My Info
       </FooterLink>
       <FooterLink href="/terms">Terms</FooterLink>
       <FooterLink href="/privacy">Privacy</FooterLink>
