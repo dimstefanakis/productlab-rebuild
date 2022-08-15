@@ -31,6 +31,11 @@
         "type": 302
       },
       {
+        "source": "/get",
+        "destination": "https://app.productlab.ai/get",
+        "type": 302
+      },
+      {
         "source": "/register/**",
         "destination": "https://app.productlab.ai/register",
         "type": 302
