@@ -6,7 +6,7 @@ import PrimaryButton from "../PrimaryButton";
 import BookDemo from "../../features/BookDemo";
 import { HeroProps } from "./interface";
 
-function Hero({title, rightSideComponent, leftSideComponent}: HeroProps) {
+function Hero({ title, rightSideComponent, leftSideComponent }: HeroProps) {
   const { breakpoints } = useTheme();
   const isSmallerThan768 = useMediaQuery(`(max-width: ${breakpoints.md})`);
 
@@ -32,6 +32,11 @@ function Hero({title, rightSideComponent, leftSideComponent}: HeroProps) {
           <Heading fontSize={{ base: "4xl", md: "6xl" }} maxW="600px">
             {title}
           </Heading>
+          {!isSmallerThan768 && (
+            <Box mt={6}>
+              <BookDemo />
+            </Box>
+          )}
           {leftSideComponent}
         </Flex>
       </Flex>
