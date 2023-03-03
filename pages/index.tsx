@@ -21,13 +21,14 @@ import { useRouter } from "next/router";
 interface HomeProps {
   docs: any;
   blog_posts: any;
+  homepage: any;
 }
 
-const Home = ({ docs, blog_posts }: HomeProps) => {
+const Home = ({ docs, blog_posts, homepage }: HomeProps) => {
   const [mounted, setMounted] = useState(false);
   const { breakpoints } = useTheme();
   const isSmallerThan768 = useMediaQuery(`(max-width: ${breakpoints.md})`);
-  let heroText = `Survey Real People. Get Real Answers.`;
+  let heroText = homepage[0].data.hero_text[0].text;
 
   return (
     <>
@@ -43,6 +44,7 @@ const Home = ({ docs, blog_posts }: HomeProps) => {
         {!isSmallerThan768 && <SideBar />}
         <Flex flexFlow="column" className={styles.homePage}>
           <Hero
+            data={homepage}
             title={heroText}
             rightSideComponent={<HeroRightSideComponent />}
           />
@@ -100,10 +102,15 @@ export async function getStaticProps() {
     Prismic.Predicates.at("document.type", "bl")
   );
 
+  const homepage = await Client().query(
+    Prismic.Predicates.at("document.type", "homepage")
+  );
+
   return {
     props: {
       docs: sliced_blog_posts.results,
       blog_posts: blog_posts.results,
+      homepage: homepage.results,
     },
   };
 }
