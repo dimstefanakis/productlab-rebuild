@@ -27,7 +27,7 @@ const Home = ({ docs, blog_posts }: HomeProps) => {
   const [mounted, setMounted] = useState(false);
   const { breakpoints } = useTheme();
   const isSmallerThan768 = useMediaQuery(`(max-width: ${breakpoints.md})`);
-  let heroText = `Rapid Crowdsourced Insights to Guide Any Decision`;
+  let heroText = `Survey Real People. Get Real Answers.`;
 
   return (
     <>
