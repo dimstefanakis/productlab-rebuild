@@ -6,7 +6,7 @@ import PrimaryButton from "../PrimaryButton";
 import BookDemo from "../../features/BookDemo";
 import { HeroProps } from "./interface";
 
-function Hero({ title, data, rightSideComponent, leftSideComponent }: HeroProps) {
+function Hero({ title, rightSideComponent, leftSideComponent }: HeroProps) {
   const { breakpoints } = useTheme();
   const isSmallerThan768 = useMediaQuery(`(max-width: ${breakpoints.md})`);
 

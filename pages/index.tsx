@@ -44,7 +44,6 @@ const Home = ({ docs, blog_posts, homepage }: HomeProps) => {
         {!isSmallerThan768 && <SideBar />}
         <Flex flexFlow="column" className={styles.homePage}>
           <Hero
-            data={homepage}
             title={heroText}
             rightSideComponent={<HeroRightSideComponent />}
           />
