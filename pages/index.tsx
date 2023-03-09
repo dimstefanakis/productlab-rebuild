@@ -84,7 +84,7 @@ function HeroRightSideComponent() {
           <Flex my="spacer-04" justifyContent="space-around">
             <BookDemo mr={2}></BookDemo>
             <PrimaryButton variant="outline" onClick={onSignupClick}>
-              Sign up
+              Take Surveys
             </PrimaryButton>
           </Flex>
         )}

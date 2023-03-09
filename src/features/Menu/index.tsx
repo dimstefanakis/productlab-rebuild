@@ -191,7 +191,10 @@ function Menu() {
                         title="Our Panel"
                         onClick={() => onSectionClick("panel")}
                       />
-                      <SectionButton title="Sign Up" onClick={onSignupClick} />
+                      <SectionButton
+                        title="Take Surveys"
+                        onClick={onSignupClick}
+                      />
                     </Flex>
                     <ReportBox
                       title="02"
@@ -253,7 +256,7 @@ function MobileMenu({ featuredPosts }: MobileMenuInterface) {
         title="Our Panel"
         onClick={() => onSectionClick("panel")}
       />
-      <SectionButton title="Sign Up" onClick={onSignupClick} />
+      <SectionButton title="Take Surveys" onClick={onSignupClick} />
       <MenuFooter />
       <ReportBox
         title="01"
