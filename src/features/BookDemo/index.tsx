@@ -7,7 +7,7 @@ function BookDemo(props: ButtonProps) {
     <ChakraLink
       // href="mailto:admin@productlab.ai?subject=ProductLab Demo Request"
       // href="#hs-chat-open"
-      href="https://reach.productlab.ai/"
+      href="https://reach.productlab.ai/onboard"
       target={"_blank"}
       width={props.width}
     >
