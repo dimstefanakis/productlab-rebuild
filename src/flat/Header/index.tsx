@@ -22,8 +22,8 @@ function Header() {
         <>
           <Box flex="1"></Box>
           <Flex justifyContent="center" alignItems="center">
-            <Contributors />
-            <BookDemo/>
+            <TakeSurveyButton />
+            <BookDemo />
           </Flex>
         </>
       )}
@@ -36,7 +36,7 @@ function Header() {
   );
 }
 
-function Contributors() {
+function TakeSurveyButton() {
   return (
     <Link href="https://prodlab.app.link/app">
       <ChakraLink
@@ -48,7 +48,7 @@ function Contributors() {
         textDecoration="none"
         mr={10}
       >
-        Contributors
+        Take Survey
       </ChakraLink>
     </Link>
   );

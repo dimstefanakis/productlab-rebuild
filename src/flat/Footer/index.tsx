@@ -169,7 +169,11 @@ function FooterLink({ href, children }: FooterLinkProps) {
 }
 
 function Copywrite() {
-  return <Text>© Product Lab aI, Inc 2022 All rights reserved</Text>;
+  return (
+    <Text>
+      © Product Lab AI, Inc {new Date().getFullYear()} All rights reserved
+    </Text>
+  );
 }
 
 export default Footer;

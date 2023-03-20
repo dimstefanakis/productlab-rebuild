@@ -50,7 +50,7 @@ function MenuFooter() {
                 backgroundColor="brand.200"
               >
                 <Text fontWeight="bold" textTransform="uppercase">
-                  © Productlab ai 2022 All rights reserved
+                  © Productlab ai {new Date().getFullYear()} All rights reserved
                 </Text>
               </Flex>
             </motion.div>

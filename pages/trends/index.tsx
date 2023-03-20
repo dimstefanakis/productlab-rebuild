@@ -38,6 +38,7 @@ function TrendsPage({ docs }: TrendsPageProps) {
           if (i == 0) {
             return (
               <Hero
+                key={i}
                 title={trend.data.title}
                 leftSideComponent={
                   !isSmallerThan768 ? (

@@ -1,4 +1,5 @@
 import { Flex, Box, Text, Heading } from "@chakra-ui/layout";
+import { useRouter } from "next/router";
 // import { useMediaQuery } from "@chakra-ui/media-query";
 import { useTheme } from "@chakra-ui/system";
 import useMediaQuery from "../../hooks/useMediaQuery";
@@ -7,6 +8,7 @@ import BookDemo from "../../features/BookDemo";
 import { HeroProps } from "./interface";
 
 function Hero({ title, rightSideComponent, leftSideComponent }: HeroProps) {
+  const router = useRouter();
   const { breakpoints } = useTheme();
   const isSmallerThan768 = useMediaQuery(`(max-width: ${breakpoints.md})`);
 
@@ -32,7 +34,7 @@ function Hero({ title, rightSideComponent, leftSideComponent }: HeroProps) {
           <Heading fontSize={{ base: "4xl", md: "6xl" }} maxW="600px">
             {title}
           </Heading>
-          {!isSmallerThan768 && (
+          {!isSmallerThan768 && router.pathname == "/" && (
             <Box mt={6}>
               <BookDemo />
             </Box>
