@@ -48,7 +48,7 @@ function TakeSurveyButton() {
         textDecoration="none"
         mr={10}
       >
-        Take Survey
+        Take Surveys
       </ChakraLink>
     </Link>
   );
