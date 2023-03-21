@@ -10,6 +10,7 @@ function BookDemo(props: ButtonProps) {
       href="https://reach.productlab.ai/onboard"
       target={"_blank"}
       width={props.width}
+      display="flex"
     >
       <PrimaryButton {...props}>Build a Survey</PrimaryButton>
     </ChakraLink>

@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { Flex, Text } from "@chakra-ui/layout";
 // import { useMediaQuery } from "@chakra-ui/media-query";
 import { useTheme } from "@chakra-ui/system";
@@ -7,6 +8,7 @@ import useMediaQuery from "../../../hooks/useMediaQuery";
 import { AnimatePresence, motion } from "framer-motion";
 
 function MenuFooter() {
+  const router = useRouter();
   const { breakpoints } = useTheme();
   const isSmallerThan768 = useMediaQuery(`(max-width: ${breakpoints.md})`);
 
@@ -18,8 +20,21 @@ function MenuFooter() {
         pr={{ base: 10, md: 0 }}
         py={{ base: "spacer-03", md: 0 }}
         alignItems="center"
+        flexFlow="row wrap"
       >
-        <BookDemo w={{ base: "100%", md: "max-content" }}></BookDemo>
+        <BookDemo
+          m={2}
+          width={{ base: "100%", md: "max-content" }}
+          w={{ base: "100%", md: "max-content" }}
+        ></BookDemo>
+        <PrimaryButton
+          variant="outline"
+          m={2}
+          w={{ base: "100%", md: "max-content" }}
+          onClick={() => router.push("https://app.productlab.ai/blog")}
+        >
+          View our blog
+        </PrimaryButton>
       </Flex>
       {!isSmallerThan768 && (
         <Flex
