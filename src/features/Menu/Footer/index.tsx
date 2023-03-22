@@ -31,9 +31,9 @@ function MenuFooter() {
           variant="outline"
           m={2}
           w={{ base: "100%", md: "max-content" }}
-          onClick={() => router.push("https://app.productlab.ai/blog")}
+          onClick={() => router.push("https://prodlab.app.link/app")}
         >
-          View our blog
+          Take Surveys
         </PrimaryButton>
       </Flex>
       {!isSmallerThan768 && (

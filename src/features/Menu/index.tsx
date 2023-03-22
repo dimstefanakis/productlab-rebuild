@@ -31,8 +31,8 @@ function Menu() {
   const [featuredPosts, setFeaturedPosts] = useState<any[]>([]);
   const isSmallerThan768 = useMediaQuery(`(max-width: ${breakpoints.md})`);
 
-  function onSignupClick() {
-    router.push("https://prodlab.app.link/app");
+  function onOurBlogClick() {
+    router.push("https://app.productlab.ai/blog/");
   }
 
   async function getBlogPosts() {
@@ -192,8 +192,8 @@ function Menu() {
                         onClick={() => onSectionClick("panel")}
                       />
                       <SectionButton
-                        title="Take Surveys"
-                        onClick={onSignupClick}
+                        title="Blog"
+                        onClick={onOurBlogClick}
                       />
                     </Flex>
                     <ReportBox
