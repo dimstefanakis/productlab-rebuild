@@ -32,6 +32,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <ChakraProvider theme={theme}>
         <Layout>
           <AppWrapper>
+            {/* @ts-ignore */}
             <Component {...pageProps} />
           </AppWrapper>
         </Layout>
