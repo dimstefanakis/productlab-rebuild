@@ -71,7 +71,7 @@ function Privacy({ docs }: PrivacyProps) {
                 );
               } else if (section.slice_type == "table") {
                 return (
-                  <Flex width="100%" overflow="auto">
+                  <Flex key={i} width="100%" overflow="auto">
                     <PrivacyTable key="table" />
                   </Flex>
                 );

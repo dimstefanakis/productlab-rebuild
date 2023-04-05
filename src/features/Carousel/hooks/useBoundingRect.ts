@@ -39,7 +39,7 @@ export default function useBoundingRect(limit?: number): [any, Dimensions, HTMLE
   const [dimensions, setDimensions] = useState<Dimensions>({});
   const [node, setNode] = useState<HTMLElement>();
 
-  const ref = useCallback((node) => {
+  const ref = useCallback((node: any) => {
     setNode(node);
   }, []);
 

@@ -47,7 +47,10 @@ const Carousel = ({
   const [constraint, setConstraint] = useState(0);
   const [, setItemWidth] = useState(0);
 
-  const initSliderWidth = useCallback((width) => setSliderWidth(width), []);
+  const initSliderWidth = useCallback(
+    (width: number) => setSliderWidth(width),
+    []
+  );
 
   const positions = useMemo(
     () => children.map((_, index) => -Math.abs((itemWidth + gap) * index)),
@@ -315,7 +318,7 @@ const Track = ({
   );
 
   const handleClick = useCallback(
-    (event) =>
+    (event: any) =>
       node.current?.contains(event.target)
         ? setTrackIsActive(true)
         : setTrackIsActive(false),
@@ -323,7 +326,7 @@ const Track = ({
   );
 
   const handleKeyDown = useCallback(
-    (event) => {
+    (event: any) => {
       if (trackIsActive) {
         if (activeItem < positions.length - constraint) {
           if (event.key === "ArrowRight" || event.key === "ArrowUp") {

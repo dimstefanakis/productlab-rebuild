@@ -4,7 +4,7 @@ const useMediaQuery = (query: string) => {
   const [mounted, setMounted] = useState(false);
   const [targetReached, setTargetReached] = useState(false);
 
-  const updateTarget = useCallback((e) => {
+  const updateTarget = useCallback((e: any) => {
     if (e.matches) {
       setTargetReached(true);
     } else {
