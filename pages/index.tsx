@@ -36,7 +36,7 @@ const Home = ({ docs, blog_posts, homepage }: HomeProps) => {
         <title>Productlab - {heroText}</title>
         <meta
           name="description"
-          content="Measure the impossible with our leading zero party panel of consumers ready to collect and share insights to guide your business."
+          content="Source scalable and consistent real-time data directly from receipts, digital accounts, paychecks, emails, and more — all fully permissioned and compiled directly from end consumers."
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -70,7 +70,7 @@ function HeroRightSideComponent() {
     router.push("https://prodlab.app.link/app");
   }
 
-  let text = `Measure the impossible with our leading zero party panel of consumers ready to collect and share insights to guide your business.`;
+  let text = `Source scalable and consistent real-time data directly from receipts, digital accounts, paychecks, emails, and more — all fully permissioned and compiled directly from end consumers.`;
   return (
     <>
       <Flex
