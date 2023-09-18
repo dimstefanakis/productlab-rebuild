@@ -12,7 +12,7 @@ function Insights({ data }: InsightsProps) {
   }
 
   let description =
-    "Source scalable and consistent real-time data directly from receipts, digital accounts, paychecks, emails, and more — all fully permissioned and compiled directly from end consumers.";
+    "Measure the impossible with our task marketplace. We have thousands of users on standby 24/7 to perform real world data collection needs at scale. From images to price checks, we have you covered.";
   return (
     <CommonLandingBox
       id="solutions"
