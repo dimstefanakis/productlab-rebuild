@@ -8,7 +8,7 @@ function BookDemo(props: ButtonProps) {
       // href="mailto:admin@productlab.ai?subject=ProductLab Demo Request"
       href="#hs-chat-open"
       // href="https://reach.productlab.ai/"
-      target={"_blank"}
+      // target={"_blank"}
       width={props.width}
       display="flex"
     >
