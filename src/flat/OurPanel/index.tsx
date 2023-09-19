@@ -89,11 +89,7 @@ function ContributorDescription() {
       px={{ base: "spacer-03", md: 10 }}
     >
       <Text>
-        What makes us different? Our dynamic marketplace platform connect you
-        directly to a fully permissioned and engaged community of consumer
-        contributers. Our progressive profiling algorithm makes sure you reach
-        the right individual right away, without dealing with endless
-        uncertainty and knock out questions. Get it right the first time.
+        What makes us different? Our vertical platform connects you directly to an engaged consumer community providing fully permissioned data that traditional alternative data providers cannot access. We transform unstructured data into structured data streams usable by data science leaders across any organization.
       </Text>
     </Flex>
   );

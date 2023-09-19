@@ -36,7 +36,7 @@ const Home = ({ docs, blog_posts, homepage }: HomeProps) => {
         <title>Productlab - {heroText}</title>
         <meta
           name="description"
-          content="Source scalable and consistent real-time data directly from receipts, digital accounts, paychecks, emails, and more — all fully permissioned and compiled directly from end consumers."
+          content="Develop structured intelligence from unstructured data gathered from receipts, digital accounts, paychecks, emails, and more — all fully permissioned and compiled directly from end consumers in our bespoke research panels."
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -47,8 +47,8 @@ const Home = ({ docs, blog_posts, homepage }: HomeProps) => {
             title={heroText}
             rightSideComponent={<HeroRightSideComponent />}
           />
-          <Separator title="Our blog" />
-          <Trends data={docs} />
+          {/* <Separator title="Our blog" /> */}
+          {/* <Trends data={docs} /> */}
           <Separator title="Solutions" />
           <Insights />
           <Tasks />
@@ -70,7 +70,7 @@ function HeroRightSideComponent() {
     router.push("https://prodlab.app.link/app");
   }
 
-  let text = `Source scalable and consistent real-time data directly from receipts, digital accounts, paychecks, emails, and more — all fully permissioned and compiled directly from end consumers.`;
+  let text = `Develop structured intelligence from unstructured data gathered from receipts, digital accounts, paychecks, emails, and more — all fully permissioned and compiled directly from end consumers in our bespoke research panels.`;
   return (
     <>
       <Flex
@@ -83,7 +83,7 @@ function HeroRightSideComponent() {
           <Flex my="spacer-04" justifyContent="space-around">
             <BookDemo mr={2}></BookDemo>
             <PrimaryButton variant="outline" onClick={onSignupClick}>
-              Take Surveys
+              Join Panel
             </PrimaryButton>
           </Flex>
         )}

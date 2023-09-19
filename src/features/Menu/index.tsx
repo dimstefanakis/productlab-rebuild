@@ -256,7 +256,7 @@ function MobileMenu({ featuredPosts }: MobileMenuInterface) {
         title="Our Panel"
         onClick={() => onSectionClick("panel")}
       />
-      <SectionButton title="Take Surveys" onClick={onSignupClick} />
+      <SectionButton title="Join Panel" onClick={onSignupClick} />
       <MenuFooter />
       <ReportBox
         title="01"

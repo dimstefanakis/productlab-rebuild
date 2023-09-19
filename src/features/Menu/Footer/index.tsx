@@ -33,7 +33,7 @@ function MenuFooter() {
           w={{ base: "100%", md: "max-content" }}
           onClick={() => router.push("https://prodlab.app.link/app")}
         >
-          Take Surveys
+          Join Panel
         </PrimaryButton>
       </Flex>
       {!isSmallerThan768 && (
