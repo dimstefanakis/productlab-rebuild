@@ -12,10 +12,10 @@ function Tasks({ data }: TasksProps) {
   }
 
   let text =
-    "Uncover the entire story behind the data by understanding demographics, sentiment, and intent of audiences behind it. Our direct relationship allows you to go behind";
+    "We use machine learning to transform data into reliable structured datasets delivered 24/7 directly to data science leaders through AWS, BigQuery, SnowFlake, and custom data feeds.";
   return (
     <CommonLandingBox
-      title="Consumer Insights"
+      title="Data Processing"
       subheader={text}
       buttonText="Book demo"
       onButtonClick={onClick}
