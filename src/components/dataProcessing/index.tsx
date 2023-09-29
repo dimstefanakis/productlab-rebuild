@@ -6,10 +6,16 @@ const anton = Anton({ weight: '400', preload: false })
 function DataProcessing() {
   const [isLargerThan768] = useMediaQuery("(min-width: 768px)")
   return (
-    <Flex flexFlow={{
-      base: 'column',
-      md: 'row'
-    }} justifyContent="space-between" w="100%" my="48px" p='48px' borderRadius="md" bg="#F3F4F0" h={{ base: 'auto', md: '600px' }}>
+    <Flex
+      flexFlow={{
+        base: 'column',
+        md: 'row'
+      }}
+      justifyContent="space-between" w="100%" my="48px"
+      p={{
+        base: '24px',
+        md: '48px'
+      }} borderRadius="md" bg="#F3F4F0" h={{ base: 'auto', md: '600px' }}>
       <Flex w={{
         base: '100%',
         md: '48%'
@@ -20,8 +26,8 @@ function DataProcessing() {
         }}
         h="100%">
         <Image
-          src="/data_sourcing.png"
-          alt="Data Sourcing"
+          src="/data_processing.png"
+          alt="Data Processing"
           w="100%"
           h="100%"
           objectFit="cover"
@@ -40,10 +46,15 @@ function DataProcessing() {
         <Heading flex={{
           base: 0,
           md: 1
-        }} className={anton.className} fontSize="60px" my={{
-          base: '24px',
-          md: '0px'
-        }}>
+        }} className={anton.className}
+          fontSize={{
+            base: '40px',
+            md: '60px'
+          }}
+          my={{
+            base: '24px',
+            md: '0px'
+          }}>
           Data Processing
         </Heading>
         <Text fontSize="xl">

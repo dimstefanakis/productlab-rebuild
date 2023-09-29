@@ -5,8 +5,17 @@ const anton = Anton({ weight: '400', preload: false })
 
 function BlueBox() {
   return (
-    <Flex my="48px" px='48px' py="72px" borderRadius="md" alignItems="center" flexFlow="column" bg="#137CDE">
-      <Heading className={anton.className} textAlign="center" color="white" fontSize="60px">
+    <Flex my="48px"
+      px={{
+        base: '24px',
+        md: '48px'
+      }}
+      py="72px" borderRadius="md" alignItems="center" flexFlow="column" bg="#137CDE">
+      <Heading className={anton.className} textAlign="center" color="white"
+        fontSize={{
+          base: '40px',
+          md: '60px'
+        }}>
         Unmatched Panel & Data Integrity
       </Heading>
       <Flex flexFlow={{
