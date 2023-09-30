@@ -15,7 +15,18 @@ function Hero() {
           h="24px"
         />
         <Box flex="1"></Box>
-        <Button>
+        <Button
+          borderRadius="full"
+          py={6}
+          bg="black"
+          color="white"
+          _hover={{
+            bg: 'black'
+          }}
+          _active={{
+            bg: 'black'
+          }}
+        >
           Contact Us
         </Button>
       </Flex>
