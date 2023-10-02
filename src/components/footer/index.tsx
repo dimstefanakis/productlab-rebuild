@@ -63,14 +63,14 @@ function Footer() {
           <Link href="/terms" mr={4}>Terms and Conditions</Link>
         </Box>
         <Box display={isMobile ? "flex" : "block"} justifyContent="space-between">
-          <Link href="/donotsell" mr={4}>Do Not Sell Info</Link>
-          <Link href="/contact">Contact Us</Link>
+          <Link mr={4}>Do Not Sell Info</Link>
+          <Link href="#hs-chat-open">Contact Us</Link>
         </Box>
         <Box display="flex" justifyContent="space-between" mx={4}>
-          <Link href="https://twitter.com" isExternal mr={2}>
+          <Link href="https://twitter.com/productlabai" isExternal mr={2}>
             <Icon as={FaTwitter} />
           </Link>
-          <Link href="https://linkedin.com" isExternal>
+          <Link href="https://www.linkedin.com/company/productlabai" isExternal>
             <Icon as={FaLinkedin} />
           </Link>
         </Box>
