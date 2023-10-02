@@ -27,10 +27,10 @@ function Footer() {
             <Link href="/terms">Terms & Conditions</Link>
           </GridItem>
           <GridItem display="flex" justifyContent="center" alignItems="center" gridArea="contact">
-            <Link href="/contact">Contact Us</Link>
+            <Link href="#hs-chat-open">Contact Us</Link>
           </GridItem>
           <GridItem display="flex" textAlign="center" justifyContent="center" alignItems="center" gridArea="info">
-            <Link href="/contact">Do Not Sell Info</Link>
+            <Link>Do Not Sell Info</Link>
           </GridItem>
           <GridItem display="flex" justifyContent="center" alignItems="center" gridArea="li">
             <Link href="https://www.linkedin.com/company/productlabai" isExternal>

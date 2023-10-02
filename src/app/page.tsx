@@ -17,7 +17,7 @@ export default function Home() {
       <DataProcessing />
       <BlueBox />
       <GetInTouch />
-      <Footer/>
+      <Footer />
     </main>
   )
 }

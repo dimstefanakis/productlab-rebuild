@@ -1,11 +1,12 @@
 import { Anton } from 'next/font/google'
 import { Flex, Box, Text, Image, Button, Heading } from "@chakra-ui/react";
-import { useMediaQuery } from '@chakra-ui/react';
+import { Link as ChakraLink } from "@chakra-ui/layout";
+import useMediaQuery from '@/app/hooks/useMediaQuery';
 
 const anton = Anton({ weight: '400', preload: false })
 
 function Hero() {
-  const [isLargerThan768] = useMediaQuery("(min-width: 768px)")
+  const isLargerThan768 = useMediaQuery("(min-width: 768px)")
   return (
     <Flex flexFlow="column" w="100%" minH="100vh" alignItems="center">
       <Flex w="100%" py="32px" alignItems="center">
@@ -15,20 +16,25 @@ function Hero() {
           h="24px"
         />
         <Box flex="1"></Box>
-        <Button
-          borderRadius="full"
-          py={6}
-          bg="black"
-          color="white"
-          _hover={{
-            bg: 'black'
-          }}
-          _active={{
-            bg: 'black'
-          }}
+        <ChakraLink
+          href="#hs-chat-open"
         >
-          Contact Us
-        </Button>
+          <Button
+            borderRadius="full"
+            py={6}
+            bg="black"
+            color="white"
+            _hover={{
+              bg: 'black'
+            }}
+            _active={{
+              bg: 'black'
+            }}
+          >
+            Contact Us
+          </Button>
+        </ChakraLink>
+
       </Flex>
       <Heading className={anton.className} fontSize={{
         base: '50px',
