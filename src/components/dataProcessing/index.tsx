@@ -73,7 +73,7 @@ function DataProcessing() {
               <Text>Data points</Text>
             </Flex>
             <Flex flexFlow="column" alignItems="center" w="33%">
-              <Text>Avg.</Text>
+              <Text>Over</Text>
               <Text fontWeight="bold" fontSize="2xl">50</Text>
               <Text>Document types</Text>
             </Flex>
@@ -91,7 +91,7 @@ function DataProcessing() {
               <Text>Data points</Text>
             </Flex>
             <Flex flexFlow="column" alignItems="center" w="100%">
-              <Text>Avg.</Text>
+              <Text>Over</Text>
               <Text fontWeight="bold" fontSize="2xl">50</Text>
               <Text>Document types</Text>
             </Flex>

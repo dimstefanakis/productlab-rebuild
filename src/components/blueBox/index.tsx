@@ -27,10 +27,10 @@ function BlueBox() {
           md: '48%'
         }} borderRadius="md" alignItems="center" textAlign="center" fontSize="xl">
           <Text fontSize="36px" fontWeight="bold">
-            World Class Community
+            Vetted Community
           </Text>
           <Text mt={3}>
-            Experience best in class quality with our directly, backed by proprietary systems that utilize facial recognition, government ID verification, and more.
+            Experience best in class quality with our directly sourced community backed by proprietary systems that utilize facial recognition, government ID verification, and more.
           </Text>
         </Flex>
         <Flex flexFlow="column" color="white" bg="#1171C9" px="24px" py="32px"
