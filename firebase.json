@@ -1,0 +1,87 @@
+{
+  "hosting": {
+    "public": "out",
+    "site": "product-lab-production",
+    "cleanUrls": true,
+    "trailingSlashes": false,
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "redirects": [
+      {
+        "source": "/register",
+        "destination": "https://app.productlab.ai/register",
+        "type": 302
+      },
+      {
+        "source": "/login",
+        "destination": "https://app.productlab.ai/login",
+        "type": 302
+      },
+      {
+        "source": "/contact",
+        "destination": "https://app.productlab.ai/contact",
+        "type": 302
+      },
+      {
+        "source": "/app",
+        "destination": "https://app.productlab.ai/app",
+        "type": 302
+      },
+      {
+        "source": "/get",
+        "destination": "https://app.productlab.ai/get",
+        "type": 302
+      },
+      {
+        "source": "/register/**",
+        "destination": "https://app.productlab.ai/register",
+        "type": 302
+      },
+      {
+        "source": "/login/**",
+        "destination": "https://app.productlab.ai/login",
+        "type": 302
+      },
+      {
+        "source": "/contact/**",
+        "destination": "https://app.productlab.ai/contact",
+        "type": 302
+      },
+      {
+        "source": "/app/**",
+        "destination": "https://app.productlab.ai/app",
+        "type": 302
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ],
+    "headers": [
+      {
+        "source": "/**",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache, no-store, must-revalidate"
+          }
+        ]
+      },
+      {
+        "source":
+          "**/*.@(jpg|jpeg|gif|png|svg|webp|js|css|eot|otf|ttf|ttc|woff|woff2|font.css)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=1200"
+          }
+        ]
+      }
+    ]
+  }
+}
