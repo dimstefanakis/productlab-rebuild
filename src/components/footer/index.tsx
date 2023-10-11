@@ -30,7 +30,7 @@ function Footer() {
             <Link href="#hs-chat-open">Contact Us</Link>
           </GridItem>
           <GridItem display="flex" textAlign="center" justifyContent="center" alignItems="center" gridArea="info">
-            <Link>Do Not Sell Info</Link>
+            <Link href="mailto:support@productlab.ai?subject=Do Not Sell My Information Request">Do Not Sell Info</Link>
           </GridItem>
           <GridItem display="flex" justifyContent="center" alignItems="center" gridArea="li">
             <Link href="https://www.linkedin.com/company/productlabai" isExternal>
