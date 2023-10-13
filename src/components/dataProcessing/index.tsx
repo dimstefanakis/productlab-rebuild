@@ -61,7 +61,7 @@ function DataProcessing() {
           We use machine learning to transform data into reliable structured datasets delivered 24/7 directly to data science leaders through AWS, BigQuery, SnowFlake, and custom data feeds.
         </Text>
         {isLargerThan768 ? (
-          <HStack w="100%" mt="48px" py={3} bg="#E7E9E5">
+          <HStack w="100%" mt="48px" py={3} bg="#E7E9E5" textAlign='center'>
             <Flex flexFlow="column" alignItems="center" w="33%">
               <Text>Over</Text>
               <Text fontWeight="bold" fontSize="2xl">99%</Text>
@@ -79,7 +79,7 @@ function DataProcessing() {
             </Flex>
           </HStack>
         ) : (
-          <VStack w="100%" mt="48px" py={3} bg="#E7E9E5" divider={<Divider bg="#BABCBB" />}>
+          <VStack w="100%" mt="48px" py={3} bg="#E7E9E5" textAlign='center' divider={<Divider bg="#BABCBB" />}>
             <Flex flexFlow="column" alignItems="center" w="100%">
               <Text>Over</Text>
               <Text fontWeight="bold" fontSize="2xl">99%</Text>
