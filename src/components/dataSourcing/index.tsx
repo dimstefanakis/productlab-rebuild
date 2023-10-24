@@ -1,5 +1,6 @@
 import { Anton } from 'next/font/google'
 import { Flex, Box, Text, Image, HStack, VStack, Heading, Divider, useMediaQuery } from "@chakra-ui/react";
+import Link from 'next/link';
 
 const anton = Anton({ weight: '400', preload: false })
 
@@ -41,6 +42,26 @@ function DataSourcing() {
         <Text fontSize="xl">
           Through our top rated mobile apps, our community of vetted consumer panelists proactively contribute transaction documents including receipts, digital accounts, paychecks, emails, and more.  Our high retention rate and rigorous vetting process enables some of the highest quality longitudinal research in the industry.
         </Text>
+        <HStack mt={4} w="100%">
+          <Link href="https://apps.apple.com/us/app/productlab/id1557610246" target='_blank'>
+            <Image
+              src="/app-store-badge.png"
+              alt="App store"
+              h="48px"
+              objectFit="cover"
+              borderRadius="md"
+            />
+          </Link>
+          <Link href="https://play.google.com/store/apps/details?id=ai.productlab&hl=en&gl=US&pli=1" target='_blank'>
+            <Image
+              src="/google-play-badge.png"
+              alt="Play store"
+              h="48px"
+              objectFit="cover"
+              borderRadius="md"
+            />
+          </Link>
+        </HStack>
         {isLargerThan768 ? (
           <HStack w="100%" mt="48px" py={3} bg="#E7E9E5" textAlign='center'>
             <Flex flexFlow="column" alignItems="center" w="33%">
@@ -60,7 +81,7 @@ function DataSourcing() {
             </Flex>
           </HStack>
         ) : (
-            <VStack w="100%" mt="48px" py={3} bg="#E7E9E5" textAlign='center' divider={<Divider bg="#BABCBB" />}>
+          <VStack w="100%" mt="48px" py={3} bg="#E7E9E5" textAlign='center' divider={<Divider bg="#BABCBB" />}>
             <Flex flexFlow="column" alignItems="center" w="100%">
               <Text>Over</Text>
               <Text fontWeight="bold" fontSize="2xl">150k</Text>
