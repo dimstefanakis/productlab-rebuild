@@ -17,7 +17,7 @@ function Hero() {
         />
         <Box flex="1"></Box>
         <ChakraLink
-          href="#hs-chat-open"
+          href="#get-in-touch"
         >
           <Button
             borderRadius="full"

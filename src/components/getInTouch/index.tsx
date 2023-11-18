@@ -23,10 +23,6 @@ const options = [
 function GetInTouch() {
   const toast = useToast()
   const [loading, setLoading] = useState(false)
-  const [selected, setSelected] = useState(options[0])
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [message, setMessage] = useState('')
   const {
     register,
     handleSubmit,
@@ -60,7 +56,7 @@ function GetInTouch() {
   }
 
   return (
-    <Flex w="100%" flexFlow="column" alignItems="center">
+    <Flex w="100%" flexFlow="column" alignItems="center" id="get-in-touch">
       <Heading className={anton.className} fontSize={{
         base: '40px',
         md: '60px'

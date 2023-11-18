@@ -27,7 +27,7 @@ function Footer() {
             <Link href="/terms">Terms & Conditions</Link>
           </GridItem>
           <GridItem display="flex" justifyContent="center" alignItems="center" gridArea="contact">
-            <Link href="#hs-chat-open">Contact Us</Link>
+            <Link href="#get-in-touch">Contact Us</Link>
           </GridItem>
           <GridItem display="flex" textAlign="center" justifyContent="center" alignItems="center" gridArea="info">
             <Link href="mailto:support@productlab.ai?subject=Do Not Sell My Information Request">Do Not Sell Info</Link>
@@ -64,7 +64,7 @@ function Footer() {
         </Box>
         <Box display={isMobile ? "flex" : "block"} justifyContent="space-between">
           <Link mr={4}>Do Not Sell Info</Link>
-          <Link href="#hs-chat-open">Contact Us</Link>
+          <Link href="#get-in-touch">Contact Us</Link>
         </Box>
         <Box display="flex" justifyContent="space-between" mx={4}>
           <Link href="https://twitter.com/productlabai" isExternal mr={2}>
