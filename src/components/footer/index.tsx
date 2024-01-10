@@ -14,6 +14,7 @@ function Footer() {
         <Grid templateAreas={`
         "privacy info"
         "terms contact"
+        "blog ."
         "li tw"
         "copywrite copywrite"`}
           templateColumns="repeat(2, 1fr)"
@@ -31,6 +32,9 @@ function Footer() {
           </GridItem>
           <GridItem display="flex" textAlign="center" justifyContent="center" alignItems="center" gridArea="info">
             <Link href="mailto:support@productlab.ai?subject=Do Not Sell My Information Request">Do Not Sell Info</Link>
+          </GridItem>
+          <GridItem display="flex" textAlign="center" justifyContent="center" alignItems="center" gridArea="blog">
+            <Link href="https://app.productlab.ai/blog/" isExternal>Blog</Link>
           </GridItem>
           <GridItem display="flex" justifyContent="center" alignItems="center" gridArea="li">
             <Link href="https://www.linkedin.com/company/productlabai" isExternal>
@@ -59,6 +63,7 @@ function Footer() {
           </Text>
         </Box>
         <Box display={isMobile ? "flex" : "block"} justifyContent="space-between">
+          <Link href="https://app.productlab.ai/blog/" isExternal mr={4}>Blog</Link>
           <Link href="/privacy" mr={4}>Privacy</Link>
           <Link href="/terms" mr={4}>Terms and Conditions</Link>
         </Box>
