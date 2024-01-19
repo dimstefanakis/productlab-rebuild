@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Anton } from 'next/font/google'
 import { Flex, Box, Text, Image, Heading, Button, Input, Stack, Select, Textarea } from "@chakra-ui/react";
 import useMediaQuery from '@/app/hooks/useMediaQuery';
@@ -21,6 +21,7 @@ const options = [
 ]
 
 function GetInTouch() {
+  const hiddenRef = useRef<HTMLInputElement>(null)
   const toast = useToast()
   const [loading, setLoading] = useState(false)
   const {
@@ -33,6 +34,9 @@ function GetInTouch() {
   const isLargerThan768 = useMediaQuery("(min-width: 768px)")
 
   async function onSubmit(data: Inputs) {
+    if (hiddenRef?.current?.value) {
+      return
+    }
     try {
       setLoading(true)
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/lead/`, {
@@ -103,6 +107,16 @@ function GetInTouch() {
             placeholder="Message"
             {...register("message", { required: true })}
           />
+          <Input type="hidden" name="subject" value="Contact Us"
+            position={'absolute'}
+            left={0}
+            top={0}
+            opacity={0}
+            height={0}
+            width={0}
+            zIndex={-1}
+          >
+          </Input>
           <Button type="submit" w="max-content" isLoading={loading} mt="24px" py={6} borderRadius="full" colorScheme="blue">
             Contact Us
           </Button>
