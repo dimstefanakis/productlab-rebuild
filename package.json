@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy:production": "npm run build && firebase deploy --project product-lab-production --only hosting:product-lab-production"
   },
   "dependencies": {
     "@prismicio/client": "^7.17.3",
