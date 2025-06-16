@@ -9,6 +9,5 @@ steps:
       - run
       - deploy:${_NODE_ENV}
     env:
-      - "FIREBASE_TOKEN=${_FIREBASE_TOKEN}"
       - "ACCESS_TOKEN=${_ACCESS_TOKEN}"
       - "NEXT_PUBLIC_API_URL=${_NEXT_PUBLIC_API_URL}"
