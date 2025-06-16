@@ -1,61 +1,50 @@
-import { Anton } from 'next/font/google'
-import { Flex, Box, Text, Image, Button, Heading } from "@chakra-ui/react";
-import { Link as ChakraLink } from "@chakra-ui/layout";
-import useMediaQuery from '@/app/hooks/useMediaQuery';
+import { Anton } from "next/font/google";
+import { Button } from "@/components/ui/button";
+import useMediaQuery from "@/hooks/useMediaQuery";
+import Link from "next/link";
+import Image from "next/image";
 
-const anton = Anton({ weight: '400', preload: false })
+const anton = Anton({ weight: "400", preload: false });
 
 function Hero() {
-  const isLargerThan768 = useMediaQuery("(min-width: 768px)")
+  const isLargerThan768 = useMediaQuery("(min-width: 768px)");
   return (
-    <Flex flexFlow="column" w="100%" minH="100vh" alignItems="center">
-      <Flex w="100%" py="32px" alignItems="center">
+    <div className="flex flex-col w-full min-h-screen items-center">
+      <div className="flex w-full py-8 items-center">
         <Image
           src="/logo.png"
           alt="Logo"
-          h="24px"
+          height={24}
+          width={100}
+          className="h-6 w-auto"
         />
-        <Box flex="1"></Box>
-        <ChakraLink
-          href="#get-in-touch"
-        >
-          <Button
-            borderRadius="full"
-            py={6}
-            bg="black"
-            color="white"
-            _hover={{
-              bg: 'black'
-            }}
-            _active={{
-              bg: 'black'
-            }}
-          >
+        <div className="flex-1"></div>
+        <Link href="#get-in-touch">
+          <Button className="rounded-full py-6 bg-black text-white hover:bg-black active:bg-black">
             Contact Us
           </Button>
-        </ChakraLink>
-
-      </Flex>
-      <Heading className={anton.className} fontSize={{
-        base: '50px',
-        md: '75px'
-      }} w="100%" maxW="900px" textAlign="center" mt={{
-        base: '48px',
-        md: '96px'
-      }}>
+        </Link>
+      </div>
+      <h1
+        className={`${anton.className} text-5xl md:text-7xl w-full max-w-4xl text-center mt-12 md:mt-24`}
+      >
         Unlock Deeper Consumer Transaction Data
-      </Heading>
-      <Text w="100%" mt="32px" maxW="700px" color="gray.700" fontSize="xl" textAlign="center">
-        Develop structured intelligence from unstructured data gathered from receipts, digital accounts, paychecks, emails, and more — all fully permissioned and compiled directly from our active community of  end consumers.
-      </Text>
+      </h1>
+      <p className="w-full mt-8 max-w-3xl text-gray-700 text-xl text-center">
+        Develop structured intelligence from unstructured data gathered from
+        receipts, digital accounts, paychecks, emails, and more — all fully
+        permissioned and compiled directly from our active community of end
+        consumers.
+      </p>
       <Image
         src={isLargerThan768 ? "/dots.png" : "/small-dots.png"}
         alt="dots"
-        w="100%"
-        my="32px"
+        width={isLargerThan768 ? 800 : 400}
+        height={isLargerThan768 ? 200 : 100}
+        className="w-full my-8"
       />
-    </Flex>
-  )
+    </div>
+  );
 }
 
 export default Hero;

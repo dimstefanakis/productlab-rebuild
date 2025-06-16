@@ -1,103 +1,97 @@
-import { useState, useEffect, useRef } from 'react';
-import { Anton } from 'next/font/google'
-import { Flex, Box, Text, Image, Heading, Button, Input, Stack, Select, Textarea } from "@chakra-ui/react";
-import useMediaQuery from '@/app/hooks/useMediaQuery';
-import { Link as ChakraLink } from "@chakra-ui/layout";
-import { useForm, SubmitHandler } from "react-hook-form"
-import { useToast } from '@chakra-ui/react';
+import { useState, useEffect, useRef } from "react";
+import { Anton } from "next/font/google";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import useMediaQuery from "@/hooks/useMediaQuery";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { toast } from "sonner";
+import Image from "next/image";
 
-const anton = Anton({ weight: '400', preload: false })
+const anton = Anton({ weight: "400", preload: false });
 
 type Inputs = {
-  inquiry_type: string
-  name: string
-  email: string
-  message: string
-}
+  inquiry_type: string;
+  name: string;
+  email: string;
+  message: string;
+};
 
-const options = [
-  'Business Inquiry',
-  'Support'
-]
+const options = ["Business Inquiry", "Support"];
 
 function GetInTouch() {
-  const hiddenRef = useRef<HTMLInputElement>(null)
-  const toast = useToast()
-  const [loading, setLoading] = useState(false)
+  const hiddenRef = useRef<HTMLInputElement>(null);
+  const [loading, setLoading] = useState(false);
   const {
     register,
     handleSubmit,
     watch,
+    setValue,
     formState: { errors },
-  } = useForm<Inputs>()
+  } = useForm<Inputs>();
 
-  const isLargerThan768 = useMediaQuery("(min-width: 768px)")
+  const isLargerThan768 = useMediaQuery("(min-width: 768px)");
 
   async function onSubmit(data: Inputs) {
     if (hiddenRef?.current?.value) {
-      return
+      return;
     }
     try {
-      setLoading(true)
+      setLoading(true);
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/lead/`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(data)
-      })
-      setLoading(false)
-      toast({
-        title: "",
-        description: "Thank you for contacting us! We will get back to you shortly.",
-        status: "success",
-        duration: 9000,
-        isClosable: true,
-      })
+        body: JSON.stringify(data),
+      });
+      setLoading(false);
+      toast.success(
+        "Thank you for contacting us! We will get back to you shortly.",
+      );
     } catch (err) {
-      setLoading(false)
+      setLoading(false);
+      toast.error("Something went wrong. Please try again.");
     }
   }
 
   return (
-    <Flex w="100%" flexFlow="column" alignItems="center" id="get-in-touch">
-      <Heading className={anton.className} fontSize={{
-        base: '40px',
-        md: '60px'
-      }} w="100%" maxW="900px" textAlign="center" mt={{
-        base: '48px',
-        md: '96px'
-      }}>
-        Get In Touch
-      </Heading>
-      <form onSubmit={handleSubmit(onSubmit)}
-        style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+    <div className="w-full flex flex-col items-center" id="get-in-touch">
+      <h2
+        className={`${anton.className} text-4xl md:text-6xl w-full max-w-4xl text-center mt-12 md:mt-24`}
       >
-        <Stack
-          w="100%"
-          maxW="600px"
-          mt="32px"
-          spacing={4}
-          alignItems='center'
-        >
-          <Select
-            w="100%"
-            maxW="900px"
-            mt="32px"
-            {...register("inquiry_type", { required: true })}
-          >
-            {options.map((option, i) => (
-              <option key={i} value={option}>{option}</option>
-            ))}
+        Get In Touch
+      </h2>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="w-full flex justify-center items-center"
+      >
+        <div className="w-full max-w-2xl mt-8 space-y-4 flex flex-col items-center">
+          <Select onValueChange={(value) => setValue("inquiry_type", value)}>
+            <SelectTrigger className="w-full max-w-4xl mt-8">
+              <SelectValue placeholder="Select inquiry type" />
+            </SelectTrigger>
+            <SelectContent>
+              {options.map((option, i) => (
+                <SelectItem key={i} value={option}>
+                  {option}
+                </SelectItem>
+              ))}
+            </SelectContent>
           </Select>
-          <Input
-            placeholder="Name"
-            {...register("name", { required: true })}
-          />
+          <Input placeholder="Name" {...register("name", { required: true })} />
           <Input
             placeholder="Email"
             {...register("email", {
-              required: true, pattern: {
+              required: true,
+              pattern: {
                 value: /\S+@\S+\.\S+/,
                 message: "Entered value does not match email format",
               },
@@ -107,29 +101,30 @@ function GetInTouch() {
             placeholder="Message"
             {...register("message", { required: true })}
           />
-          <Input type="hidden" name="subject" value="Contact Us"
-            position={'absolute'}
-            left={0}
-            top={0}
-            opacity={0}
-            height={0}
-            width={0}
-            zIndex={-1}
+          <input
+            ref={hiddenRef}
+            type="hidden"
+            name="subject"
+            className="absolute left-0 top-0 opacity-0 h-0 w-0 -z-10"
+          />
+          <Button
+            type="submit"
+            className="w-max mt-6 py-6 rounded-full bg-[#3182ce] hover:bg-[#3182ce]"
+            disabled={loading}
           >
-          </Input>
-          <Button type="submit" w="max-content" isLoading={loading} mt="24px" py={6} borderRadius="full" colorScheme="blue">
-            Contact Us
+            {loading ? "Sending..." : "Contact Us"}
           </Button>
-        </Stack>
+        </div>
       </form>
       <Image
         src={isLargerThan768 ? "/dots.png" : "/small-dots.png"}
         alt="dots"
-        w="100%"
-        my="32px"
+        width={isLargerThan768 ? 800 : 400}
+        height={isLargerThan768 ? 200 : 100}
+        className="w-full my-8"
       />
-    </Flex>
-  )
+    </div>
+  );
 }
 
 export default GetInTouch;

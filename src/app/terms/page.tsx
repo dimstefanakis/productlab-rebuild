@@ -1,38 +1,31 @@
-import { useRouter } from "next/navigation";
-import Prismic from "@prismicio/client";
-import { Flex, Heading, Text } from "@chakra-ui/layout";
 import { RichText, Link } from "prismic-reactjs";
-import Client from "../../../prismicHelpers"
-
+import Client from "../../../prismicHelpers";
 
 async function Terms() {
   const terms = await Client().getSingle("terms_page");
 
   let termsPage = terms;
 
-
   return (
-    <Flex>
+    <div className="flex">
       {/* {!isSmallerThan768 && <SideBar />} */}
-      <Flex flexFlow="column">
-        <Flex
-          width={{ base: "100vw", md: "100%" }}
-          justifyContent="center"
-          pb="spacer-04"
-        >
-          <Flex flexFlow="column" mt="100px" w="80%">
-            <Heading>{termsPage.data.page_title[0].text}</Heading>
-            <Text pb={10} color="gray">
+      <div className="flex flex-col">
+        <div className="w-screen md:w-full flex justify-center pb-8">
+          <div className="flex flex-col mt-24 w-4/5">
+            <h1 className="text-2xl font-bold">
+              {termsPage.data.page_title[0].text}
+            </h1>
+            <p className="pb-10 text-gray-600">
               Effective Date: {termsPage.data.effective_date}
-            </Text>
+            </p>
             {termsPage.data.body.map((section: any, i: number) => {
               if (section.slice_type == "page_section") {
                 return (
-                  <Flex flexFlow="column" key={i}>
+                  <div className="flex flex-col" key={i}>
                     {section.primary.section_name && (
-                      <Heading as="h3" fontSize="3xl" my="10px" mt={10}>
+                      <h3 className="text-3xl my-2 mt-10">
                         {section.primary.section_name}
-                      </Heading>
+                      </h3>
                     )}
                     {section.items.map((item: any, sectionIndex: number) => {
                       return (
@@ -42,16 +35,16 @@ async function Terms() {
                         />
                       );
                     })}
-                  </Flex>
+                  </div>
                 );
               }
               return null;
             })}
-          </Flex>
-        </Flex>
+          </div>
+        </div>
         {/* <Footer /> */}
-      </Flex>
-    </Flex>
+      </div>
+    </div>
   );
 }
 
