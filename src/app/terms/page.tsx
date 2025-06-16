@@ -4,7 +4,7 @@ import Client from "../../../prismicHelpers";
 async function Terms() {
   const terms = await Client().getSingle("terms_page");
 
-  let termsPage = terms;
+  const termsPage = terms;
 
   return (
     <div className="flex">
