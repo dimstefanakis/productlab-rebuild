@@ -1,5 +1,5 @@
 // ~/utils/prismicHelpers.js
-import Prismic, { createClient } from "@prismicio/client";
+import { createClient } from "@prismicio/client";
 import Link from "next/link";
 import {
   apiEndpoint,
@@ -22,14 +22,14 @@ export const Client = (req = null) =>
   createClient(
     apiEndpoint,
     // @ts-ignore
-    createClientOptions(req, accessToken, routeResolver)
+    createClientOptions(req, accessToken, routeResolver),
   );
 
 // Options to be passed to the Client
 const createClientOptions = (
   req = null,
   prismicAccessToken = null,
-  routes = null
+  routes = null,
 ) => {
   const reqOption = req ? { req } : {};
   const accessTokenOption = prismicAccessToken
@@ -48,9 +48,9 @@ export function extractBlogDataFromPrisma(data: any) {
   blogData = blogData.results.map((_blog: any) => {
     let blog = _blog.data;
     return {
-      slices: blog.body
-    }
-  })
+      slices: blog.body,
+    };
+  });
   return blogData[0].slices;
 }
 

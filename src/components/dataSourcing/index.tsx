@@ -1,124 +1,89 @@
 import { Anton } from 'next/font/google'
-import { Flex, Box, Text, Image, HStack, VStack, Heading, Divider, useMediaQuery } from "@chakra-ui/react";
+import useMediaQuery from '@/hooks/useMediaQuery';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const anton = Anton({ weight: '400', preload: false })
 
 function DataSourcing() {
-  const [isLargerThan768] = useMediaQuery("(min-width: 768px)")
+  const isLargerThan768 = useMediaQuery("(min-width: 768px)")
   return (
-    <Flex
-      flexFlow={{
-        base: 'column',
-        md: 'row'
-      }}
-      justifyContent="space-between" w="100%" my="48px"
-      p={{
-        base: '24px',
-        md: '48px'
-      }} borderRadius="md" bg="#F3F4F0" h={{ base: 'auto', md: '600px' }}>
-      <Flex flexFlow="column" w={{
-        base: '100%',
-        md: '48%'
-      }}
-        order={{
-          base: 2,
-          md: 1
-        }}
-        h="100%">
-        <Heading flex={{
-          base: 0,
-          md: 1
-        }} className={anton.className} fontSize={{
-          base: '40px',
-          md: '60px'
-        }}
-          my={{
-            base: '24px',
-            md: '0px'
-          }}>
+    <div className="flex flex-col md:flex-row justify-between w-full my-12 p-6 md:p-12 rounded-md bg-[#F3F4F0] min-h-auto md:h-[600px]">
+      <div className="flex flex-col w-full md:w-[48%] order-2 md:order-1 h-full">
+        <h2 className={`${anton.className} flex-none md:flex-1 text-4xl md:text-6xl my-6 md:my-0`}>
           Data Sourcing
-        </Heading>
-        <Text fontSize="xl">
+        </h2>
+        <p className="text-xl">
           Through our top rated mobile apps, our community of vetted consumer panelists proactively contribute transaction documents including receipts, digital accounts, paychecks, emails, and more.  Our high retention rate and rigorous vetting process enables some of the highest quality longitudinal research in the industry.
-        </Text>
-        <HStack mt={4} w="100%">
+        </p>
+        <div className="flex mt-4 w-full space-x-4">
           <Link href="https://apps.apple.com/us/app/productlab/id1557610246" target='_blank'>
             <Image
               src="/app-store-badge.png"
               alt="App store"
-              h="48px"
-              objectFit="cover"
-              borderRadius="md"
+              width={120}
+              height={40}
+              className="h-12 object-cover rounded-md w-auto"
             />
           </Link>
           <Link href="https://play.google.com/store/apps/details?id=ai.productlab&hl=en&gl=US&pli=1" target='_blank'>
             <Image
               src="/google-play-badge.png"
               alt="Play store"
-              h="48px"
-              objectFit="cover"
-              borderRadius="md"
+              width={120}
+              height={40}
+              className="h-12 object-cover rounded-md w-auto"
             />
           </Link>
-        </HStack>
+        </div>
         {isLargerThan768 ? (
-          <HStack w="100%" mt="48px" py={3} bg="#E7E9E5" textAlign='center'>
-            <Flex flexFlow="column" alignItems="center" w="33%">
-              <Text>Over</Text>
-              <Text fontWeight="bold" fontSize="2xl">150k</Text>
-              <Text>Panelists</Text>
-            </Flex>
-            <Flex flexFlow="column" alignItems="center" w="33%">
-              <Text>Over</Text>
-              <Text fontWeight="bold" fontSize="2xl">6M</Text>
-              <Text>Documents processed</Text>
-            </Flex>
-            <Flex flexFlow="column" alignItems="center" w="33%">
-              <Text>Avg.</Text>
-              <Text fontWeight="bold" fontSize="2xl">4.8</Text>
-              <Text>App store rating</Text>
-            </Flex>
-          </HStack>
+          <div className="flex w-full mt-12 py-3 bg-[#E7E9E5] text-center">
+            <div className="flex flex-col items-center w-1/3">
+              <p>Over</p>
+              <p className="font-bold text-2xl">150k</p>
+              <p>Panelists</p>
+            </div>
+            <div className="flex flex-col items-center w-1/3">
+              <p>Over</p>
+              <p className="font-bold text-2xl">6M</p>
+              <p>Documents processed</p>
+            </div>
+            <div className="flex flex-col items-center w-1/3">
+              <p>Avg.</p>
+              <p className="font-bold text-2xl">4.8</p>
+              <p>App store rating</p>
+            </div>
+          </div>
         ) : (
-          <VStack w="100%" mt="48px" py={3} bg="#E7E9E5" textAlign='center' divider={<Divider bg="#BABCBB" />}>
-            <Flex flexFlow="column" alignItems="center" w="100%">
-              <Text>Over</Text>
-              <Text fontWeight="bold" fontSize="2xl">150k</Text>
-              <Text>Panelists</Text>
-            </Flex>
-            <Flex flexFlow="column" alignItems="center" w="100%">
-              <Text>Over</Text>
-              <Text fontWeight="bold" fontSize="2xl">6M</Text>
-              <Text>Documents processed</Text>
-            </Flex>
-            <Flex flexFlow="column" alignItems="center" w="100%">
-              <Text>Avg.</Text>
-              <Text fontWeight="bold" fontSize="2xl">4.8</Text>
-              <Text>App store rating</Text>
-            </Flex>
-          </VStack>
+          <div className="flex flex-col w-full mt-12 py-3 bg-[#E7E9E5] text-center divide-y divide-[#BABCBB]">
+            <div className="flex flex-col items-center w-full pb-3">
+              <p>Over</p>
+              <p className="font-bold text-2xl">150k</p>
+              <p>Panelists</p>
+            </div>
+            <div className="flex flex-col items-center w-full py-3">
+              <p>Over</p>
+              <p className="font-bold text-2xl">6M</p>
+              <p>Documents processed</p>
+            </div>
+            <div className="flex flex-col items-center w-full pt-3">
+              <p>Avg.</p>
+              <p className="font-bold text-2xl">4.8</p>
+              <p>App store rating</p>
+            </div>
+          </div>
         )}
-      </Flex>
-      <Flex w={{
-        base: '100%',
-        md: '48%'
-      }}
-        order={{
-          base: 1,
-          md: 2
-        }}
-        h="100%">
+      </div>
+      <div className="w-full md:w-[48%] order-1 md:order-2 h-full">
         <Image
           src="/data_sourcing.png"
           alt="Data Sourcing"
-          w="100%"
-          h="100%"
-          objectFit="cover"
-          borderRadius="md"
+          width={500}
+          height={600}
+          className="w-full h-full object-cover rounded-md"
         />
-      </Flex>
-    </Flex>
+      </div>
+    </div>
   )
 }
 

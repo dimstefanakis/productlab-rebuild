@@ -1,24 +1,15 @@
-import Prismic from "@prismicio/client";
-import {
-  Flex,
-  Heading,
-  Text,
-  UnorderedList,
-  ListItem,
-} from "@chakra-ui/layout";
 import {
   Table,
-  Thead,
-  Tbody,
-  Tfoot,
-  Tr,
-  Th,
-  Td,
+  TableBody,
   TableCaption,
-} from "@chakra-ui/react";
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { RichText, Link } from "prismic-reactjs";
 // import Footer from "../../src/flat/Footer";
-import Client from "../../../prismicHelpers"
+import Client from "../../../prismicHelpers";
 // import styles from "./Privacy.module.css";
 
 interface PrivacyProps {
@@ -26,36 +17,29 @@ interface PrivacyProps {
 }
 
 async function Privacy() {
-  const privacy = await Client().getSingle(
-    "privacy_policy_page"
-  );
+  const privacy = await Client().getSingle("privacy_policy_page");
 
   const privacyPage = privacy;
 
   return (
-    <Flex>
-      <Flex flexFlow="column">
-        <Flex
-          width={{ base: "100vw", md: "100%" }}
-          justifyContent="center"
-          // borderLeft="1px solid"
-          // borderColor="border.100"
-          pb="spacer-04"
-          // className={styles.privacyPageWrapper}
-        >
-          <Flex flexFlow="column" mt="100px" w="80%">
-            <Heading>{privacyPage.data.page_title[0].text}</Heading>
-            <Text pb={10} color="gray">
+    <div className="flex">
+      <div className="flex flex-col w-full">
+        <div className="w-screen md:w-full flex justify-center pb-8">
+          <div className="flex flex-col mt-24 w-4/5">
+            <h1 className="text-2xl font-bold">
+              {privacyPage.data.page_title[0].text}
+            </h1>
+            <p className="pb-10 text-gray-600">
               Effective Date: {privacyPage.data.effective_date}
-            </Text>
+            </p>
             {privacyPage.data.body.map((section: any, i: number) => {
               if (section.slice_type == "page_section") {
                 return (
-                  <Flex flexFlow="column" key={i}>
+                  <div className="flex flex-col" key={i}>
                     {section.primary.section_name && (
-                      <Heading as="h3" fontSize="3xl" my="10px" mt={10}>
+                      <h3 className="text-3xl my-2 mt-10">
                         {section.primary.section_name}
-                      </Heading>
+                      </h3>
                     )}
                     {section.items.map((item: any, sectionIndex: number) => {
                       return (
@@ -65,193 +49,199 @@ async function Privacy() {
                         />
                       );
                     })}
-                  </Flex>
+                  </div>
                 );
               } else if (section.slice_type == "table") {
                 return (
-                  <Flex key={i} width="100%" overflow="auto">
+                  <div key={i} className="w-full overflow-auto">
                     <PrivacyTable key="table" />
-                  </Flex>
+                  </div>
                 );
               }
               return null;
             })}
-          </Flex>
-        </Flex>
+          </div>
+        </div>
         {/* <Footer /> */}
-      </Flex>
-    </Flex>
+      </div>
+    </div>
   );
 }
 
 function PrivacyTable() {
   return (
-    <Table variant="striped" my={5}>
-      <Thead>
-        <Tr>
-          <Th w="40%">Statutory category of personal information</Th>
-          <Th>Personal information we collect in this category</Th>
-          <Th>Source of personal information</Th>
-        </Tr>
-      </Thead>
-      <Tbody>
-        <Tr>
-          <Td>Identifiers (such as contact information, cookies, etc.)</Td>
-          <Td>
-            <UnorderedList>
-              <ListItem>Registration Details</ListItem>
-              <ListItem>Technical Information and Device Data</ListItem>
-              <ListItem>Third Party Account Data</ListItem>
-            </UnorderedList>
-          </Td>
-          <Td>
-            <UnorderedList>
-              <ListItem>Directly from you</ListItem>
-              <ListItem>Automatic collection from you</ListItem>
-            </UnorderedList>
-          </Td>
-        </Tr>
-        <Tr>
-          <Td>
+    <Table className="my-5">
+      <TableHeader>
+        <TableRow>
+          <TableHead className="w-[40%]">
+            Statutory category of personal information
+          </TableHead>
+          <TableHead>
+            Personal information we collect in this category
+          </TableHead>
+          <TableHead>Source of personal information</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell>
+            Identifiers (such as contact information, cookies, etc.)
+          </TableCell>
+          <TableCell>
+            <ul className="list-disc pl-5">
+              <li>Registration Details</li>
+              <li>Technical Information and Device Data</li>
+              <li>Third Party Account Data</li>
+            </ul>
+          </TableCell>
+          <TableCell>
+            <ul className="list-disc pl-5">
+              <li>Directly from you</li>
+              <li>Automatic collection from you</li>
+            </ul>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>
             Personal information under California Civil Code section 1798.80
-          </Td>
-          <Td>
-            <UnorderedList>
-              <ListItem>Technical Information and Device Data</ListItem>
-            </UnorderedList>
-          </Td>
-          <Td>
-            <UnorderedList>
-              <ListItem>Directly from you</ListItem>
-            </UnorderedList>
-          </Td>
-        </Tr>
-        <Tr>
-          <Td>
+          </TableCell>
+          <TableCell>
+            <ul className="list-disc pl-5">
+              <li>Technical Information and Device Data</li>
+            </ul>
+          </TableCell>
+          <TableCell>
+            <ul className="list-disc pl-5">
+              <li>Directly from you</li>
+            </ul>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>
             Commercial Information (such as records of products or services
             purchased, obtained, or considered)
-          </Td>
-          <Td>
-            <UnorderedList>
-              <ListItem>Earnings and Activity Data</ListItem>
-            </UnorderedList>
-          </Td>
-          <Td>
-            <UnorderedList>
-              <ListItem>Directly from you</ListItem>
-            </UnorderedList>
-          </Td>
-        </Tr>
-        <Tr>
-          <Td>Internet or Network Information</Td>
-          <Td>
-            <UnorderedList>
-              <ListItem>Technical Information and Device Data</ListItem>
-              <ListItem>Site Usage Information and Preferences</ListItem>
-            </UnorderedList>
-          </Td>
-          <Td>
-            <UnorderedList>
-              <ListItem>Automatic collection from you</ListItem>
-            </UnorderedList>
-          </Td>
-        </Tr>
-        <Tr>
-          <Td>Geolocation Data</Td>
-          <Td>
-            <UnorderedList>
-              <ListItem>Technical Information and Device Data</ListItem>
-            </UnorderedList>
-          </Td>
-          <Td>
-            <UnorderedList>
-              <ListItem>Automatic collection from you</ListItem>
-            </UnorderedList>
-          </Td>
-        </Tr>
-        <Tr>
-          <Td>Professional or Employment Information</Td>
-          <Td>
-            <UnorderedList>
-              <ListItem>Employment Details</ListItem>
-            </UnorderedList>
-          </Td>
-          <Td>
-            <UnorderedList>
-              <ListItem>Directly from you</ListItem>
-            </UnorderedList>
-          </Td>
-        </Tr>
-        <Tr>
-          <Td>
+          </TableCell>
+          <TableCell>
+            <ul className="list-disc pl-5">
+              <li>Earnings and Activity Data</li>
+            </ul>
+          </TableCell>
+          <TableCell>
+            <ul className="list-disc pl-5">
+              <li>Directly from you</li>
+            </ul>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>Internet or Network Information</TableCell>
+          <TableCell>
+            <ul className="list-disc pl-5">
+              <li>Technical Information and Device Data</li>
+              <li>Site Usage Information and Preferences</li>
+            </ul>
+          </TableCell>
+          <TableCell>
+            <ul className="list-disc pl-5">
+              <li>Automatic collection from you</li>
+            </ul>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>Geolocation Data</TableCell>
+          <TableCell>
+            <ul className="list-disc pl-5">
+              <li>Technical Information and Device Data</li>
+            </ul>
+          </TableCell>
+          <TableCell>
+            <ul className="list-disc pl-5">
+              <li>Automatic collection from you</li>
+            </ul>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>Professional or Employment Information</TableCell>
+          <TableCell>
+            <ul className="list-disc pl-5">
+              <li>Employment Details</li>
+            </ul>
+          </TableCell>
+          <TableCell>
+            <ul className="list-disc pl-5">
+              <li>Directly from you</li>
+            </ul>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>
             Inferences (drawn from any of the information identified to create a
-            profile about a consumer reflecting the consumer’s preferences,
+            profile about a consumer reflecting the consumer's preferences,
             characteristics, psychological trends, predispositions, behavior,
             attitudes, intelligence, abilities, and aptitudes)
-          </Td>
-          <Td>
-            <UnorderedList>
-              <ListItem>Registration Details</ListItem>
-              <ListItem>Earnings and Activity Data</ListItem>
-            </UnorderedList>
-          </Td>
-          <Td>
-            <UnorderedList>
-              <ListItem>Directly from you</ListItem>
-            </UnorderedList>
-          </Td>
-        </Tr>
-        <Tr>
-          <Td>
+          </TableCell>
+          <TableCell>
+            <ul className="list-disc pl-5">
+              <li>Registration Details</li>
+              <li>Earnings and Activity Data</li>
+            </ul>
+          </TableCell>
+          <TableCell>
+            <ul className="list-disc pl-5">
+              <li>Directly from you</li>
+            </ul>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>
             Protected Classification Information (such as race, gender,
             ethnicity)
-          </Td>
-          <Td>
-            <UnorderedList>
-              <ListItem>None</ListItem>
-            </UnorderedList>
-          </Td>
-          <Td>
-            <UnorderedList>
-              <ListItem>N/A</ListItem>
-            </UnorderedList>
-          </Td>
-        </Tr>
-        <Tr>
-          <Td>
+          </TableCell>
+          <TableCell>
+            <ul className="list-disc pl-5">
+              <li>None</li>
+            </ul>
+          </TableCell>
+          <TableCell>
+            <ul className="list-disc pl-5">
+              <li>N/A</li>
+            </ul>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>
             Education Information (defined as information that is not publicly
             available personally identifiable information as defined in the
             Family Educational Rights and Privacy Act (20 U.S.C. section Sec.
             1232g, ; 34 C.F.R. Part 99)
-          </Td>
-          <Td>
-            <UnorderedList>
-              <ListItem>None</ListItem>
-            </UnorderedList>
-          </Td>
-          <Td>
-            <UnorderedList>
-              <ListItem>N/A</ListItem>
-            </UnorderedList>
-          </Td>
-        </Tr>
-        <Tr>
-          <Td>
+          </TableCell>
+          <TableCell>
+            <ul className="list-disc pl-5">
+              <li>None</li>
+            </ul>
+          </TableCell>
+          <TableCell>
+            <ul className="list-disc pl-5">
+              <li>N/A</li>
+            </ul>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>
             Sensory Information (such as audio, electronic, visual, or other
             similar information)
-          </Td>
-          <Td>
-            <UnorderedList>
-              <ListItem>None</ListItem>
-            </UnorderedList>
-          </Td>
-          <Td>
-            <UnorderedList>
-              <ListItem>N/A</ListItem>
-            </UnorderedList>
-          </Td>
-        </Tr>
-      </Tbody>
+          </TableCell>
+          <TableCell>
+            <ul className="list-disc pl-5">
+              <li>None</li>
+            </ul>
+          </TableCell>
+          <TableCell>
+            <ul className="list-disc pl-5">
+              <li>N/A</li>
+            </ul>
+          </TableCell>
+        </TableRow>
+      </TableBody>
     </Table>
   );
 }

@@ -1,29 +1,21 @@
-import './globals.css'
-import type { Metadata } from 'next'
+import type { Metadata } from "next";
 import Script from "next/script";
-import { Inter, Anton } from 'next/font/google'
-import { Providers } from './providers'
-import { extendTheme } from '@chakra-ui/react'
-import { ColorModeScript } from '@chakra-ui/react'
+import { Inter, Anton } from "next/font/google";
+import { Toaster } from "sonner";
+import "./globals.css";
 
-const config = {
-  initialColorMode: 'light',
-  useSystemColorMode: false,
-}
-
-const theme = extendTheme({ config })
-
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Productlab',
-  description: 'Develop structured intelligence from unstructured data gathered from receipts, digital accounts, paychecks, emails, and more — all fully permissioned and compiled directly from end consumers in our bespoke research panels.',
-}
+  title: "Productlab",
+  description:
+    "Develop structured intelligence from unstructured data gathered from receipts, digital accounts, paychecks, emails, and more — all fully permissioned and compiled directly from end consumers in our bespoke research panels.",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
@@ -37,10 +29,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-5RHMKW5');`}
         </Script>
       </head>
-      <body className={inter.className} style={{ paddingRight: '24px', paddingLeft: '24px' }}>
-        <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-        <Providers>{children}</Providers>
+      <body className={inter.className}>
+        {children}
+        <Toaster />
       </body>
     </html>
-  )
+  );
 }

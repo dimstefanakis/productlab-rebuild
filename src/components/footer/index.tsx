@@ -1,89 +1,152 @@
-import { Flex, Box, Text, Link, Icon, Grid, GridItem, useBreakpointValue } from "@chakra-ui/react";
 import { FaTwitter, FaLinkedin } from "react-icons/fa";
+import useMediaQuery from "@/hooks/useMediaQuery";
+import Link from "next/link";
 
-function Footer() {
-  const isMobile = useBreakpointValue({ base: true, md: false });
+interface FooterProps {
+  theme?: "dark" | "light";
+  hasIndent?: boolean;
+}
+
+function Footer({ theme = "light", hasIndent = true }: FooterProps) {
+  const isMobile = useMediaQuery("(max-width: 767px)");
 
   return (
-    <Flex mx="-24px"
-      direction={isMobile ? "column" : "row"}
-      justifyContent={isMobile ? 'space-between' : 'auto'}
-      alignItems="center" py={10} px={6} bg="gray.200">
+    <div
+      className={`${hasIndent ? "-mx-6" : ""} flex flex-col md:flex-row justify-between md:justify-auto items-center py-10 px-6
+      ${theme == "dark" ? "bg-gray-800" : "bg-gray-200"} `}
+    >
       {isMobile ? (
-        // vertical grid, 2 items per row. It should be 3 rows
-        <Grid templateAreas={`
-        "privacy info"
-        "terms contact"
-        "blog ."
-        "li tw"
-        "copywrite copywrite"`}
-          templateColumns="repeat(2, 1fr)"
-          templateRows="repeat(4, 1fr)"
-          gap={6}>
-
-          <GridItem display="flex" justifyContent="center" alignItems="center" gridArea="privacy">
+        <div
+          className="grid grid-cols-2 grid-rows-5 gap-6 w-full"
+          style={{
+            gridTemplateAreas: `
+                 "privacy info"
+                 "terms contact"
+                 "blog ."
+                 "li tw"
+                 "copywrite copywrite"`,
+          }}
+        >
+          <div
+            className="flex justify-center items-center"
+            style={{ gridArea: "privacy" }}
+          >
             <Link href="/privacy">Privacy</Link>
-          </GridItem>
-          <GridItem display="flex" justifyContent="center" alignItems="center" gridArea="terms">
+          </div>
+          <div
+            className="flex justify-center items-center"
+            style={{ gridArea: "terms" }}
+          >
             <Link href="/terms">Terms & Conditions</Link>
-          </GridItem>
-          <GridItem display="flex" justifyContent="center" alignItems="center" gridArea="contact">
+          </div>
+          <div
+            className="flex justify-center items-center"
+            style={{ gridArea: "contact" }}
+          >
             <Link href="#get-in-touch">Contact Us</Link>
-          </GridItem>
-          <GridItem display="flex" textAlign="center" justifyContent="center" alignItems="center" gridArea="info">
-            <Link href="mailto:support@productlab.ai?subject=Do Not Sell My Information Request">Do Not Sell Info</Link>
-          </GridItem>
-          <GridItem display="flex" textAlign="center" justifyContent="center" alignItems="center" gridArea="blog">
-            <Link href="https://app.productlab.ai/blog/" isExternal>Blog</Link>
-          </GridItem>
-          <GridItem display="flex" justifyContent="center" alignItems="center" gridArea="li">
-            <Link href="https://www.linkedin.com/company/productlabai" isExternal>
-              <Icon as={FaLinkedin} />
+          </div>
+          <div
+            className="flex text-center justify-center items-center"
+            style={{ gridArea: "info" }}
+          >
+            <Link href="mailto:support@productlab.ai?subject=Do Not Sell My Information Request">
+              Do Not Sell Info
             </Link>
-          </GridItem>
-          <GridItem display="flex" justifyContent="center" alignItems="center" gridArea="tw">
-            <Link href="https://twitter.com/productlabai" isExternal>
-              <Icon as={FaTwitter} />
+          </div>
+          <div
+            className="flex text-center justify-center items-center"
+            style={{ gridArea: "blog" }}
+          >
+            <Link
+              href="https://app.productlab.ai/blog/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Blog
             </Link>
-          </GridItem>
-          <GridItem display="flex" justifyContent="center" alignItems="center" gridArea="copywrite">
-            <Text>
-              © ProductLab. All Rights Reserved
-            </Text>
-          </GridItem>
-
-        </Grid>
-      ) : <>
-        <Box flex="1" my={{
-          base: '12px',
-          md: '0'
-        }}>
-          <Text>
-            © ProductLab. All Rights Reserved
-          </Text>
-        </Box>
-        <Box display={isMobile ? "flex" : "block"} justifyContent="space-between">
-          <Link href="https://app.productlab.ai/blog/" isExternal mr={4}>Blog</Link>
-          <Link href="/privacy" mr={4}>Privacy</Link>
-          <Link href="/terms" mr={4}>Terms and Conditions</Link>
-        </Box>
-        <Box display={isMobile ? "flex" : "block"} justifyContent="space-between">
-          <Link mr={4}>Do Not Sell Info</Link>
-          <Link href="#get-in-touch">Contact Us</Link>
-        </Box>
-        <Box display="flex" justifyContent="space-between" mx={4}>
-          <Link href="https://twitter.com/productlabai" isExternal mr={2}>
-            <Icon as={FaTwitter} />
-          </Link>
-          <Link href="https://www.linkedin.com/company/productlabai" isExternal>
-            <Icon as={FaLinkedin} />
-          </Link>
-        </Box>
-
-      </>}
-    </Flex>
+          </div>
+          <div
+            className="flex justify-center items-center"
+            style={{ gridArea: "li" }}
+          >
+            <Link
+              href="https://www.linkedin.com/company/productlabai"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaLinkedin />
+            </Link>
+          </div>
+          <div
+            className="flex justify-center items-center"
+            style={{ gridArea: "tw" }}
+          >
+            <Link
+              href="https://twitter.com/productlabai"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaTwitter />
+            </Link>
+          </div>
+          <div
+            className="flex justify-center items-center"
+            style={{ gridArea: "copywrite" }}
+          >
+            <p>© ProductLab. All Rights Reserved</p>
+          </div>
+        </div>
+      ) : (
+        <>
+          <div className="flex-1 my-0">
+            <p>© ProductLab. All Rights Reserved</p>
+          </div>
+          <div className="block">
+            <Link
+              href="https://app.productlab.ai/blog/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mr-4"
+            >
+              Blog
+            </Link>
+            <Link href="/privacy" className="mr-4">
+              Privacy
+            </Link>
+            <Link href="/terms" className="mr-4">
+              Terms and Conditions
+            </Link>
+          </div>
+          <div className="block">
+            <Link
+              href="mailto:support@productlab.ai?subject=Do Not Sell My Information Request"
+              className="mr-4"
+            >
+              Do Not Sell Info
+            </Link>
+            <Link href="#get-in-touch">Contact Us</Link>
+          </div>
+          <div className="flex justify-between mx-4">
+            <Link
+              href="https://twitter.com/productlabai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mr-2"
+            >
+              <FaTwitter />
+            </Link>
+            <Link
+              href="https://www.linkedin.com/company/productlabai"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaLinkedin />
+            </Link>
+          </div>
+        </>
+      )}
+    </div>
   );
 }
 
 export default Footer;
-
