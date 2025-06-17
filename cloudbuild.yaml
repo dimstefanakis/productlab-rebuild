@@ -11,3 +11,5 @@ steps:
     env:
       - "ACCESS_TOKEN=${_ACCESS_TOKEN}"
       - "NEXT_PUBLIC_API_URL=${_NEXT_PUBLIC_API_URL}"
+options:
+  logging: CLOUD_LOGGING_ONLY
