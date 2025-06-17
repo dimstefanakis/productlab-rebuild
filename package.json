@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "firebase-deploy:production": "firebase deploy --project product-lab-production --only hosting:product-lab-production --debug",
+    "firebase-deploy:production": "firebase deploy --project product-lab-production --only hosting:product-lab-production",
     "deploy:production": "npm run build && npm run firebase-deploy:production"
   },
   "dependencies": {
