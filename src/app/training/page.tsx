@@ -80,7 +80,7 @@ export default function LandingPage() {
       setLoading(true);
       // Combine company and message
       const formattedMessage = `COMPANY: ${data.company}, ${data.message}`;
-      
+
       const submitData = {
         inquiry_type: data.inquiry_type,
         name: data.name,
@@ -163,6 +163,132 @@ export default function LandingPage() {
                 {COPY.hero.primaryCTA}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="py-16 bg-gray-900 border-t border-gray-700">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <p className="text-lg text-gray-400 font-medium">Trusted by industry leaders</p>
+          </div>
+          <div className="hidden md:flex justify-center items-center gap-12 lg:gap-16 max-w-4xl mx-auto">
+            <div className="flex-shrink-0">
+              <Image
+                src="/uber_logo_clean.png"
+                alt="Uber"
+                width={100}
+                height={40}
+                className="h-8 lg:h-10 w-auto opacity-70 hover:opacity-100 transition-opacity filter brightness-0 invert"
+              />
+            </div>
+            <div className="flex-shrink-0">
+              <Image
+                src="/doordash_logo_clean.png"
+                alt="DoorDash"
+                width={140}
+                height={40}
+                className="h-8 lg:h-10 w-auto opacity-70 hover:opacity-100 transition-opacity filter brightness-0 invert"
+              />
+            </div>
+            <div className="flex-shrink-0">
+              <Image
+                src="/dynata_logo_clean.png"
+                alt="Dynata"
+                width={120}
+                height={40}
+                className="h-8 lg:h-10 w-auto opacity-70 hover:opacity-100 transition-opacity filter brightness-0 invert"
+              />
+            </div>
+            <div className="flex-shrink-0">
+              <Image
+                src="/cint_logo_clean.png"
+                alt="Cint"
+                width={120}
+                height={40}
+                className="h-8 lg:h-10 w-auto opacity-70 hover:opacity-100 transition-opacity filter brightness-0 invert"
+              />
+            </div>
+          </div>
+
+          <div className="md:hidden overflow-hidden relative">
+            <div className="flex animate-scroll">
+              <div className="flex items-center gap-8 px-4 flex-shrink-0">
+                <div className="w-16 h-8 flex items-center justify-center">
+                  <Image
+                    src="/uber_logo_clean.png"
+                    alt="Uber"
+                    width={60}
+                    height={32}
+                    className="max-h-6 w-auto opacity-70 filter brightness-0 invert"
+                  />
+                </div>
+                <div className="w-24 h-8 flex items-center justify-center">
+                  <Image
+                    src="/doordash_logo_clean.png"
+                    alt="DoorDash"
+                    width={100}
+                    height={32}
+                    className="max-h-6 w-auto opacity-70 filter brightness-0 invert"
+                  />
+                </div>
+                <div className="w-20 h-8 flex items-center justify-center">
+                  <Image
+                    src="/dynata_logo_clean.png"
+                    alt="Dynata"
+                    width={80}
+                    height={32}
+                    className="max-h-6 w-auto opacity-70 filter brightness-0 invert"
+                  />
+                </div>
+                <div className="w-20 h-8 flex items-center justify-center">
+                  <Image
+                    src="/cint_logo_clean.png"
+                    alt="Cint"
+                    width={80}
+                    height={32}
+                    className="max-h-6 w-auto opacity-70 filter brightness-0 invert"
+                  />
+                </div>
+              </div>
+              <div className="flex items-center gap-8 px-4 flex-shrink-0">
+                <div className="w-16 h-8 flex items-center justify-center">
+                  <Image
+                    src="/uber_logo_clean.png"
+                    alt="Uber"
+                    width={60}
+                    height={32}
+                    className="max-h-6 w-auto opacity-70 filter brightness-0 invert"
+                  />
+                </div>
+                <div className="w-24 h-8 flex items-center justify-center">
+                  <Image
+                    src="/doordash_logo_clean.png"
+                    alt="DoorDash"
+                    width={100}
+                    height={32}
+                    className="max-h-6 w-auto opacity-70 filter brightness-0 invert"
+                  />
+                </div>
+                <div className="w-20 h-8 flex items-center justify-center">
+                  <Image
+                    src="/dynata_logo_clean.png"
+                    alt="Dynata"
+                    width={80}
+                    height={32}
+                    className="max-h-6 w-auto opacity-70 filter brightness-0 invert"
+                  />
+                </div>
+                <div className="w-20 h-8 flex items-center justify-center">
+                  <Image
+                    src="/cint_logo_clean.png"
+                    alt="Cint"
+                    width={80}
+                    height={32}
+                    className="max-h-6 w-auto opacity-70 filter brightness-0 invert"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>

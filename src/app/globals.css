@@ -139,3 +139,16 @@
     border: 1px solid rgba(59, 130, 246, 0.2);
     color: #3b82f6;
 }
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.animate-scroll {
+    animation: scroll 20s linear infinite;
+}
