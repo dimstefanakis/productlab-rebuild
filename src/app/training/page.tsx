@@ -41,6 +41,7 @@ export default function LandingPage() {
   const metricsRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
   const [metricsVisible, setMetricsVisible] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const {
     register,
@@ -96,6 +97,7 @@ export default function LandingPage() {
         body: JSON.stringify(submitData),
       });
       setLoading(false);
+      setSubmitted(true);
       toast.success(
         "Thank you for contacting us! We will get back to you shortly.",
       );
@@ -468,96 +470,112 @@ export default function LandingPage() {
             {/* Contact Form */}
             <Card className="card-dark border-gray-700">
               <CardContent className="p-8">
-                <h3 className="text-2xl font-bold text-white mb-6 text-center">
-                  {COPY.contactSection.title}
-                </h3>
+                {!submitted ? (
+                  <>
+                    <h3 className="text-2xl font-bold text-white mb-6 text-center">
+                      {COPY.contactSection.title}
+                    </h3>
 
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label
-                        htmlFor="name"
-                        className="block text-sm font-medium text-gray-300 mb-1"
-                      >
-                        {COPY.contactSection.fields.name}
-                      </label>
-                      <Input
-                        id="name"
-                        placeholder="Your name"
-                        className="bg-gray-700 border-gray-600 text-white placeholder:text-gray-400 focus:border-blue-500"
-                        {...register("name", { required: true })}
+                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <label
+                            htmlFor="name"
+                            className="block text-sm font-medium text-gray-300 mb-1"
+                          >
+                            {COPY.contactSection.fields.name}
+                          </label>
+                          <Input
+                            id="name"
+                            placeholder="Your name"
+                            className="bg-gray-700 border-gray-600 text-white placeholder:text-gray-400 focus:border-blue-500"
+                            {...register("name", { required: true })}
+                          />
+                        </div>
+                        <div>
+                          <label
+                            htmlFor="email"
+                            className="block text-sm font-medium text-gray-300 mb-1"
+                          >
+                            {COPY.contactSection.fields.email}
+                          </label>
+                          <Input
+                            id="email"
+                            type="email"
+                            placeholder="your@email.com"
+                            className="bg-gray-700 border-gray-600 text-white placeholder:text-gray-400 focus:border-blue-500"
+                            {...register("email", {
+                              required: true,
+                              pattern: {
+                                value: /\S+@\S+\.\S+/,
+                                message: "Entered value does not match email format",
+                              },
+                            })}
+                          />
+                        </div>
+                      </div>
+
+                      <div>
+                        <label
+                          htmlFor="company"
+                          className="block text-sm font-medium text-gray-300 mb-1"
+                        >
+                          {COPY.contactSection.fields.company}
+                        </label>
+                        <Input
+                          id="company"
+                          placeholder="Your company"
+                          className="bg-gray-700 border-gray-600 text-white placeholder:text-gray-400 focus:border-blue-500"
+                          {...register("company", { required: true })}
+                        />
+                      </div>
+
+                      <div>
+                        <label
+                          htmlFor="message"
+                          className="block text-sm font-medium text-gray-300 mb-1"
+                        >
+                          {COPY.contactSection.fields.project}
+                        </label>
+                        <Textarea
+                          id="message"
+                          placeholder="Tell us about your project and data needs"
+                          className="bg-gray-700 border-gray-600 text-white placeholder:text-gray-400 focus:border-blue-500 min-h-[120px]"
+                          {...register("message", { required: true })}
+                        />
+                      </div>
+
+                      <input
+                        ref={hiddenRef}
+                        type="hidden"
+                        name="subject"
+                        className="absolute left-0 top-0 opacity-0 h-0 w-0 -z-10"
                       />
+
+                      <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                        <Button
+                          type="submit"
+                          className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg"
+                          disabled={loading}
+                        >
+                          {loading ? "Sending..." : COPY.contactSection.primaryCTA}
+                        </Button>
+                      </div>
+                    </form>
+                  </>
+                ) : (
+                  <div className="text-center py-12">
+                    <div className="w-20 h-20 bg-green-600/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                      <CheckCircle className="w-10 h-10 text-green-500" />
                     </div>
-                    <div>
-                      <label
-                        htmlFor="email"
-                        className="block text-sm font-medium text-gray-300 mb-1"
-                      >
-                        {COPY.contactSection.fields.email}
-                      </label>
-                      <Input
-                        id="email"
-                        type="email"
-                        placeholder="your@email.com"
-                        className="bg-gray-700 border-gray-600 text-white placeholder:text-gray-400 focus:border-blue-500"
-                        {...register("email", {
-                          required: true,
-                          pattern: {
-                            value: /\S+@\S+\.\S+/,
-                            message: "Entered value does not match email format",
-                          },
-                        })}
-                      />
-                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-4">
+                      Thank You!
+                    </h3>
+                    <p className="text-lg text-gray-300 mb-6 max-w-md mx-auto">
+                      We've received your message and will contact you soon to discuss your AI training data needs.
+                    </p>
                   </div>
-
-                  <div>
-                    <label
-                      htmlFor="company"
-                      className="block text-sm font-medium text-gray-300 mb-1"
-                    >
-                      {COPY.contactSection.fields.company}
-                    </label>
-                    <Input
-                      id="company"
-                      placeholder="Your company"
-                      className="bg-gray-700 border-gray-600 text-white placeholder:text-gray-400 focus:border-blue-500"
-                      {...register("company", { required: true })}
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="message"
-                      className="block text-sm font-medium text-gray-300 mb-1"
-                    >
-                      {COPY.contactSection.fields.project}
-                    </label>
-                    <Textarea
-                      id="message"
-                      placeholder="Tell us about your project and data needs"
-                      className="bg-gray-700 border-gray-600 text-white placeholder:text-gray-400 focus:border-blue-500 min-h-[120px]"
-                      {...register("message", { required: true })}
-                    />
-                  </div>
-
-                  <input
-                    ref={hiddenRef}
-                    type="hidden"
-                    name="subject"
-                    className="absolute left-0 top-0 opacity-0 h-0 w-0 -z-10"
-                  />
-
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Button
-                      type="submit"
-                      className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg"
-                      disabled={loading}
-                    >
-                      {loading ? "Sending..." : COPY.contactSection.primaryCTA}
-                    </Button>
-                  </div>
-                </form>
+                )}
               </CardContent>
             </Card>
           </div>
