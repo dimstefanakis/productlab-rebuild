@@ -1,7 +1,7 @@
 "use client";
 
 import type React from "react";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -36,7 +36,7 @@ type Inputs = {
   message: string;
 };
 
-export default function LandingPage() {
+function LandingPageContent() {
   const searchParams = useSearchParams();
   const hiddenRef = useRef<HTMLInputElement>(null);
   const [loading, setLoading] = useState(false);
@@ -593,5 +593,13 @@ export default function LandingPage() {
         <Footer theme="dark" hasIndent={false} />
       </div>
     </div>
+  );
+}
+
+export default function LandingPage() {
+  return (
+    <Suspense>
+      <LandingPageContent />
+    </Suspense>
   );
 }
