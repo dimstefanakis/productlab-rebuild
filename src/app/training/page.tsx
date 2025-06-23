@@ -2,6 +2,7 @@
 
 import type React from "react";
 import { useState, useEffect, useRef } from "react";
+import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -36,6 +37,7 @@ type Inputs = {
 };
 
 export default function LandingPage() {
+  const searchParams = useSearchParams();
   const hiddenRef = useRef<HTMLInputElement>(null);
   const [loading, setLoading] = useState(false);
   const metricsRef = useRef<HTMLDivElement>(null);
@@ -82,11 +84,17 @@ export default function LandingPage() {
       // Combine company and message
       const formattedMessage = `COMPANY: ${data.company}, ${data.message}`;
 
+      const urlParams: Record<string, string> = {};
+      searchParams.forEach((value, key) => {
+        urlParams[key] = value;
+      });
+
       const submitData = {
         inquiry_type: data.inquiry_type,
         name: data.name,
         email: data.email,
         message: formattedMessage,
+        url_params: urlParams,
       };
 
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/lead/`, {
